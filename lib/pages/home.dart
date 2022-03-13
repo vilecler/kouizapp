@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
+import 'package:kouizapp/widgets/boltwidget.dart';
 import 'package:kouizapp/widgets/dividerwidget.dart';
 import 'package:kouizapp/widgets/quizpresentationprimarywidget.dart';
 import 'package:kouizapp/widgets/quizpresentationsecondarywidget.dart';
+import 'package:kouizapp/widgets/seemorewidget.dart';
 
+import '../others/circletabindicator.dart';
 import '../widgets/boxprimarywidget.dart';
 import '../widgets/boxsecondarywidget.dart';
 import '../widgets/smallthemewidget.dart';
@@ -45,7 +48,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(bottom: 5.0, left: 15.0, right: 15.0, top: 0.0),
+          padding: const EdgeInsets.only(bottom: 5.0, left: 20.0, right: 20.0, top: 0.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -53,18 +56,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 'Home',
                 style: TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 34.0),
               ),
-              Row(
-                children: const <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(right: 8.0),
-                    child: Text(
-                        '100',
-                        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w700, color: CustomColors.mainPurple, decoration: TextDecoration.none, fontFamily: 'Roboto')
-                    ),
-                  ),
-                  FaIcon(FontAwesomeIcons.bolt, color: CustomColors.bolt, size: 17.0,)
-                ],
-              ),
+              BoltWidget(text: '100'),
             ],
           ),
         ),
@@ -72,7 +64,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         SizedBox(
           height: BoxPrimaryWidget.height + 40,
           child: ListView(
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
             children: <Widget>[
@@ -133,7 +125,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         // DISPLAY TABBAR CONTENT
         /////////////////////////////
         SizedBox(
-          height: (QuizPresentaionPrimaryWidget.height+10) * 11,    //TODO: calculate dynamically when switching tab
+          height: (QuizPresentaionPrimaryWidget.height+10) * 11 + 75,    //TODO: calculate dynamically when switching tab
           child: TabBarView(
             controller: _tabTabController,
             children: <Widget>[
@@ -146,11 +138,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionSecondaryWidget(),
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionSecondaryWidget(),
                   QuizPresentaionPrimaryWidget(),
-                  QuizPresentaionPrimaryWidget(),
-                  QuizPresentaionPrimaryWidget(),
+                  SeeMoreWidget()
                   //ADD VIEW ALL
                 ],
               ),
@@ -159,9 +152,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               Column(
                 children: [
                   QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionSecondaryWidget(),
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionSecondaryWidget(),
+                  QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionSecondaryWidget(),
+                  QuizPresentaionPrimaryWidget(),
+                  SeeMoreWidget()
                   //ADD VIEW ALL
                 ],
               ),
@@ -170,9 +170,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               Column(
                 children: [
                   QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionSecondaryWidget(),
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionSecondaryWidget(),
+                  QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionSecondaryWidget(),
+                  QuizPresentaionPrimaryWidget(),
+                  SeeMoreWidget()
                   //ADD VIEW ALL
                 ],
               ),
@@ -183,36 +190,5 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
       ]
     );
-  }
-}
-
-
-
-class CircleTabIndicator extends Decoration {
-  final BoxPainter _painter;
-
-  CircleTabIndicator({required Color color, required double radius}) : _painter = _CirclePainter(color, radius);
-
-  @override
-  BoxPainter createBoxPainter([VoidCallback? onChanged]) => _painter;
-}
-
-class _CirclePainter extends BoxPainter {
-  final Paint _paint;
-  final double radius;
-
-  _CirclePainter(Color color, this.radius)
-      : _paint = Paint()
-    ..color = color
-    ..isAntiAlias = true;
-
-  @override
-  void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
-    var width = cfg.size?.width;
-    width ??= 0;
-    var height = cfg.size?.height;
-    height ??= 0;
-    final Offset circleOffset = offset + Offset(width/2, height*1.1 - radius);
-    canvas.drawCircle(circleOffset, radius, _paint);
   }
 }

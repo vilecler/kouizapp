@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       title: appName,
       debugShowCheckedModeBanner: false,
       theme: theme.copyWith(
-        colorScheme: theme.colorScheme.copyWith(secondary: CustomColors.mainPurple),
+        colorScheme: theme.colorScheme.copyWith(primary: CustomColors.mainPurple, secondary: CustomColors.mainPurple),
       ),
       home: Scaffold(
         body: SafeArea(

@@ -12,6 +12,7 @@ class CustomColors {
   static const Color mainRed = Color(0xFFFF3A16);
 
   static const Color grey = Color(0xFF888888);
+  static const Color mediumGrey = Color(0xFFACACAC);
   static const Color lightGrey = Color(0xFFF1F1F1);
   static const Color fakeWhite = Color(0xFFE0E0E0);
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/smallprimarybutton.dart';
-import 'package:kouizapp/widgets/smallsecondarybutton.dart';
 
 class QuizPresentaionPrimaryWidget extends StatelessWidget {
 
