@@ -53,7 +53,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
             color: CustomColors.fakeWhite,
         ),
         BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Padding(
                   padding: EdgeInsets.only(bottom: _icon_margin_bot_to_text),
@@ -78,7 +78,10 @@ class _TabBarWidgetState extends State<TabBarWidget> {
             BottomNavigationBarItem(
               icon: Padding(
                   padding: EdgeInsets.only(bottom: _icon_margin_bot_to_text),
-                  child: FaIcon(FontAwesomeIcons.userAstronaut)
+                  child: CircleAvatar(
+                    backgroundImage: Image.asset('assets/images/profile_picture.png').image,
+                    radius: 15,
+                  )
               ),
               label: 'Me',
             ),
@@ -88,7 +91,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
           unselectedItemColor: CustomColors.grey,
           backgroundColor: CustomColors.white,
           selectedLabelStyle: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.w700, fontFamily: 'Roboto'),
-          iconSize: 18.0,
+          iconSize: 20.0,
           onTap: _onItemTapped,
         ),
       ]

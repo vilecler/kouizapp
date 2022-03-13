@@ -16,7 +16,7 @@ class SmallSecondaryButtonWidget extends StatelessWidget  {
       height: height,
       width: width,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(7.0),
         child: Stack(
           children: <Widget>[
             Positioned.fill(

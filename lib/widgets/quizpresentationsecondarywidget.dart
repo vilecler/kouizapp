@@ -132,7 +132,7 @@ class QuizPresentaionSecondaryWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SmallSecondaryButtonWidget(text: 'Buy', height: 15.0, width: 50.0)
+                        SmallSecondaryButtonWidget(text: 'Buy', height: 20.0, width: 50.0)
 
 
                       ]

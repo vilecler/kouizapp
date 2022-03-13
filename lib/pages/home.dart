@@ -34,9 +34,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
 
   static const List<Tab> myTabs = <Tab>[
+    Tab(text: 'Suggestion'),
     Tab(text: 'Most Popular'),
     Tab(text: 'Recent'),
-    Tab(text: 'My quiz'),
   ];
 
   @override
@@ -49,19 +49,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  CircleAvatar(
-                      backgroundImage: Image.asset('assets/images/profile_picture.png').image
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 10.0),
-                    child: Text(
-                        '@vilecler',
-                        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: CustomColors.mainPurple, decoration: TextDecoration.none, letterSpacing: 1, fontFamily: 'Roboto')
-                    ),
-                  )
-                ],
+              Text(
+                'Home',
+                style: TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 34.0),
               ),
               Row(
                 children: const <Widget>[
@@ -148,7 +138,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             controller: _tabTabController,
             children: <Widget>[
 
-              //Most Popular
+              //Suggestion
               Column(
                 children: [
                   QuizPresentaionPrimaryWidget(),
@@ -161,6 +151,18 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionPrimaryWidget(),
+                  //ADD VIEW ALL
+                ],
+              ),
+
+              //Recent
+              Column(
+                children: [
+                  QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionPrimaryWidget(),
+                  QuizPresentaionPrimaryWidget(),
+                  //ADD VIEW ALL
                 ],
               ),
 
@@ -170,17 +172,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionPrimaryWidget(),
-                  QuizPresentaionPrimaryWidget()
-                ],
-              ),
-
-              //Most Popular
-              Column(
-                children: [
                   QuizPresentaionPrimaryWidget(),
-                  QuizPresentaionPrimaryWidget(),
-                  QuizPresentaionPrimaryWidget(),
-                  QuizPresentaionPrimaryWidget()
+                  //ADD VIEW ALL
                 ],
               ),
             ],

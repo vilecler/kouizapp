@@ -132,7 +132,7 @@ class QuizPresentaionPrimaryWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SmallPrimaryButtonWidget(text: 'Play', height: 15.0, width: 50.0)
+                        SmallPrimaryButtonWidget(text: 'Play', height: 20.0, width: 50.0)
 
 
                       ]
