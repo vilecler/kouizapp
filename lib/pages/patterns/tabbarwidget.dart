@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 //import all required page
-import 'package:kouizapp/pages/home.dart';
-import 'package:kouizapp/pages/quiz.dart';
-import 'package:kouizapp/pages/messages.dart';
-import 'package:kouizapp/pages/me.dart';
+import 'package:kouizapp/pages/patterns/main/homepage.dart';
+import 'package:kouizapp/pages/patterns/main/quizpage.dart';
+import 'package:kouizapp/pages/patterns/main/messagespage.dart';
+import 'package:kouizapp/pages/patterns/main/mepage.dart';
 
 //To resolve colors
-import '../constants/customcolors.dart';
+import '../../constants/customcolors.dart';
 
 class TabBarWidget extends StatefulWidget {
   const TabBarWidget({Key? key}) : super(key: key);

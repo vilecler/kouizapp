@@ -7,10 +7,10 @@ import 'package:kouizapp/widgets/quizpresentationprimarywidget.dart';
 import 'package:kouizapp/widgets/quizpresentationsecondarywidget.dart';
 import 'package:kouizapp/widgets/seemorewidget.dart';
 
-import '../others/circletabindicator.dart';
-import '../widgets/boxprimarywidget.dart';
-import '../widgets/boxsecondarywidget.dart';
-import '../widgets/smallthemewidget.dart';
+import '../../../others/circletabindicator.dart';
+import '../../../widgets/boxprimarywidget.dart';
+import '../../../widgets/boxsecondarywidget.dart';
+import '../../../widgets/smallthemewidget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

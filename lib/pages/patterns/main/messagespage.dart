@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/widgets/searchboxwidget.dart';
 
-import '../constants/customcolors.dart';
-import '../widgets/boltwidget.dart';
-import '../widgets/messagepresentationwidget.dart';
+import '../../../constants/customcolors.dart';
+import '../../../widgets/boltwidget.dart';
+import '../../../widgets/messagepresentationwidget.dart';
 
 class MessagesPage extends StatefulWidget {
   const MessagesPage({Key? key}) : super(key: key);

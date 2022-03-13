@@ -6,18 +6,18 @@ import 'package:kouizapp/widgets/friendplaysuggestionwidget.dart';
 import 'package:kouizapp/widgets/mediumtitlewidget.dart';
 import 'package:kouizapp/widgets/searchboxwidget.dart';
 
-import '../constants/customcolors.dart';
-import '../others/circletabindicator.dart';
-import '../widgets/bigtitlewidget.dart';
-import '../widgets/boltwidget.dart';
-import '../widgets/boxtitleprimarywidget.dart';
-import '../widgets/boxtitlesecondarywidget.dart';
-import '../widgets/categorypresentationwidget.dart';
-import '../widgets/quizcommunitypresentationwidget.dart';
-import '../widgets/quizpresentationprimarywidget.dart';
-import '../widgets/quizpresentationsecondarywidget.dart';
-import '../widgets/seemorewidget.dart';
-import '../widgets/smallseemorewidget.dart';
+import '../../../constants/customcolors.dart';
+import '../../../others/circletabindicator.dart';
+import '../../../widgets/bigtitlewidget.dart';
+import '../../../widgets/boltwidget.dart';
+import '../../../widgets/boxtitleprimarywidget.dart';
+import '../../../widgets/boxtitlesecondarywidget.dart';
+import '../../../widgets/categorypresentationwidget.dart';
+import '../../../widgets/quizcommunitypresentationwidget.dart';
+import '../../../widgets/quizpresentationprimarywidget.dart';
+import '../../../widgets/quizpresentationsecondarywidget.dart';
+import '../../../widgets/seemorewidget.dart';
+import '../../../widgets/smallseemorewidget.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({Key? key}) : super(key: key);

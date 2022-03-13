@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kouizapp/constants/customcolors.dart';
-import 'widgets/tabbarwidget.dart';
+import 'pages/patterns/tabbarwidget.dart';
 import 'package:flutter/services.dart';
 
 void main() {

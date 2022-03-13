@@ -4,17 +4,17 @@ import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/dividerwidget.dart';
 import 'package:kouizapp/widgets/friendsuggestionwidget.dart';
 
-import '../others/circletabindicator.dart';
-import '../widgets/boltwidget.dart';
-import '../widgets/friendpresentationwidget.dart';
-import '../widgets/mediumtitlewidget.dart';
-import '../widgets/quizhistorypresentationprimarywidget.dart';
-import '../widgets/quizhistorypresentationsecondarywidget.dart';
-import '../widgets/quizminepresentationwidget.dart';
-import '../widgets/quizpresentationprimarywidget.dart';
-import '../widgets/quizpresentationsecondarywidget.dart';
-import '../widgets/seemorewidget.dart';
-import '../widgets/smallseemorewidget.dart';
+import '../../../others/circletabindicator.dart';
+import '../../../widgets/boltwidget.dart';
+import '../../../widgets/friendpresentationwidget.dart';
+import '../../../widgets/mediumtitlewidget.dart';
+import '../../../widgets/quizhistorypresentationprimarywidget.dart';
+import '../../../widgets/quizhistorypresentationsecondarywidget.dart';
+import '../../../widgets/quizminepresentationwidget.dart';
+import '../../../widgets/quizpresentationprimarywidget.dart';
+import '../../../widgets/quizpresentationsecondarywidget.dart';
+import '../../../widgets/seemorewidget.dart';
+import '../../../widgets/smallseemorewidget.dart';
 
 class MePage extends StatefulWidget {
   const MePage({Key? key}) : super(key: key);
