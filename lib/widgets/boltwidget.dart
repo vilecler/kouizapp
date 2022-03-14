@@ -4,7 +4,7 @@ import 'package:kouizapp/constants/customcolors.dart';
 
 
 class BoltWidget extends StatelessWidget  {
-  BoltWidget({Key? key, required this.text}) : super(key: key);
+  const BoltWidget({Key? key, required this.text}) : super(key: key);
 
   final String text;
 

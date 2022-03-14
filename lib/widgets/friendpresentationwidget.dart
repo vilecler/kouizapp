@@ -11,7 +11,7 @@ class FriendPresentationWidget extends StatelessWidget  {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20.0, right: 30.0, top: 5.0, bottom: 5.0),
+      margin: const EdgeInsets.only(left: 20.0, right: 30.0, top: 5.0, bottom: 5.0),
       child: Row(
         children: [
           Column(
@@ -38,10 +38,10 @@ class FriendPresentationWidget extends StatelessWidget  {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Vivien', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0),),
+                          Text('Vivien', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                           Padding(
                             padding: const EdgeInsets.only(left: 10.0),
-                            child: Text('@petitstring', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 12.0),),
+                            child: const Text('@petitstring', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 12.0, decoration: TextDecoration.none),),
                           )
                         ],
                       ),

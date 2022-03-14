@@ -3,8 +3,7 @@ import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/smallsecondarybutton.dart';
 
 class BoxPrimaryWidget extends StatelessWidget {
-
-  BoxPrimaryWidget({Key? key, required this.title, required this.subTitle, required this.text, this.onClick}) : super(key: key);
+  const BoxPrimaryWidget({Key? key, required this.title, required this.subTitle, required this.text, this.onClick}) : super(key: key);
 
   final String title;
   final String subTitle;
@@ -18,7 +17,7 @@ class BoxPrimaryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20.0),
+      margin: const EdgeInsets.only(left: 20.0),
       height: height,
       width: width,
       child: Stack(
@@ -43,7 +42,7 @@ class BoxPrimaryWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(borderRadius),
-              image: DecorationImage(
+              image: const DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage(
                   'assets/images/home-header-1.png'
@@ -64,7 +63,7 @@ class BoxPrimaryWidget extends StatelessWidget {
                     CustomColors.mainPink,
                     CustomColors.white.withOpacity(0.0),
                   ],
-                  stops: [0.0, 1.0]
+                  stops: const [0.0, 1.0]
               ),
             ),
           ),
@@ -80,7 +79,7 @@ class BoxPrimaryWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
                   child: Text(
                     title,
-                    style: TextStyle(color: CustomColors.white, fontSize: 24.0, decoration: TextDecoration.none, fontWeight: FontWeight.w800, letterSpacing: 2.0, fontFamily: 'Roboto'),
+                    style: const TextStyle(color: CustomColors.white, fontSize: 24.0, decoration: TextDecoration.none, fontWeight: FontWeight.w800, letterSpacing: 2.0, fontFamily: 'Roboto'),
                   ),
                 ),
 
@@ -102,7 +101,7 @@ class BoxPrimaryWidget extends StatelessWidget {
 
 
                 Padding(
-                  padding: EdgeInsets.only(top: 8.0),
+                  padding: const EdgeInsets.only(top: 8.0),
                   child: SmallSecondaryButtonWidget(text: 'Start', height: 20.0, width: 50.0, onTap: onClick),
                 )
 

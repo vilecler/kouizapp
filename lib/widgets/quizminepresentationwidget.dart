@@ -10,10 +10,12 @@ class QuizMinePresentaionWidget extends StatelessWidget {
   static const width = 90.0;
   static const borderRadius = 20.0;
 
+  const QuizMinePresentaionWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20.0, right: 30, top: 5.0, bottom: 5.0),
+      margin: const EdgeInsets.only(left: 20.0, right: 30, top: 5.0, bottom: 5.0),
       child: Row(
         children: [
           Column(
@@ -45,7 +47,7 @@ class QuizMinePresentaionWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: Colors.transparent,
                             borderRadius: BorderRadius.circular(borderRadius),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               fit: BoxFit.cover,
                               image: AssetImage(
                                   'assets/images/item-texture-1.png'
@@ -66,7 +68,7 @@ class QuizMinePresentaionWidget extends StatelessWidget {
                                   CustomColors.mainPink,
                                   CustomColors.white.withOpacity(0.0),
                                 ],
-                                stops: [0.0, 1.0]
+                                stops: const [0.0, 1.0]
                             ),
                           ),
                         ),
@@ -74,12 +76,8 @@ class QuizMinePresentaionWidget extends StatelessWidget {
                         Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               FaIcon(FontAwesomeIcons.crown, color: CustomColors.white, size: 35,),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10.0),
-                                child: Text('N°1', style: TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600),),
-                              )
                             ],
                           ),
                         ),
@@ -100,12 +98,12 @@ class QuizMinePresentaionWidget extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 11.0),
-                    child: Text('The main flags of the world', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0),),
+                    child: Text('The main flags of the world', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                   ),
-                  Text('Played by 245 people.', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0),),
+                  Text('Played by 245 people.', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0),
-                    child: Text('45 questions.', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0),),
+                    child: Text('45 questions.', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   ),
 
                   Padding(

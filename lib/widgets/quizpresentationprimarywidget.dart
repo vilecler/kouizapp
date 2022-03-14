@@ -9,10 +9,12 @@ class QuizPresentaionPrimaryWidget extends StatelessWidget {
   static const width = 90.0;
   static const borderRadius = 20.0;
 
+  const QuizPresentaionPrimaryWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+      margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
       child: Row(
         children: [
           Column(
@@ -44,7 +46,7 @@ class QuizPresentaionPrimaryWidget extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(borderRadius),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                             fit: BoxFit.cover,
                             image: AssetImage(
                                 'assets/images/item-texture-1.png'
@@ -74,10 +76,10 @@ class QuizPresentaionPrimaryWidget extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            FaIcon(FontAwesomeIcons.crown, color: CustomColors.white, size: 35,),
+                            const FaIcon(FontAwesomeIcons.crown, color: CustomColors.white, size: 35,),
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
-                              child: Text('N°1', style: TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600),),
+                              child: Text('N°1', style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
                             )
                           ],
                         ),
@@ -99,12 +101,12 @@ class QuizPresentaionPrimaryWidget extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 11.0),
-                    child: Text('The main flags of the world', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0),),
+                    child: Text('The main flags of the world', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                   ),
-                  Text('Maximum reward: 20,000xp', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0),),
+                  Text('Maximum reward: 20,000xp', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0),
-                    child: Text('45 questions.', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0),),
+                    child: Text('45 questions.', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   ),
 
                   Padding(
@@ -117,7 +119,7 @@ class QuizPresentaionPrimaryWidget extends StatelessWidget {
                             FaIcon(FontAwesomeIcons.bolt, color: CustomColors.bolt, size: 18.0,),
                             Padding(
                               padding: const EdgeInsets.only(left: 5.0),
-                              child: Text('15', style: TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16),),
+                              child: Text('15', style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
                             ),
                           ],
                         ),
@@ -127,7 +129,7 @@ class QuizPresentaionPrimaryWidget extends StatelessWidget {
                             FaIcon(FontAwesomeIcons.hourglassHalf, color: CustomColors.mainPurple, size: 16.0),
                             Padding(
                               padding: const EdgeInsets.only(left: 5.0),
-                              child: Text('5 min.', style: TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16),),
+                              child: Text('5 min.', style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
                             ),
                           ],
                         ),

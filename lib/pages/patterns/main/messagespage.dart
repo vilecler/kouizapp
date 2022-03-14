@@ -27,24 +27,26 @@ class _MessagesPageState extends State<MessagesPage> {
             children: <Widget>[
               Text(
                 'Messages',
-                style: TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 34.0),
+                style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 34.0, decoration: TextDecoration.none),
               ),
               BoltWidget(text: '100'),
             ],
           ),
         ),
 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const <Widget>[
-            Flexible(
-              child: SearchBoxWidget(),
-            ),
-            Padding(
-              padding: EdgeInsets.only(right: 20.0, bottom: 7.0),
-              child: FaIcon(FontAwesomeIcons.edit, color: CustomColors.grey, size: 26.0,),
-            ),
-          ],
+        Material(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const <Widget>[
+              Flexible(
+                child: SearchBoxWidget(),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 20.0, bottom: 7.0),
+                child: FaIcon(FontAwesomeIcons.edit, color: CustomColors.grey, size: 26.0,),
+              ),
+            ],
+          ),
         ),
 
 

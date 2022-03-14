@@ -11,8 +11,6 @@ import '../../../widgets/mediumtitlewidget.dart';
 import '../../../widgets/quizhistorypresentationprimarywidget.dart';
 import '../../../widgets/quizhistorypresentationsecondarywidget.dart';
 import '../../../widgets/quizminepresentationwidget.dart';
-import '../../../widgets/quizpresentationprimarywidget.dart';
-import '../../../widgets/quizpresentationsecondarywidget.dart';
 import '../../../widgets/seemorewidget.dart';
 import '../../../widgets/smallseemorewidget.dart';
 
@@ -55,8 +53,8 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
     Tab(text: 'My quiz'),
   ];
 
-  final TextStyle styleTableNumber = TextStyle(color: CustomColors.mainPurple, fontSize: 18.0, fontFamily: 'Roboto', fontWeight: FontWeight.w700);
-  final TextStyle styleTableTitle = TextStyle(color: CustomColors.mainPurple, fontSize: 12.0, fontFamily: 'Roboto', fontWeight: FontWeight.w400);
+  final TextStyle styleTableNumber = const TextStyle(color: CustomColors.mainPurple, fontSize: 18.0, fontFamily: 'Roboto', fontWeight: FontWeight.w700, decoration: TextDecoration.none);
+  final TextStyle styleTableTitle = const TextStyle(color: CustomColors.mainPurple, fontSize: 12.0, fontFamily: 'Roboto', fontWeight: FontWeight.w400, decoration: TextDecoration.none);
 
 
   @override
@@ -86,9 +84,9 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10.0, bottom: 0.0),
-                child: Text('Vivien', style: const TextStyle(color: CustomColors.mainPurple, fontSize: 22.0, fontWeight: FontWeight.w700, letterSpacing: 0.5, fontFamily: 'Roboto'),),
+                child: Text('Vivien', style: const TextStyle(color: CustomColors.mainPurple, fontSize: 22.0, fontWeight: FontWeight.w700, letterSpacing: 0.5, fontFamily: 'Roboto', decoration: TextDecoration.none),),
               ),
-              Text('@petitstring', style: const TextStyle(color: CustomColors.mainPurple, fontSize: 16.0, fontWeight: FontWeight.w500, fontFamily: 'Roboto'))
+              Text('@petitstring', style: const TextStyle(color: CustomColors.mainPurple, fontSize: 16.0, fontWeight: FontWeight.w500, fontFamily: 'Roboto', decoration: TextDecoration.none))
             ],
           ),
         ),
@@ -101,7 +99,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Text('lvl 1', style: TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w400, fontFamily: 'Roboto'),),
+                  child: Text('lvl 1', style: const TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w400, fontFamily: 'Roboto', decoration: TextDecoration.none),),
                 ),
                 Flexible(
                   child: ClipRRect(
@@ -116,7 +114,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Text('lvl 2', style: TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w400, fontFamily: 'Roboto')),
+                  child: Text('lvl 2', style: const TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w400, fontFamily: 'Roboto', decoration: TextDecoration.none)),
                 ),
               ],
             ),
@@ -213,7 +211,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                   QuizHistoryPresentationPrimaryWidget(),
                   QuizHistoryPresentationPrimaryWidget(),
                   QuizHistoryPresentationPrimaryWidget(),
-                  SeeMoreWidget(),
+                  const SeeMoreWidget(),
                   //ADD VIEW ALL
                 ],
               ),
@@ -235,7 +233,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                         FriendSuggestionWidget(),
                         FriendSuggestionWidget(),
                         FriendSuggestionWidget(),
-                        SmallSeeMoreWidget(),
+                        const SmallSeeMoreWidget(),
                         Container(
                           width: 20.0,
                         )
@@ -256,7 +254,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                   FriendPresentationWidget(),
                   FriendPresentationWidget(),
                   FriendPresentationWidget(),
-                  SeeMoreWidget(),
+                  const SeeMoreWidget(),
                   //ADD VIEW ALL
                 ],
               ),
@@ -274,7 +272,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                   QuizMinePresentaionWidget(),
                   QuizMinePresentaionWidget(),
                   QuizMinePresentaionWidget(),
-                  SeeMoreWidget(),
+                  const SeeMoreWidget(),
                   //ADD VIEW ALL
                 ],
               ),

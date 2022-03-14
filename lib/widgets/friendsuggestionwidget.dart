@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/smallprimarybutton.dart';
-import 'package:kouizapp/widgets/smallsecondarybutton.dart';
 
 class FriendSuggestionWidget extends StatelessWidget {
-
-  FriendSuggestionWidget({Key? key}) : super(key: key);
+  const FriendSuggestionWidget({Key? key}) : super(key: key);
 
   static const height = 120.0;
   static const width = 120.0;
@@ -17,11 +15,11 @@ class FriendSuggestionWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
         border: Border.all(color: CustomColors.mainPurple)
       ),
-      margin: EdgeInsets.only(left: 15.0),
+      margin: const EdgeInsets.only(left: 15.0),
       height: height,
       width: width,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -31,11 +29,11 @@ class FriendSuggestionWidget extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 3.0),
-              child: Text('Vivien', style: TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w500, fontFamily: 'Roboto')),
+              child: Text('Vivien', style: const TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w500, fontFamily: 'Roboto', decoration: TextDecoration.none)),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
-              child: Text('@petitstring', style: TextStyle(color: CustomColors.grey, fontSize: 10.0, fontWeight: FontWeight.w300, fontFamily: 'Roboto')),
+              child: Text('@petitstring', style: const TextStyle(color: CustomColors.grey, fontSize: 10.0, fontWeight: FontWeight.w300, fontFamily: 'Roboto', decoration: TextDecoration.none)),
             ),
             SmallPrimaryButtonWidget(text: 'Add friend', height: 20, width: 70)
           ],

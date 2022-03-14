@@ -4,7 +4,7 @@ import 'package:kouizapp/constants/customcolors.dart';
 
 
 class SmallThemeWidget extends StatelessWidget  {
-  SmallThemeWidget({Key? key, required this.color, required this.text, required this.icon}) : super(key: key);
+  const SmallThemeWidget({Key? key, required this.color, required this.text, required this.icon}) : super(key: key);
 
   final Color color;
   final String text;

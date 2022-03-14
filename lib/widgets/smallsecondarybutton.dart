@@ -3,7 +3,7 @@ import 'package:kouizapp/constants/customcolors.dart';
 
 
 class SmallSecondaryButtonWidget extends StatelessWidget  {
-  SmallSecondaryButtonWidget({Key? key, required this.text, required this.height, required this.width, this.onTap}) : super(key: key);
+  const SmallSecondaryButtonWidget({Key? key, required this.text, required this.height, required this.width, this.onTap}) : super(key: key);
 
   final void Function()? onTap;
   final double height;

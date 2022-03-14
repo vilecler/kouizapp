@@ -9,10 +9,12 @@ class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
   static const width = 90.0;
   static const borderRadius = 20.0;
 
+  const QuizHistoryPresentationPrimaryWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20.0, top: 5.0, bottom: 5.0),
+      margin: const EdgeInsets.only(left: 20.0, top: 5.0, bottom: 5.0),
       child: Padding(
         padding: const EdgeInsets.only(right: 25.0),
         child: Row(
@@ -46,7 +48,7 @@ class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: Colors.transparent,
                               borderRadius: BorderRadius.circular(borderRadius),
-                              image: DecorationImage(
+                              image: const DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
                                     'assets/images/item-texture-1.png'
@@ -76,10 +78,10 @@ class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                FaIcon(FontAwesomeIcons.crown, color: CustomColors.white, size: 35,),
+                                const FaIcon(FontAwesomeIcons.crown, color: CustomColors.white, size: 35,),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10.0),
-                                  child: Text('N°1', style: TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600),),
+                                  child: Text('N°1', style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
                                 )
                               ],
                             ),
@@ -101,9 +103,9 @@ class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 11.0),
-                      child: Text('The main flags of the world', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0),),
+                      child: Text('The main flags of the world', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                     ),
-                    Text('Played on 24 February 2022.', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0),),
+                    Text('Played on 24 February 2022.', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
 
                     Padding(
                       padding: const EdgeInsets.only(top: 12.0),
@@ -114,7 +116,7 @@ class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(right: 5.0),
-                                  child: Text('Score:', style: TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16),),
+                                  child: Text('Score:', style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
                                 ),
                                 Row(
                                   children: [

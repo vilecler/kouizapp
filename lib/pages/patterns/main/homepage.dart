@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   static const List<Tab> myTabs = <Tab>[
     Tab(text: 'Suggestion'),
-    Tab(text: 'Most Popular'),
+    Tab(text: 'Popular'),
     Tab(text: 'Recent'),
   ];
 
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             children: <Widget>[
               Text(
                 'Home',
-                style: TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 34.0),
+                style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 34.0, decoration: TextDecoration.none),
               ),
               BoltWidget(text: '100'),
             ],
@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionSecondaryWidget(),
                   QuizPresentaionPrimaryWidget(),
-                  SeeMoreWidget()
+                  const SeeMoreWidget()
                   //ADD VIEW ALL
                 ],
               ),
@@ -161,7 +161,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionSecondaryWidget(),
                   QuizPresentaionPrimaryWidget(),
-                  SeeMoreWidget()
+                  const SeeMoreWidget()
                   //ADD VIEW ALL
                 ],
               ),
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   QuizPresentaionPrimaryWidget(),
                   QuizPresentaionSecondaryWidget(),
                   QuizPresentaionPrimaryWidget(),
-                  SeeMoreWidget()
+                  const SeeMoreWidget()
                   //ADD VIEW ALL
                 ],
               ),

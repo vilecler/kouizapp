@@ -20,7 +20,7 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
         child: TextField(
           textAlign: TextAlign.start,
           keyboardType: TextInputType.text,
-          style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 16.0, fontWeight: FontWeight.w500),
+          style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 16.0, fontWeight: FontWeight.w500, decoration: TextDecoration.none),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(0),
             focusedBorder: OutlineInputBorder(
@@ -31,7 +31,7 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
                 borderSide: const BorderSide(color: CustomColors.mediumGrey, width: 2.0),
                 borderRadius: BorderRadius.circular(15.0)
             ),
-            hintStyle: const TextStyle(color: CustomColors.mediumGrey, fontFamily: 'Roboto', fontSize: 14.0, fontWeight: FontWeight.w500),
+            hintStyle: const TextStyle(color: CustomColors.mediumGrey, fontFamily: 'Roboto', fontSize: 14.0, fontWeight: FontWeight.w500, decoration: TextDecoration.none),
             focusColor: CustomColors.mainPurple,
             hoverColor: CustomColors.mainPurple,
             iconColor: CustomColors.mediumGrey,

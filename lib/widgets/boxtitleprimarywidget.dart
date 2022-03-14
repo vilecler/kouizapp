@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
-import 'package:kouizapp/widgets/smallsecondarybutton.dart';
 
 class BoxTitlePrimaryWidget extends StatelessWidget {
-
-  BoxTitlePrimaryWidget({Key? key, required this.title}) : super(key: key);
+  const BoxTitlePrimaryWidget({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -15,7 +13,7 @@ class BoxTitlePrimaryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20.0, right: 20.0),
+      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
       height: height,
       //width: width,
       child: Stack(
@@ -40,7 +38,7 @@ class BoxTitlePrimaryWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(20.0),
-              image: DecorationImage(
+              image: const DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage(
                     'assets/images/home-header-1.png'
@@ -61,7 +59,7 @@ class BoxTitlePrimaryWidget extends StatelessWidget {
                     CustomColors.mainPink,
                     CustomColors.white.withOpacity(0.0),
                   ],
-                  stops: [0.0, 1.0]
+                  stops: const [0.0, 1.0]
               ),
             ),
           ),
@@ -82,10 +80,10 @@ class BoxTitlePrimaryWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 15.0),
                         child: Text(
                           title,
-                          style: TextStyle(color: CustomColors.white, fontSize: 23.0, decoration: TextDecoration.none, fontWeight: FontWeight.w800, letterSpacing: 2.0, fontFamily: 'Roboto'),
+                          style: const TextStyle(color: CustomColors.white, fontSize: 23.0, decoration: TextDecoration.none, fontWeight: FontWeight.w800, letterSpacing: 2.0, fontFamily: 'Roboto'),
                         ),
                       ),
-                      FaIcon(FontAwesomeIcons.arrowRight, color: CustomColors.white, size: 19.0,)
+                      const FaIcon(FontAwesomeIcons.arrowRight, color: CustomColors.white, size: 19.0,)
                     ],
                   ),
                 ),
