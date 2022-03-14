@@ -4,6 +4,7 @@ class CustomColors {
 
   static const Color white = Colors.white;
   static const Color black = Colors.black;
+  static const Color transparent = Colors.transparent;
 
   static const Color mainPurple = Color(0xFF5950ED);
   static const Color mainPink = Color(0xFFBB4CF8);
@@ -17,4 +18,9 @@ class CustomColors {
   static const Color fakeWhite = Color(0xFFE0E0E0);
 
   static const Color bolt = Colors.amber;
+
+
+  static const Color facebookColor = Color(0xFF3B5998);
+  static const Color googleColor = Color(0xFFDE5246);
+
 }

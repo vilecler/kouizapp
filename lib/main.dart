@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kouizapp/constants/customcolors.dart';
+import 'package:kouizapp/pages/patterns/auth/loginpage.dart';
+import 'package:kouizapp/pages/patterns/auth/signuppage.dart';
 import 'package:kouizapp/pages/splashscreenpage.dart';
 import 'pages/patterns/main/mainpage.dart';
 import 'package:flutter/services.dart';
@@ -31,7 +33,7 @@ class _MyAppState extends State<MyApp> {
 
     // <fetch data from server. ex. login>
 
-    return Future.value(const MainPage());
+    return Future.value(LoginPage());
     //return Future.value(const MainPage());
   }
 
@@ -51,7 +53,12 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         backgroundColor: CustomColors.white,
-      )
+      ),
+      routes: {
+        '/main': (context) => const MainPage(),
+        '/login': (context) => LoginPage(),
+        '/signup': (context) => SignUpPage(),
+      }
     );
   }
 }
