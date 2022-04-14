@@ -4,7 +4,7 @@ import 'package:kouizapp/constants/customcolors.dart';
 
 
 class GoogleButtonWidget extends StatelessWidget  {
-  GoogleButtonWidget({Key? key, required this.text, this.onTap}) : super(key: key);
+  const GoogleButtonWidget({Key? key, required this.text, this.onTap}) : super(key: key);
 
   final String text;
   final void Function()? onTap;

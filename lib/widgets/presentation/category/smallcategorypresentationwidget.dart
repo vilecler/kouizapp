@@ -3,8 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 
 
-class SmallThemeWidget extends StatelessWidget  {
-  const SmallThemeWidget({Key? key, required this.color, required this.text, required this.icon}) : super(key: key);
+class SmallCategoryPresentationWidget extends StatelessWidget  {
+  const SmallCategoryPresentationWidget({Key? key, required this.color, required this.text, required this.icon}) : super(key: key);
 
   final Color color;
   final String text;

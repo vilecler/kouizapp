@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
-import 'package:kouizapp/widgets/smallprimarybutton.dart';
+import 'package:kouizapp/widgets/buttons/small/smallprimarybutton.dart';
 
 class QuizCommunityPresentationWidget extends StatelessWidget {
 
@@ -97,14 +97,14 @@ class QuizCommunityPresentationWidget extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 7.0),
-                    child: Text('The main flags of the world', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
+                    child: Text('The main flags of the world', style: TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                   ),
                   Row(
                     children: [
-                      Text('Created by:', style: TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                      Text('Created by:', style: TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                       Padding(
                         padding: const EdgeInsets.only(left: 5.0),
-                        child: Text('@petitstring', style: TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                        child: Text('@petitstring', style: TextStyle(color: CustomColors.mainPink, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                       ),
                     ],
                   ),
@@ -112,7 +112,7 @@ class QuizCommunityPresentationWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 4.0),
                     child: Row(
                       children: [
-                        Text('45 questions.', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                        Text('45 questions.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
 
                       ],
                     ),

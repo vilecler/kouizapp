@@ -7,7 +7,7 @@ class BoxTitlePrimaryWidget extends StatelessWidget {
 
   final String title;
 
-  static const height = 100.0;
+  static const height = 65.0;
   static const borderRadius = 20.0;
 
   @override
@@ -66,7 +66,7 @@ class BoxTitlePrimaryWidget extends StatelessWidget {
 
 
           Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,

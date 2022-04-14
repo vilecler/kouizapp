@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
+import 'package:kouizapp/widgets/buttons/small/smallprimarybutton.dart';
+import 'package:kouizapp/widgets/buttons/small/smallsecondarybutton.dart';
 
-class MessagePresentationWidget extends StatelessWidget  {
-  const MessagePresentationWidget({Key? key}) : super(key: key);
+
+class FriendPresentationWidget extends StatelessWidget  {
+  const FriendPresentationWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class MessagePresentationWidget extends StatelessWidget  {
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: CircleAvatar(
                   backgroundImage: Image.asset('assets/images/profile_picture.png').image,
-                  radius: 25,
+                  radius: 35,
                 ),
               )
             ],
@@ -35,33 +38,28 @@ class MessagePresentationWidget extends StatelessWidget  {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Vivien', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
+                          Text('Vivien', style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                           Padding(
                             padding: const EdgeInsets.only(left: 10.0),
-                            child: Text('@petitstring', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 12.0, decoration: TextDecoration.none),),
+                            child: const Text('@petitstring', style: TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 12.0, decoration: TextDecoration.none),),
                           )
                         ],
                       ),
-                      Row(
-                        children: [
-                          FaIcon(FontAwesomeIcons.checkDouble, color: CustomColors.grey, size: 10.0,),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 4.0),
-                            child: Text('16:30', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w600, fontSize: 12.0, fontFamily: 'Roboto', decoration: TextDecoration.none),),
-                          )
-                        ],
-                      )
+                      FaIcon(FontAwesomeIcons.ellipsisH, color: CustomColors.grey, size: 16.0,)
                     ],
                   ),
 
+
                   Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
-                    child: Text(
-                      'This is an example of text just to see if it woks well.',
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w400, fontSize: 13.0, fontFamily: 'Roboto', decoration: TextDecoration.none),
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SmallSecondaryButtonWidget(text: 'Message', height: 20.0, width: 110.0),
+                          SmallPrimaryButtonWidget(text: 'See Profile', height: 20.0, width: 110.0),
+                        ]
                     ),
-                  ),
+                  )
 
                 ],
               ),

@@ -16,33 +16,79 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
       child: SizedBox(
-        height: 40.0,
+        height: 35.0,
         child: TextField(
           textAlign: TextAlign.start,
           keyboardType: TextInputType.text,
           style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 16.0, fontWeight: FontWeight.w500, decoration: TextDecoration.none),
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.all(0),
+            contentPadding: const EdgeInsets.only(left: 20.0),
             focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: CustomColors.mainPurple, width: 2.0),
-                borderRadius: BorderRadius.circular(15.0)
+                borderSide: const BorderSide(color: CustomColors.mainPurple, width: 1.75),
+                borderRadius: BorderRadius.circular(12.0)
             ),
             enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: CustomColors.mediumGrey, width: 2.0),
-                borderRadius: BorderRadius.circular(15.0)
+                borderSide: const BorderSide(color: CustomColors.mainPurple, width: 1.75),
+                borderRadius: BorderRadius.circular(12.0),
             ),
-            hintStyle: const TextStyle(color: CustomColors.mediumGrey, fontFamily: 'Roboto', fontSize: 14.0, fontWeight: FontWeight.w500, decoration: TextDecoration.none),
+            hintStyle: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 14.0, fontWeight: FontWeight.w500, decoration: TextDecoration.none),
             focusColor: CustomColors.mainPurple,
             hoverColor: CustomColors.mainPurple,
             iconColor: CustomColors.mediumGrey,
-            prefixIcon: const Padding(
-              padding: EdgeInsets.only(left: 12.0,),
-              child: SizedBox(
-                width: 30,
-                height: 40.0,
-                child: Center(
-                  child: FaIcon(FontAwesomeIcons.search, size: 15.0),
-                ),
+            suffixIcon: Container(
+              height: 40.0,
+              width: 70.0,
+              child: Stack(
+                alignment: Alignment.centerLeft,
+                children: <Widget>[
+                  Container(
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(12.0), topRight: Radius.circular(12.0)),
+                        color: CustomColors.mainPurple,
+                    ),
+                    height: 40.0,
+                  ),
+
+                  Container(
+                    height: 40.0,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: const BorderRadius.only(bottomRight: Radius.circular(12.0), topRight: Radius.circular(12.0)),
+                      gradient: LinearGradient(
+                          end: FractionalOffset.topLeft,
+                          begin: FractionalOffset.bottomRight,
+                          colors: [
+                            CustomColors.mainPink,
+                            CustomColors.white.withOpacity(0.0),
+                          ],
+                          stops: const [0.0, 1.0]
+                      ),
+                    ),
+                  ),
+
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const FaIcon(FontAwesomeIcons.search, color: CustomColors.white, size: 14.0,)
+                          ],
+                        ),
+                      ),
+
+
+                    ],
+                  ),
+
+
+
+
+                ],
               ),
             ),
             hintText: "Search...",

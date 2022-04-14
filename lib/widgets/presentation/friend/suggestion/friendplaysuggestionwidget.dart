@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kouizapp/constants/customcolors.dart';
-import 'package:kouizapp/widgets/smallsecondarybutton.dart';
+import 'package:kouizapp/widgets/buttons/small/smallsecondarybutton.dart';
 
 class FriendPlaySuggestionWidget extends StatelessWidget {
   const FriendPlaySuggestionWidget({Key? key}) : super(key: key);

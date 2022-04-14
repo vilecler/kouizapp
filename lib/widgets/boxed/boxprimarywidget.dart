@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kouizapp/constants/customcolors.dart';
-import 'package:kouizapp/widgets/smallsecondarybutton.dart';
+import 'package:kouizapp/widgets/buttons/small/smallsecondarybutton.dart';
 
 class BoxPrimaryWidget extends StatelessWidget {
   const BoxPrimaryWidget({Key? key, required this.title, required this.subTitle, required this.text, this.onClick}) : super(key: key);

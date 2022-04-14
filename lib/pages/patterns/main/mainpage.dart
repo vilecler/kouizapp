@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-//import all required page
-import 'package:kouizapp/pages/patterns/main/homepage.dart';
-import 'package:kouizapp/pages/patterns/main/quizpage.dart';
-import 'package:kouizapp/pages/patterns/main/messagespage.dart';
-import 'package:kouizapp/pages/patterns/main/mepage.dart';
+import 'package:kouizapp/widgets/navigation/bottomnavigationwidget.dart';
 
 //To resolve colors
 import '../../../constants/customcolors.dart';
+import '../../../widgets/navigation/tabitem.dart';
+import '../../../widgets/navigation/tabnavigator.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -18,84 +14,64 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _selectedIndex = 0;
+  var _currentTab = TabItem.home;
+  final _navigatorKeys = {
+    TabItem.home: GlobalKey<NavigatorState>(),
+    TabItem.quiz: GlobalKey<NavigatorState>(),
+    TabItem.messages: GlobalKey<NavigatorState>(),
+    TabItem.me: GlobalKey<NavigatorState>(),
+  };
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
-    QuizPage(),
-    MessagesPage(),
-    MePage(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  void _selectTab(TabItem tabItem) {
+    debugPrint('_selectTab() 1');
+    if (tabItem == _currentTab) {
+      // pop to first route
+      _navigatorKeys[tabItem]!.currentState!.popUntil((route) => route.isFirst);
+    } else {
+      setState((){
+        debugPrint('Tabbar state change: ' + tabItem.name);
+        _currentTab = tabItem;
+      });
+    }
   }
-
-  static const double iconMarginNotToText = 4.0;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: CustomColors.white,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Flexible(
-            flex: 1,
-            child: ListView(
-              shrinkWrap: true,
-              children: [_widgetOptions.elementAt(_selectedIndex)],
-            ),
-          ),
-          Container(
-              height:1.0,
-              color: CustomColors.fakeWhite,
-          ),
-          BottomNavigationBar(
-            items: <BottomNavigationBarItem>[
-              const BottomNavigationBarItem(
-                icon: Padding(
-                    padding: EdgeInsets.only(bottom: iconMarginNotToText),
-                    child: FaIcon(FontAwesomeIcons.home)
-                ),
-                label: 'Home',
-              ),
-              const BottomNavigationBarItem(
-                icon: Padding(
-                    padding: EdgeInsets.only(bottom: iconMarginNotToText),
-                    child: FaIcon(FontAwesomeIcons.book)
-                ),
-                label: 'Quiz',
-              ),
-              const BottomNavigationBarItem(
-                icon: Padding(
-                    padding: EdgeInsets.only(bottom: iconMarginNotToText),
-                    child: FaIcon(FontAwesomeIcons.solidPaperPlane)
-                ),
-                label: 'Messages',
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                    padding: const EdgeInsets.only(bottom: iconMarginNotToText),
-                    child: CircleAvatar(
-                      backgroundImage: Image.asset('assets/images/profile_picture.png').image,
-                      radius: 15,
-                    )
-                ),
-                label: 'Me',
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: CustomColors.mainPurple,
-            unselectedItemColor: CustomColors.grey,
-            backgroundColor: CustomColors.white,
-            selectedLabelStyle: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.w700, fontFamily: 'Roboto', decoration: TextDecoration.none),
-            iconSize: 20.0,
-            onTap: _onItemTapped,
-          ),
-        ]
+    return WillPopScope(
+      onWillPop: () async {
+        final isFirstRouteInCurrentTab =
+        !await _navigatorKeys[_currentTab]!.currentState!.maybePop();
+        if (isFirstRouteInCurrentTab) {
+          // if not on the 'main' tab
+          if (_currentTab != TabItem.home) {
+            // select 'main' tab
+            _selectTab(TabItem.home);
+            // back button handled by app
+            return false;
+          }
+        }
+        // let system handle back button if we're on the first route
+        return isFirstRouteInCurrentTab;
+      },
+      child: Scaffold(
+        body: Stack(children: <Widget>[
+          _buildOffstageNavigator(TabItem.home),
+          _buildOffstageNavigator(TabItem.quiz),
+          _buildOffstageNavigator(TabItem.messages),
+          _buildOffstageNavigator(TabItem.me),
+        ]),
+        bottomNavigationBar: BottomNavigationWidget(currentTab: _currentTab, onSelectTab: _selectTab)
+      )
+    );
+  }
+
+  Widget _buildOffstageNavigator(TabItem tabItem) {
+    debugPrint('_buildOffstageNavigator: ' + tabItem.name);
+    return Offstage(
+      offstage: _currentTab != tabItem,
+      child: TabNavigator(
+        navigatorKey: _navigatorKeys[tabItem],
+        tabItem: tabItem,
       ),
     );
   }
