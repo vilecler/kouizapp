@@ -8,7 +8,7 @@ class MessagePresentationWidget extends StatelessWidget  {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 20.0, right: 30.0, top: 5.0, bottom: 5.0),
+      margin: const EdgeInsets.only(left: 20.0, right: 30.0, top: 6.0, bottom: 6.0),
       child: Row(
         children: [
           Column(
@@ -17,7 +17,7 @@ class MessagePresentationWidget extends StatelessWidget  {
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: CircleAvatar(
                   backgroundImage: Image.asset('assets/images/profile_picture.png').image,
-                  radius: 25,
+                  radius: 30,
                 ),
               )
             ],

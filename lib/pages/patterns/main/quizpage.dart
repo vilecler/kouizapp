@@ -93,7 +93,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text('85 categories.', style: const TextStyle(color: CustomColors.grey, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),),
-                            Text('Sort by...', style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),)
+                            Text('Sort by', style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),)
                           ],
                         ),
                       ),
