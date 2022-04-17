@@ -11,7 +11,11 @@ class QuizHistoryPresentationSecondaryWidget extends StatelessWidget {
   static const width = 90.0;
   static const borderRadius = 20.0;
 
-  const QuizHistoryPresentationSecondaryWidget({Key? key}) : super(key: key);
+  const QuizHistoryPresentationSecondaryWidget({Key? key, required this.name, required this.date, required this.number}) : super(key: key);
+
+  final String name;
+  final String date;
+  final int number;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +87,7 @@ class QuizHistoryPresentationSecondaryWidget extends StatelessWidget {
                                 const FaIcon(FontAwesomeIcons.crown, color: CustomColors.white, size: 35,),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10.0),
-                                  child: Text('N°1', style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
+                                  child: Text('N°' + number.toString(), style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
                                 )
                               ],
                             ),
@@ -105,9 +109,9 @@ class QuizHistoryPresentationSecondaryWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 11.0),
-                      child: Text('The main flags of the world', style: const TextStyle(color: CustomColors.mainRed, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
+                      child: Text(name, style: const TextStyle(color: CustomColors.mainRed, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                     ),
-                    Text(AppLocalizations.of(context)!.playedOn + ' 24 February 2022.', style: const TextStyle(color: CustomColors.redGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                    Text(AppLocalizations.of(context)!.playedOn + ' ' + date + '.', style: const TextStyle(color: CustomColors.redGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
 
                     Padding(
                       padding: const EdgeInsets.only(top: 12.0),

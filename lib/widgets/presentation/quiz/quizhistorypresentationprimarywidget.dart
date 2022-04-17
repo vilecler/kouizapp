@@ -11,7 +11,11 @@ class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
   static const width = 90.0;
   static const borderRadius = 20.0;
 
-  const QuizHistoryPresentationPrimaryWidget({Key? key}) : super(key: key);
+  const QuizHistoryPresentationPrimaryWidget({Key? key, required this.name, required this.date, required this.number}) : super(key: key);
+
+  final String name;
+  final String date;
+  final int number;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +75,7 @@ class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
                                     CustomColors.mainPink,
                                     CustomColors.white.withOpacity(0.0),
                                   ],
-                                  stops: [0.0, 1.0]
+                                  stops: const [0.0, 1.0]
                               ),
                             ),
                           ),
@@ -83,7 +87,7 @@ class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
                                 const FaIcon(FontAwesomeIcons.crown, color: CustomColors.white, size: 35,),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10.0),
-                                  child: Text('N°1', style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
+                                  child: Text('N°' + number.toString(), style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
                                 )
                               ],
                             ),
@@ -105,9 +109,9 @@ class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 11.0),
-                      child: Text('The main flags of the world', style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
+                      child: Text(name, style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                     ),
-                    Text('Played on 24 February 2022.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                    Text(AppLocalizations.of(context)!.playedOn + ' ' + date + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
 
                     Padding(
                       padding: const EdgeInsets.only(top: 12.0),

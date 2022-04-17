@@ -12,7 +12,11 @@ class QuizMinePresentaionWidget extends StatelessWidget {
   static const width = 90.0;
   static const borderRadius = 20.0;
 
-  const QuizMinePresentaionWidget({Key? key}) : super(key: key);
+  const QuizMinePresentaionWidget({Key? key, required this.name, required this.peopleCount, required this.questionsCount}) : super(key: key);
+
+  final String name;
+  final int peopleCount;
+  final int questionsCount;
 
   @override
   Widget build(BuildContext context) {
@@ -100,12 +104,12 @@ class QuizMinePresentaionWidget extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 11.0),
-                    child: Text('The main flags of the world', style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
+                    child: Text(name, style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                   ),
-                  Text(AppLocalizations.of(context)!.playedBy + ' 245 ' + AppLocalizations.of(context)!.people + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                  Text(AppLocalizations.of(context)!.playedBy + ' ' + peopleCount.toString() + ' ' + AppLocalizations.of(context)!.people + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0),
-                    child: Text('45 ' + AppLocalizations.of(context)!.questions.toLowerCase() + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                    child: Text(questionsCount.toString() + ' ' + AppLocalizations.of(context)!.questions.toLowerCase() + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   ),
 
                   Padding(

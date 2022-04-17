@@ -5,7 +5,10 @@ import 'package:kouizapp/widgets/buttons/small/smallsecondarybutton.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FriendPlaySuggestionWidget extends StatelessWidget {
-  const FriendPlaySuggestionWidget({Key? key}) : super(key: key);
+  const FriendPlaySuggestionWidget({Key? key, required this.name, required this.id}) : super(key: key);
+
+  final String name;
+  final String id;
 
   static const height = 120.0;
   static const width = 120.0;
@@ -31,11 +34,11 @@ class FriendPlaySuggestionWidget extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 3.0),
-              child: Text('Vivien', style: const TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w500, fontFamily: 'Roboto', decoration: TextDecoration.none)),
+              child: Text(name, style: const TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w500, fontFamily: 'Roboto', decoration: TextDecoration.none)),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
-              child: Text('@petitstring', style: const TextStyle(color: CustomColors.grey, fontSize: 10.0, fontWeight: FontWeight.w300, fontFamily: 'Roboto', decoration: TextDecoration.none)),
+              child: Text(id, style: const TextStyle(color: CustomColors.grey, fontSize: 10.0, fontWeight: FontWeight.w300, fontFamily: 'Roboto', decoration: TextDecoration.none)),
             ),
             SmallSecondaryButtonWidget(text: AppLocalizations.of(context)!.invite, height: 20, width: 70)
           ],

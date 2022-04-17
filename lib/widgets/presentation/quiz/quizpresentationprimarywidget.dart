@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/buttons/small/smallprimarybutton.dart';
 
@@ -11,7 +12,16 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
   static const width = 90.0;
   static const borderRadius = 20.0;
 
-  const QuizPresentationPrimaryWidget({Key? key}) : super(key: key);
+  QuizPresentationPrimaryWidget({Key? key, required this.name, required this.number, required this.reward, required this.questionsCount, required this.bolt, required this.minutes}) : super(key: key);
+
+  final String name;
+  final int number;
+  final int reward;
+  final int questionsCount;
+  final int bolt;
+  final int minutes;
+
+  var f = NumberFormat("###,###.0#", "en_US");
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +91,7 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
                             const FaIcon(FontAwesomeIcons.crown, color: CustomColors.white, size: 35,),
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
-                              child: Text('N°1', style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
+                              child: Text('N°' + number.toString(), style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
                             )
                           ],
                         ),
@@ -103,12 +113,12 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 11.0),
-                    child: Text('The main flags of the world', style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
+                    child: Text(name, style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                   ),
-                  Text(AppLocalizations.of(context)!.maximumReward + AppLocalizations.of(context)!.punctuationSpace + ': 20,000' + AppLocalizations.of(context)!.xp, style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                  Text(AppLocalizations.of(context)!.maximumReward + AppLocalizations.of(context)!.punctuationSpace + ': ' + f.format(reward) + AppLocalizations.of(context)!.xp, style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0),
-                    child: Text('45 ' + AppLocalizations.of(context)!.questions.toLowerCase()  + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                    child: Text(questionsCount.toString() + ' ' + AppLocalizations.of(context)!.questions.toLowerCase()  + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   ),
 
                   Padding(
@@ -121,7 +131,7 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
                             FaIcon(FontAwesomeIcons.bolt, color: CustomColors.bolt, size: 18.0,),
                             Padding(
                               padding: const EdgeInsets.only(left: 5.0),
-                              child: Text('15', style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
+                              child: Text(bolt.toString(), style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
                             ),
                           ],
                         ),
@@ -131,7 +141,7 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
                             FaIcon(FontAwesomeIcons.hourglassHalf, color: CustomColors.mainPurple, size: 16.0),
                             Padding(
                               padding: const EdgeInsets.only(left: 5.0),
-                              child: Text('5 ' + AppLocalizations.of(context)!.min.toLowerCase() + '.', style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
+                              child: Text(minutes.toString() + ' ' + AppLocalizations.of(context)!.min.toLowerCase(), style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
                             ),
                           ],
                         ),

@@ -56,18 +56,19 @@ class _MessagesPageState extends State<MessagesPage> {
           Flexible(
             child: SingleChildScrollView(
               child: Column(
-                children: [
-                  MessagePresentationWidget(),
-                  MessagePresentationWidget(),
-                  MessagePresentationWidget(),
-                  MessagePresentationWidget(),
-                  MessagePresentationWidget(),
-                  MessagePresentationWidget(),
-                  MessagePresentationWidget(),
-                  MessagePresentationWidget(),
-                  MessagePresentationWidget(),
-                  MessagePresentationWidget(),
-                  MessagePresentationWidget(),
+                children: const <MessagePresentationWidget>[
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
+                  MessagePresentationWidget(name: 'Vivien', id: '@petitstring', text: 'This is just a text message to test the app design.', time: '16:30'),
                 ],
               ),
             ),

@@ -11,7 +11,13 @@ class QuizCommunityPresentationWidget extends StatelessWidget {
   static const width = 90.0;
   static const borderRadius = 20.0;
 
-  const QuizCommunityPresentationWidget({Key? key}) : super(key: key);
+  const QuizCommunityPresentationWidget({Key? key, required this.name, required this.creatorId, required this.questionsCount, required this.bolt, required this.minutes}) : super(key: key);
+
+  final String name;
+  final String creatorId;
+  final int questionsCount;
+  final int bolt;
+  final int minutes;
 
   @override
   Widget build(BuildContext context) {
@@ -99,14 +105,14 @@ class QuizCommunityPresentationWidget extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 7.0),
-                    child: Text('The main flags of the world', style: TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
+                    child: Text(name, style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                   ),
                   Row(
                     children: [
                       Text(AppLocalizations.of(context)!.createdBy + AppLocalizations.of(context)!.punctuationSpace + ':', style: TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                       Padding(
                         padding: const EdgeInsets.only(left: 5.0),
-                        child: Text('@petitstring', style: TextStyle(color: CustomColors.mainPink, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                        child: Text(creatorId, style: const TextStyle(color: CustomColors.mainPink, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                       ),
                     ],
                   ),
@@ -114,7 +120,7 @@ class QuizCommunityPresentationWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 4.0),
                     child: Row(
                       children: [
-                        Text('45 ' + AppLocalizations.of(context)!.questions.toLowerCase() + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                        Text(questionsCount.toString() + ' ' + AppLocalizations.of(context)!.questions.toLowerCase() + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
 
                       ],
                     ),
@@ -130,7 +136,7 @@ class QuizCommunityPresentationWidget extends StatelessWidget {
                               const FaIcon(FontAwesomeIcons.bolt, color: CustomColors.bolt, size: 18.0,),
                               Padding(
                                 padding: const EdgeInsets.only(left: 5.0),
-                                child: Text('15', style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
+                                child: Text(bolt.toString(), style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
                               ),
                             ],
                           ),
@@ -140,7 +146,7 @@ class QuizCommunityPresentationWidget extends StatelessWidget {
                               const FaIcon(FontAwesomeIcons.hourglassHalf, color: CustomColors.mainPurple, size: 16.0),
                               Padding(
                                 padding: const EdgeInsets.only(left: 5.0),
-                                child: Text('5 ' + AppLocalizations.of(context)!.min.toLowerCase() + '.', style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
+                                child: Text(minutes.toString() + ' ' + AppLocalizations.of(context)!.min.toLowerCase(), style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
                               ),
                             ],
                           ),

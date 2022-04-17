@@ -10,7 +10,13 @@ class CategoryPresentationWidget extends StatelessWidget {
   static const width = 75.0;
   static const borderRadius = 20.0;
 
-  const CategoryPresentationWidget({Key? key}) : super(key: key);
+  final String category;
+  final int progression;
+  final int themeCount;
+  final Color color;
+  final IconData icon;
+
+  const CategoryPresentationWidget({Key? key, required this.category, required this.progression, required this.themeCount, required this.color, required this.icon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +37,10 @@ class CategoryPresentationWidget extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(borderRadius),
-                              color: CustomColors.mainPurple,
+                              color: color,
                               boxShadow: <BoxShadow>[
                                 BoxShadow(
-                                  color: CustomColors.mainPurple.withOpacity(0.8),
+                                  color: color.withOpacity(0.8),
                                   offset: const Offset(0.0, 0.0),
                                   blurRadius: 8.0,
                                   spreadRadius: 0.5,
@@ -48,7 +54,7 @@ class CategoryPresentationWidget extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              FaIcon(FontAwesomeIcons.globeAfrica, color: CustomColors.white, size: 35,),
+                              FaIcon(icon, color: CustomColors.white, size: 35,),
                             ],
                           ),
                         ),
@@ -72,7 +78,7 @@ class CategoryPresentationWidget extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Geography', style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
+                        Text(category, style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                         Row(
                           children: [
                             Padding(
@@ -88,8 +94,8 @@ class CategoryPresentationWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(AppLocalizations.of(context)!.progression + AppLocalizations.of(context)!.punctuationSpace + ': 80%', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
-                      Text(AppLocalizations.of(context)!.themes + AppLocalizations.of(context)!.punctuationSpace + ': 56', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                      Text(AppLocalizations.of(context)!.progression + AppLocalizations.of(context)!.punctuationSpace + ': ' + progression.toString() + '%', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                      Text(AppLocalizations.of(context)!.themes + AppLocalizations.of(context)!.punctuationSpace + ': ' + themeCount.toString(), style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                     ],
                   )
 

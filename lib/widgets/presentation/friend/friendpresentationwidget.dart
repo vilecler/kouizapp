@@ -7,7 +7,10 @@ import 'package:kouizapp/widgets/buttons/small/smallsecondarybutton.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FriendPresentationWidget extends StatelessWidget  {
-  const FriendPresentationWidget({Key? key}) : super(key: key);
+  const FriendPresentationWidget({Key? key, required this.name, required this.id}) : super(key: key);
+
+  final String name;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +42,14 @@ class FriendPresentationWidget extends StatelessWidget  {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Vivien', style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
+                          Text(name, style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                           Padding(
                             padding: const EdgeInsets.only(left: 10.0),
-                            child: const Text('@petitstring', style: TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 12.0, decoration: TextDecoration.none),),
+                            child: Text(id, style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 12.0, decoration: TextDecoration.none),),
                           )
                         ],
                       ),
-                      FaIcon(FontAwesomeIcons.ellipsisH, color: CustomColors.grey, size: 16.0,)
+                      const FaIcon(FontAwesomeIcons.ellipsisH, color: CustomColors.grey, size: 16.0,)
                     ],
                   ),
 

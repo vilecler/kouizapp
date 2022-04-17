@@ -3,7 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 
 class MessagePresentationWidget extends StatelessWidget  {
-  const MessagePresentationWidget({Key? key}) : super(key: key);
+  const MessagePresentationWidget({Key? key, required this.name, required this.id, required this.text, required this.time}) : super(key: key);
+
+  final String name;
+  final String id;
+  final String text;
+  final String time;
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +40,10 @@ class MessagePresentationWidget extends StatelessWidget  {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Vivien', style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
+                          Text(name, style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                           Padding(
                             padding: const EdgeInsets.only(left: 10.0),
-                            child: Text('@petitstring', style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 12.0, decoration: TextDecoration.none),),
+                            child: Text(id, style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 12.0, decoration: TextDecoration.none),),
                           )
                         ],
                       ),
@@ -47,7 +52,7 @@ class MessagePresentationWidget extends StatelessWidget  {
                           FaIcon(FontAwesomeIcons.checkDouble, color: CustomColors.grey, size: 10.0,),
                           Padding(
                             padding: const EdgeInsets.only(left: 4.0),
-                            child: Text('16:30', style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w600, fontSize: 12.0, fontFamily: 'Roboto', decoration: TextDecoration.none),),
+                            child: Text(time, style: const TextStyle(color: CustomColors.grey, fontWeight: FontWeight.w600, fontSize: 12.0, fontFamily: 'Roboto', decoration: TextDecoration.none),),
                           )
                         ],
                       )
@@ -57,7 +62,7 @@ class MessagePresentationWidget extends StatelessWidget  {
                   Padding(
                     padding: const EdgeInsets.only(top: 5.0),
                     child: Text(
-                      'This is an example of text just to see if it woks well.',
+                      text,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w400, fontSize: 13.0, fontFamily: 'Roboto', decoration: TextDecoration.none),
                     ),
