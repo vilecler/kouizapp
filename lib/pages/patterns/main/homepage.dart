@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 child: Column(
                   children: [
                     Container(
-                      color: CustomColors.white,
+                      color: CustomColors.lightWhite,
                       child: TabBar(
                         controller: _tabTabController,
                         indicatorSize: TabBarIndicatorSize.tab,

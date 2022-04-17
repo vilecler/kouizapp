@@ -14,7 +14,9 @@ import '../../../widgets/presentation/quiz/quizcommunitypresentationwidget.dart'
 import '../../../widgets/buttons/seemore/smallseemorewidget.dart';
 
 class QuizPage extends StatefulWidget {
-  const QuizPage({Key? key}) : super(key: key);
+  const QuizPage({Key? key, required this.onPush}) : super(key: key);
+
+  final Function onPush;
 
   @override
   State<QuizPage> createState() => _QuizPageState();
@@ -44,7 +46,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
         children: [
           Material(
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 20.0, left: 20.0, right: 20.0, top: 0.0),
+              padding: const EdgeInsets.only(bottom: 10.0, left: 20.0, right: 20.0, top: 0.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -98,14 +100,20 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                     Flexible(
                       child: SingleChildScrollView(
                         child: Column(
-                          children: const [
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
+                          children: [
+                            GestureDetector(
+                                onTap: (){
+                                  widget.onPush(context, '/quiz/theme');
+                                },
+                                child: CategoryPresentationWidget(
+                                  category: "Geography",
+                                  progression: 100,
+                                  themeCount: 56,
+                                  color: CustomColors.mainPurple,
+                                  icon: FontAwesomeIcons.globeAfrica,
+                                )
+                            )
+                            ,
                             CategoryPresentationWidget(
                               category: "Geography",
                               progression: 100,

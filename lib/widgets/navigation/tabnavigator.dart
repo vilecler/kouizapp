@@ -3,11 +3,13 @@ import 'package:kouizapp/pages/patterns/home/popularpage.dart';
 import 'package:kouizapp/pages/patterns/main/homepage.dart';
 import 'package:kouizapp/pages/patterns/main/messagespage.dart';
 import 'package:kouizapp/pages/patterns/main/quizpage.dart';
+import 'package:kouizapp/pages/patterns/quiz/quizlistpage.dart';
 import 'package:kouizapp/widgets/navigation/tabitem.dart';
 
 import '../../pages/patterns/home/recentpage.dart';
 import '../../pages/patterns/home/suggestionspage.dart';
 import '../../pages/patterns/main/mepage.dart';
+import '../../pages/patterns/quiz/themepage.dart';
 
 class TabNavigatorRoutes {
   static const String home = '/home';
@@ -19,6 +21,10 @@ class TabNavigatorRoutes {
   static const String homeSuggestion = '/home/suggestion';
   static const String homeRecent = '/home/recent';
   static const String homePopular = '/home/popular';
+
+  //Quiz subroutes
+  static const String quizTheme = '/quiz/theme';
+  static const String quizQuizList = '/quiz/theme/quiz-list';
 
 }
 
@@ -47,7 +53,7 @@ class _TabNavigatorState extends State<TabNavigator> {
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context) {
     return {
       TabNavigatorRoutes.home: (context) => HomePage(onPush: push),
-      TabNavigatorRoutes.quiz: (context) => QuizPage(),
+      TabNavigatorRoutes.quiz: (context) => QuizPage(onPush: push),
       TabNavigatorRoutes.messages: (context) => MessagesPage(),
       TabNavigatorRoutes.me: (context) => MePage(),
 
@@ -55,6 +61,10 @@ class _TabNavigatorState extends State<TabNavigator> {
       TabNavigatorRoutes.homeSuggestion: (context) => SuggestionPage(),
       TabNavigatorRoutes.homeRecent: (context) => RecentPage(),
       TabNavigatorRoutes.homePopular: (context) => PopularPage(),
+
+      //Quiz subroutes
+      TabNavigatorRoutes.quizTheme: (context) => ThemePage(onPush: push),
+      TabNavigatorRoutes.quizQuizList: (context) => QuizListPage(),
     };
   }
 

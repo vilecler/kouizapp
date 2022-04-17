@@ -167,7 +167,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                 child: Column(
                   children: [
                     Container(
-                      color: CustomColors.white,
+                      color: CustomColors.lightWhite,
                       child: TabBar(
                         controller: _tabTabController,
                         indicatorSize: TabBarIndicatorSize.tab,

@@ -54,6 +54,7 @@
 
   "seeMore": "Voir plus",
 
+  "theme": "Thème",
   "themes": "Thèmes",
   "progression": "Progression",
 
@@ -66,6 +67,7 @@
   "ifYouArePremiumYouCanCreateYourOwnQuiz": "Si tu es premium, tu peux créer tes propres quir pour la communauté.",
 
   "chooseACategory": "Choisis une catégorie",
+  "chooseATheme": "Choisis un thème",
   "official": "Officiel",
   "community": "Communauté",
   "category": "Catégorie",

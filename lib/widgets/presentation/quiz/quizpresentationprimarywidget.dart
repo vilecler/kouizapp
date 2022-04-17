@@ -21,7 +21,7 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
   final int bolt;
   final int minutes;
 
-  var f = NumberFormat("###,###.0#", "en_US");
+  var f = NumberFormat("###,###", "en_US");
 
   @override
   Widget build(BuildContext context) {

@@ -65,6 +65,7 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         backgroundColor: CustomColors.white,
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       ),
       routes: {
         '/main': (context) => const MainPage(),
