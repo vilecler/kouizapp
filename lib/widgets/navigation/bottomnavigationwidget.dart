@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/widgets/navigation/tabitem.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../constants/customcolors.dart';
 
 class BottomNavigationWidget extends StatelessWidget {
@@ -15,26 +17,26 @@ class BottomNavigationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       items: <BottomNavigationBarItem>[
-        const BottomNavigationBarItem(
-          icon: Padding(
+        BottomNavigationBarItem(
+          icon: const Padding(
               padding: EdgeInsets.only(bottom: iconMarginNotToText),
               child: FaIcon(FontAwesomeIcons.home)
           ),
-          label: 'Home',
+          label: AppLocalizations.of(context)!.home,
         ),
-        const BottomNavigationBarItem(
-          icon: Padding(
+        BottomNavigationBarItem(
+          icon: const Padding(
               padding: EdgeInsets.only(bottom: iconMarginNotToText),
               child: FaIcon(FontAwesomeIcons.book)
           ),
-          label: 'Quiz',
+          label: AppLocalizations.of(context)!.quiz,
         ),
-        const BottomNavigationBarItem(
-          icon: Padding(
+        BottomNavigationBarItem(
+          icon: const Padding(
               padding: EdgeInsets.only(bottom: iconMarginNotToText),
               child: FaIcon(FontAwesomeIcons.solidPaperPlane)
           ),
-          label: 'Messages',
+          label: AppLocalizations.of(context)!.messages,
         ),
         BottomNavigationBarItem(
           icon: Padding(
@@ -44,7 +46,7 @@ class BottomNavigationWidget extends StatelessWidget {
                 radius: 15,
               )
           ),
-          label: 'Me',
+          label: AppLocalizations.of(context)!.me,
         ),
       ],
       onTap: (index) => onSelectTab(

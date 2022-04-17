@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class CategoryPresentationWidget extends StatelessWidget {
 
   static const height = 75.0;
@@ -75,7 +77,7 @@ class CategoryPresentationWidget extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 5.0),
-                              child: Text('Select', style: TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 12.0)),
+                              child: Text(AppLocalizations.of(context)!.select, style: TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w400, fontFamily: 'Roboto', fontSize: 12.0)),
                             ),
                             FaIcon(FontAwesomeIcons.arrowRight, size: 12.0, color: CustomColors.mainPurple,)
                           ],
@@ -86,8 +88,8 @@ class CategoryPresentationWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Progression: 80%', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
-                      Text('Themes: 56', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                      Text(AppLocalizations.of(context)!.progression + AppLocalizations.of(context)!.punctuationSpace + ': 80%', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                      Text(AppLocalizations.of(context)!.themes + AppLocalizations.of(context)!.punctuationSpace + ': 56', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                     ],
                   )
 

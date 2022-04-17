@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/buttons/small/smallprimarybutton.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class FriendSuggestionWidget extends StatelessWidget {
   const FriendSuggestionWidget({Key? key}) : super(key: key);
 
@@ -35,7 +37,7 @@ class FriendSuggestionWidget extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 10.0),
               child: Text('@petitstring', style: const TextStyle(color: CustomColors.grey, fontSize: 10.0, fontWeight: FontWeight.w300, fontFamily: 'Roboto', decoration: TextDecoration.none)),
             ),
-            SmallPrimaryButtonWidget(text: 'Add friend', height: 20, width: 70)
+            SmallPrimaryButtonWidget(text: AppLocalizations.of(context)!.addFriend, height: 20, width: 70)
           ],
         ),
       ),

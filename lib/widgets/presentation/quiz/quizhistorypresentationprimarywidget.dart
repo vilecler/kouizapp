@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/buttons/small/smallprimarybutton.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
 
   static const height = 110.0;
@@ -116,7 +118,7 @@ class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(right: 5.0),
-                                  child: Text('Score:', style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
+                                  child: Text(AppLocalizations.of(context)!.score + AppLocalizations.of(context)!.punctuationSpace + ':', style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
                                 ),
                                 Row(
                                   children: [
@@ -130,7 +132,7 @@ class QuizHistoryPresentationPrimaryWidget extends StatelessWidget {
 
                               ],
                             ),
-                            SmallPrimaryButtonWidget(text: 'Play again', height: 20.0, width: 80.0)
+                            SmallPrimaryButtonWidget(text: AppLocalizations.of(context)!.playAgain, height: 20.0, width: 80.0)
 
 
                           ]

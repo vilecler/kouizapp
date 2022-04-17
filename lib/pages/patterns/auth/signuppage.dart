@@ -5,6 +5,8 @@ import 'package:kouizapp/widgets/buttons/socials/googlebuttonwidget.dart';
 import 'package:kouizapp/widgets/buttons/socials/kouizbuttonwidget.dart';
 import 'package:kouizapp/widgets/kouizlogowidget.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../constants/customcolors.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -66,13 +68,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: KouizLogoWidget(),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 80.0,
               ),
 
-              FacebookButtonWidget(text: 'Sign up with Facebook', onTap: loginCompleted,),
-              GoogleButtonWidget(text: 'Sign up with Google', onTap: loginCompleted,),
-              KouizButtonWidget(text: 'Sign up with Kouiz', onTap: loginCompleted,),
+              FacebookButtonWidget(text: AppLocalizations.of(context)!.signUpWithFacebook, onTap: loginCompleted,),
+              GoogleButtonWidget(text: AppLocalizations.of(context)!.signUpWithGoogle, onTap: loginCompleted,),
+              KouizButtonWidget(text: AppLocalizations.of(context)!.signUpWithKouiz, onTap: loginCompleted,),
 
             ],
           ),
@@ -85,10 +87,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text('Already member?', style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w400, fontSize: 17.0, decoration: TextDecoration.none),),
+                    Text(AppLocalizations.of(context)!.alreadyMember, style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w400, fontSize: 17.0, decoration: TextDecoration.none),),
                     Padding(
                       padding: const EdgeInsets.only(top: 5.0),
-                      child: Text('Login', style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w700, fontSize: 16.0, decoration: TextDecoration.none),),
+                      child: Text(AppLocalizations.of(context)!.login, style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w700, fontSize: 16.0, decoration: TextDecoration.none),),
                     ),
                   ],
                 ),

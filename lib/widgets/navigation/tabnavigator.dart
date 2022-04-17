@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:kouizapp/pages/patterns/home/mostpopularpage.dart';
+import 'package:kouizapp/pages/patterns/home/popularpage.dart';
 import 'package:kouizapp/pages/patterns/main/homepage.dart';
 import 'package:kouizapp/pages/patterns/main/messagespage.dart';
 import 'package:kouizapp/pages/patterns/main/quizpage.dart';
 import 'package:kouizapp/widgets/navigation/tabitem.dart';
 
+import '../../pages/patterns/home/recentpage.dart';
+import '../../pages/patterns/home/suggestionspage.dart';
 import '../../pages/patterns/main/mepage.dart';
 
 class TabNavigatorRoutes {
@@ -14,7 +16,10 @@ class TabNavigatorRoutes {
   static const String me = '/me';
 
   //Home subroutes
-  static const String mostpopular = '/mostpopular';
+  static const String homeSuggestion = '/home/suggestion';
+  static const String homeRecent = '/home/recent';
+  static const String homePopular = '/home/popular';
+
 }
 
 class TabNavigator extends StatefulWidget {
@@ -46,7 +51,10 @@ class _TabNavigatorState extends State<TabNavigator> {
       TabNavigatorRoutes.messages: (context) => MessagesPage(),
       TabNavigatorRoutes.me: (context) => MePage(),
 
-      TabNavigatorRoutes.mostpopular: (context) => MostPopularPage(),
+      //Home subroutes
+      TabNavigatorRoutes.homeSuggestion: (context) => SuggestionPage(),
+      TabNavigatorRoutes.homeRecent: (context) => RecentPage(),
+      TabNavigatorRoutes.homePopular: (context) => PopularPage(),
     };
   }
 

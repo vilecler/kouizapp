@@ -19,6 +19,8 @@ class CustomColors {
   static const Color fakeWhite = Color(0xFFE0E0E0);
 
   static const Color purpleGrey = Color(0xFF58588D);
+  static const Color redGrey = Color(0xFF8D6058);
+
 
   static const Color bolt = Colors.amber;
 

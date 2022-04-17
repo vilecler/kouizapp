@@ -5,6 +5,8 @@ import 'package:kouizapp/widgets/buttons/socials/googlebuttonwidget.dart';
 import 'package:kouizapp/widgets/buttons/socials/kouizbuttonwidget.dart';
 import 'package:kouizapp/widgets/kouizlogowidget.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../constants/customcolors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -65,13 +67,13 @@ class _LoginPageState extends State<LoginPage> {
               child: KouizLogoWidget(),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 80.0,
             ),
 
-            FacebookButtonWidget(text: 'Login with Facebook', onTap: loginCompleted),
-            GoogleButtonWidget(text: 'Login with Google', onTap: loginCompleted),
-            KouizButtonWidget(text: 'Login with Kouiz', onTap: loginCompleted),
+            FacebookButtonWidget(text: AppLocalizations.of(context)!.loginWithFacebook, onTap: loginCompleted),
+            GoogleButtonWidget(text: AppLocalizations.of(context)!.loginWithGoogle, onTap: loginCompleted),
+            KouizButtonWidget(text: AppLocalizations.of(context)!.loginWithKouiz, onTap: loginCompleted),
 
           ],
         ),
@@ -84,10 +86,10 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text('Not a member yet?', style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w400, fontSize: 17.0, decoration: TextDecoration.none),),
+                  Text(AppLocalizations.of(context)!.notAMemberYet, style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w400, fontSize: 17.0, decoration: TextDecoration.none),),
                   Padding(
                     padding: const EdgeInsets.only(top: 5.0),
-                    child: Text('Sign up', style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w700, fontSize: 16.0, decoration: TextDecoration.none),),
+                    child: Text(AppLocalizations.of(context)!.signUp, style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w700, fontSize: 16.0, decoration: TextDecoration.none),),
                   ),
                 ],
               ),

@@ -4,6 +4,8 @@ import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/buttons/small/smallprimarybutton.dart';
 import 'package:kouizapp/widgets/buttons/small/smallsecondarybutton.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class QuizMinePresentaionWidget extends StatelessWidget {
 
   static const height = 120.0;
@@ -100,10 +102,10 @@ class QuizMinePresentaionWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 11.0),
                     child: Text('The main flags of the world', style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                   ),
-                  Text('Played by 245 people.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                  Text(AppLocalizations.of(context)!.playedBy + ' 245 ' + AppLocalizations.of(context)!.people + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0),
-                    child: Text('45 questions.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                    child: Text('45 ' + AppLocalizations.of(context)!.questions.toLowerCase() + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   ),
 
                   Padding(
@@ -111,8 +113,8 @@ class QuizMinePresentaionWidget extends StatelessWidget {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SmallPrimaryButtonWidget(text: 'Edit', height: 20.0, width: 80.0),
-                          SmallSecondaryButtonWidget(text: 'Play', height: 20.0, width: 80.0)
+                          SmallPrimaryButtonWidget(text: AppLocalizations.of(context)!.edit, height: 20.0, width: 80.0),
+                          SmallSecondaryButtonWidget(text: AppLocalizations.of(context)!.play, height: 20.0, width: 80.0)
                         ]
                     ),
                   )

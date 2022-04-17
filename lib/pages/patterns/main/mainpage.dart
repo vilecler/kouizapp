@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kouizapp/widgets/navigation/bottomnavigationwidget.dart';
 
 //To resolve colors
-import '../../../constants/customcolors.dart';
 import '../../../widgets/navigation/tabitem.dart';
 import '../../../widgets/navigation/tabnavigator.dart';
 

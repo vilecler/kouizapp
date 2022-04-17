@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/buttons/small/smallsecondarybutton.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class QuizHistoryPresentationSecondaryWidget extends StatelessWidget {
 
   static const height = 110.0;
@@ -103,9 +105,9 @@ class QuizHistoryPresentationSecondaryWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 11.0),
-                      child: Text('The main flags of the world', style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
+                      child: Text('The main flags of the world', style: const TextStyle(color: CustomColors.mainRed, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 18.0, decoration: TextDecoration.none),),
                     ),
-                    Text('Played on 24 February 2022.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                    Text(AppLocalizations.of(context)!.playedOn + ' 24 February 2022.', style: const TextStyle(color: CustomColors.redGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
 
                     Padding(
                       padding: const EdgeInsets.only(top: 12.0),
@@ -116,7 +118,7 @@ class QuizHistoryPresentationSecondaryWidget extends StatelessWidget {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(right: 5.0),
-                                  child: Text('Score:', style: const TextStyle(color: CustomColors.mainOrange, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
+                                  child: Text(AppLocalizations.of(context)!.score + AppLocalizations.of(context)!.punctuationSpace + ':', style: const TextStyle(color: CustomColors.mainOrange, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
                                 ),
                                 Row(
                                   children: [
@@ -130,7 +132,7 @@ class QuizHistoryPresentationSecondaryWidget extends StatelessWidget {
 
                               ],
                             ),
-                            SmallSecondaryButtonWidget(text: 'Play again', height: 20.0, width: 80.0)
+                            SmallSecondaryButtonWidget(text: AppLocalizations.of(context)!.playAgain, height: 20.0, width: 80.0)
 
 
                           ]

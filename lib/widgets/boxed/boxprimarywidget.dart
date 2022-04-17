@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/buttons/small/smallsecondarybutton.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class BoxPrimaryWidget extends StatelessWidget {
   const BoxPrimaryWidget({Key? key, required this.title, required this.subTitle, required this.text, this.onClick}) : super(key: key);
 
@@ -11,7 +13,7 @@ class BoxPrimaryWidget extends StatelessWidget {
   final void Function()? onClick;
 
   static const height = 180.0;
-  static const width = 280.0;
+  static const width = 320.0;
   static const borderRadius = 20.0;
 
   @override
@@ -79,7 +81,7 @@ class BoxPrimaryWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
                   child: Text(
                     title,
-                    style: const TextStyle(color: CustomColors.white, fontSize: 24.0, decoration: TextDecoration.none, fontWeight: FontWeight.w800, letterSpacing: 2.0, fontFamily: 'Roboto'),
+                    style: const TextStyle(color: CustomColors.white, fontSize: 23.0, decoration: TextDecoration.none, fontWeight: FontWeight.w800, letterSpacing: 1.5, fontFamily: 'Roboto'),
                   ),
                 ),
 
@@ -87,7 +89,7 @@ class BoxPrimaryWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
                   child: Text(
                     subTitle,
-                    style: TextStyle(color: CustomColors.white.withOpacity(0.75), fontSize: 15.0, decoration: TextDecoration.none, fontWeight: FontWeight.w500, letterSpacing: 1.0, fontFamily: 'Roboto'),
+                    style: TextStyle(color: CustomColors.white.withOpacity(0.75), fontSize: 14.0, decoration: TextDecoration.none, fontWeight: FontWeight.w500, letterSpacing: 0.75, fontFamily: 'Roboto'),
                   ),
                 ),
 
@@ -102,7 +104,7 @@ class BoxPrimaryWidget extends StatelessWidget {
 
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
-                  child: SmallSecondaryButtonWidget(text: 'Start', height: 20.0, width: 50.0, onTap: onClick),
+                  child: SmallSecondaryButtonWidget(text: AppLocalizations.of(context)!.start, height: 20.0, width: 80.0, onTap: onClick),
                 )
 
 

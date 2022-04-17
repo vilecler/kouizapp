@@ -4,6 +4,8 @@ import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/dividerwidget.dart';
 import 'package:kouizapp/widgets/presentation/friend/suggestion/friendsuggestionwidget.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../others/circletabindicator.dart';
 import '../../../widgets/boltwidget.dart';
 import '../../../widgets/presentation/friend/friendpresentationwidget.dart';
@@ -36,7 +38,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
       setState(() {
       });
     });
-    _tabTabController = TabController(vsync: this, length: myTabs.length);
+    _tabTabController = TabController(vsync: this, length: 3);
     super.initState();
   }
 
@@ -46,12 +48,6 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
     _tabTabController.dispose();
     super.dispose();
   }
-
-  static const List<Tab> myTabs = <Tab>[
-    Tab(text: 'History'),
-    Tab(text: 'Friends'),
-    Tab(text: 'My quiz'),
-  ];
 
   final TextStyle styleTableNumber = const TextStyle(color: CustomColors.mainPurple, fontSize: 18.0, fontFamily: 'Roboto', fontWeight: FontWeight.w700, decoration: TextDecoration.none);
   final TextStyle styleTableTitle = const TextStyle(color: CustomColors.mainPurple, fontSize: 12.0, fontFamily: 'Roboto', fontWeight: FontWeight.w400, decoration: TextDecoration.none);
@@ -78,7 +74,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 5.0),
                     child: CircleAvatar(
                       backgroundImage: Image.asset('assets/images/profile_picture.png').image,
                       radius: 70,
@@ -94,7 +90,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
             ),
 
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25.0),
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -124,7 +120,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 30.0, left: 40.0, right: 40.0),
+              padding: const EdgeInsets.only(top: 10.0, bottom: 25.0, left: 40.0, right: 40.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -133,7 +129,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                       Text('278', style: styleTableNumber),
                       Padding(
                         padding: const EdgeInsets.only(top: 5.0),
-                        child: Text('Quiz', style: styleTableTitle),
+                        child: Text(AppLocalizations.of(context)!.quiz, style: styleTableTitle),
                       ),
                     ],
                   ),
@@ -142,7 +138,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                       Text('150,000', style: styleTableNumber),
                       Padding(
                         padding: const EdgeInsets.only(top: 5.0),
-                        child: Text('xp', style: styleTableTitle),
+                        child: Text(AppLocalizations.of(context)!.xp, style: styleTableTitle),
                       ),
                     ],
                   ),
@@ -151,7 +147,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                       Text('#2184', style: styleTableNumber),
                       Padding(
                         padding: const EdgeInsets.only(top: 5.0),
-                        child: Text('Ranking', style: styleTableTitle),
+                        child: Text(AppLocalizations.of(context)!.ranking, style: styleTableTitle),
                       ),
                     ],
                   ),
@@ -180,7 +176,11 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                         labelColor: CustomColors.mainPurple,
                         labelStyle: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w700, fontFamily: 'Roboto'),
                         unselectedLabelStyle: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500, fontFamily: 'Roboto'),
-                        tabs: myTabs,
+                        tabs: <Tab>[
+                          Tab(text: AppLocalizations.of(context)!.history),
+                          Tab(text: AppLocalizations.of(context)!.friends),
+                          Tab(text: AppLocalizations.of(context)!.myQuiz),
+                        ],
                       ),
                     ),
 
@@ -221,7 +221,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                   //Friends
                   Column(
                     children: [
-                      const MediumTitleWidget(text: 'Suggestions'),
+                      MediumTitleWidget(text: AppLocalizations.of(context)!.suggestions),
                       SizedBox(height: 15.0,),
                       SizedBox(
                         height: FriendSuggestionWidget.height + 40,

@@ -5,7 +5,8 @@ import 'package:kouizapp/widgets/boltwidget.dart';
 import 'package:kouizapp/widgets/dividerwidget.dart';
 import 'package:kouizapp/widgets/presentation/quiz/quizpresentationsecondarywidget.dart';
 import 'package:kouizapp/widgets/buttons/seemore/seemorewidget.dart';
-import 'package:kouizapp/widgets/navigation/tabnavigator.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../others/circletabindicator.dart';
 import '../../../widgets/boxed/boxprimarywidget.dart';
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   void initState() {
     super.initState();
-    _tabTabController = TabController(vsync: this, length: myTabs.length);
+    _tabTabController = TabController(vsync: this, length: 3);
   }
 
   @override
@@ -38,15 +39,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
-  static const List<Tab> myTabs = <Tab>[
-    Tab(text: 'Suggestion'),
-    Tab(text: 'Popular'),
-    Tab(text: 'Recent'),
-  ];
-
-  void openPopular(BuildContext context){
-    widget.onPush(context, TabNavigatorRoutes.mostpopular);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +53,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    'Home',
+                    AppLocalizations.of(context)!.home,
                     style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 34.0, decoration: TextDecoration.none),
                   ),
                   BoltWidget(text: '100'),
@@ -76,8 +68,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 children: <Widget>[
-                  BoxPrimaryWidget(title: "Start Adventure", subTitle: "A set of quiz created for you", text: "Try to complete all these quiz and earn experience."),
-                  BoxSecondaryWidget(title: "Create your quiz", subTitle: "Let's interact with people", text: "If you are premium, you are able to create your own quiz."),
+                  BoxPrimaryWidget(title: AppLocalizations.of(context)!.startAdventure, subTitle: AppLocalizations.of(context)!.aSetOfQuizCreatedForYou, text: AppLocalizations.of(context)!.tryToCompleteAllTheseQuizAndEarnExperience),
+                  BoxSecondaryWidget(title: AppLocalizations.of(context)!.createYourQuiz, subTitle: AppLocalizations.of(context)!.letsInteractWithPeople, text: AppLocalizations.of(context)!.ifYouArePremiumYouCanCreateYourOwnQuiz),
                   Container(
                     width: 20.0,
                   )
@@ -119,7 +111,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                         labelColor: CustomColors.mainPurple,
                         labelStyle: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w700, fontFamily: 'Roboto'),
                         unselectedLabelStyle: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500, fontFamily: 'Roboto'),
-                        tabs: myTabs,
+                        tabs: [
+                          Tab(text: AppLocalizations.of(context)!.suggestion),
+                          Tab(text: AppLocalizations.of(context)!.popular),
+                          Tab(text: AppLocalizations.of(context)!.recent),
+                        ],
                       ),
                     ),
 
@@ -133,7 +129,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             // DISPLAY TABBAR CONTENT
             /////////////////////////////
             SizedBox(
-              height: (QuizPresentaionPrimaryWidget.height+10) * 11 + 75,    //TODO: calculate dynamically when switching tab
+              height: (QuizPresentationPrimaryWidget.height+10) * 11 + 75,    //TODO: calculate dynamically when switching tab
               child: TabBarView(
                 controller: _tabTabController,
                 children: <Widget>[
@@ -141,21 +137,44 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   //Suggestion
                   Column(
                     children: [
-                      QuizPresentaionPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
                       QuizPresentaionSecondaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
                       QuizPresentaionSecondaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
                       QuizPresentaionSecondaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
                       GestureDetector(
                         onTap: (){
-                          widget.onPush(context, '/mostpopular');
+                          widget.onPush(context, '/home/suggestion');
                         },
                         child: const SeeMoreWidget()
+                      ),
+                      //ADD VIEW ALL
+                    ],
+                  ),
+
+                  //Popular
+                  Column(
+                    children: [
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentaionSecondaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentaionSecondaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentaionSecondaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      GestureDetector(
+                          onTap: (){
+                            widget.onPush(context, '/home/popular');
+                          },
+                          child: const SeeMoreWidget()
                       ),
                       //ADD VIEW ALL
                     ],
@@ -164,35 +183,22 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   //Recent
                   Column(
                     children: [
-                      QuizPresentaionPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
                       QuizPresentaionSecondaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
                       QuizPresentaionSecondaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
+                      QuizPresentationPrimaryWidget(),
                       QuizPresentaionSecondaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      const SeeMoreWidget()
-                      //ADD VIEW ALL
-                    ],
-                  ),
-
-                  //Most Popular
-                  Column(
-                    children: [
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionSecondaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionSecondaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      QuizPresentaionSecondaryWidget(),
-                      QuizPresentaionPrimaryWidget(),
-                      const SeeMoreWidget()
+                      QuizPresentationPrimaryWidget(),
+                      GestureDetector(
+                          onTap: (){
+                            widget.onPush(context, '/home/recent');
+                          },
+                          child: const SeeMoreWidget()
+                      ),
                       //ADD VIEW ALL
                     ],
                   ),

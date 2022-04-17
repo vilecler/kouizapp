@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/widgets/searchboxwidget.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../constants/customcolors.dart';
 import '../../../widgets/boltwidget.dart';
 import '../../../widgets/presentation/message/messagepresentationwidget.dart';
@@ -27,7 +29,7 @@ class _MessagesPageState extends State<MessagesPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'Messages',
+                  AppLocalizations.of(context)!.messages,
                   style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 34.0, decoration: TextDecoration.none),
                 ),
                 BoltWidget(text: '100'),

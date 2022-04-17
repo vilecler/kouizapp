@@ -4,6 +4,7 @@ import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/buttons/small/smallprimarybutton.dart';
 import 'package:kouizapp/widgets/buttons/small/smallsecondarybutton.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FriendPresentationWidget extends StatelessWidget  {
   const FriendPresentationWidget({Key? key}) : super(key: key);
@@ -55,8 +56,8 @@ class FriendPresentationWidget extends StatelessWidget  {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SmallSecondaryButtonWidget(text: 'Message', height: 20.0, width: 110.0),
-                          SmallPrimaryButtonWidget(text: 'See Profile', height: 20.0, width: 110.0),
+                          SmallSecondaryButtonWidget(text: AppLocalizations.of(context)!.contact, height: 20.0, width: 110.0),
+                          SmallPrimaryButtonWidget(text: AppLocalizations.of(context)!.seeProfile, height: 20.0, width: 110.0),
                         ]
                     ),
                   )

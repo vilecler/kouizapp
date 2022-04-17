@@ -1,0 +1,74 @@
+{
+  "punctuationSpace": "",
+
+  "loginWithFacebook": "Login with Facebook",
+  "loginWithGoogle": "Login with Google",
+  "loginWithKouiz": "Login with Kouiz",
+  "notAMemberYet": "Not a member yet?",
+  "signUp": "Sign up",
+  "signUpWithFacebook": "Sign up with Facebook",
+  "signUpWithGoogle": "Sign up with Google",
+  "signUpWithKouiz": "Sign up with Kouiz",
+  "alreadyMember": "Already member?",
+  "login": "Login",
+
+  "home": "Home",
+  "quiz": "Quiz",
+  "messages": "Messages",
+  "me": "Me",
+
+  "suggestion": "Suggestion",
+  "suggestions": "Suggestions",
+  "popular": "Popular",
+  "recent": "Recent",
+
+  "history": "History",
+  "friends": "Friends",
+  "myQuiz": "My quiz",
+
+  "xp": "xp",
+  "ranking": "Ranking",
+
+  "search": "Search",
+  "play": "Play",
+  "edit": "Edit",
+  "buy": "Buy",
+  "invite": "Invite",
+  "share": "Share",
+  "start": "Start",
+  "addFriend": "Add friend",
+  "contact": "Contact",
+  "seeProfile": "See profile",
+  "createdBy": "Created by",
+  "questions": "Questions",
+  "min": "Min.",
+  "playAgain": "Play again",
+  "playedBy": "Played by",
+  "playedOn": "Played on",
+  "people": "people",
+  "score": "Score",
+  "maximumReward": "Maximum reward",
+  "filter": "Filter",
+  "sortBy": "Sort by",
+  "select": "Select",
+
+  "seeMore": "See more",
+
+  "themes": "Themes",
+  "progression": "Progression",
+
+  "startAdventure": "Start Adventure",
+  "aSetOfQuizCreatedForYou": "A set of quiz created for you",
+  "tryToCompleteAllTheseQuizAndEarnExperience": "Try to complete all these quiz and earn experience.",
+
+  "createYourQuiz": "Create your quiz",
+  "letsInteractWithPeople": "Let's interact with people",
+  "ifYouArePremiumYouCanCreateYourOwnQuiz": "If you are premium, you can create your own quiz for the community.",
+
+  "chooseACategory": "Choose a category",
+  "official": "Official",
+  "community": "Community",
+  "category": "Category",
+  "categories": "Categories",
+  "playWithFriends": "Play with friends"
+}

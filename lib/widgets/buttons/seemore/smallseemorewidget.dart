@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class SmallSeeMoreWidget extends StatelessWidget {
   const SmallSeeMoreWidget({Key? key}) : super(key: key);
 
@@ -12,7 +14,7 @@ class SmallSeeMoreWidget extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            'See more',
+            AppLocalizations.of(context)!.seeMore,
             style: const TextStyle(color: CustomColors.mainPurple, fontSize: 14.0, fontWeight: FontWeight.w600, fontFamily: 'Roboto', decoration: TextDecoration.none),
           ),
           const Padding(

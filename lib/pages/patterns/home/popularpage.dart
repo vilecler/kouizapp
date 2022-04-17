@@ -7,14 +7,14 @@ import 'package:kouizapp/widgets/searchboxwidget.dart';
 import '../../../constants/customcolors.dart';
 import '../../../widgets/boltwidget.dart';
 
-class RecentPage extends StatefulWidget {
-  const RecentPage({Key? key}) : super(key: key);
+class PopularPage extends StatefulWidget {
+  const PopularPage({Key? key}) : super(key: key);
 
   @override
-  State<RecentPage> createState() => _RecentPageState();
+  State<PopularPage> createState() => _PopularPageState();
 }
 
-class _RecentPageState extends State<RecentPage> {
+class _PopularPageState extends State<PopularPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +32,14 @@ class _RecentPageState extends State<RecentPage> {
                       Padding(
                         padding: const EdgeInsets.only(right: 15.0),
                         child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: FaIcon(FontAwesomeIcons.angleLeft, color: CustomColors.mainPurple, size: 30.0,)
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: FaIcon(FontAwesomeIcons.angleLeft, color: CustomColors.mainPurple, size: 30.0,)
                         ),
                       ),
                       Text(
-                        'Recent',
+                        'Popular',
                         style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 34.0, decoration: TextDecoration.none),
                       ),
                     ],

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants/customcolors.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class SearchBoxWidget extends StatefulWidget {
   const SearchBoxWidget({Key? key}) : super(key: key);
 
@@ -35,7 +37,7 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
             focusColor: CustomColors.mainPurple,
             hoverColor: CustomColors.mainPurple,
             iconColor: CustomColors.mediumGrey,
-            suffixIcon: Container(
+            suffixIcon: SizedBox(
               height: 40.0,
               width: 70.0,
               child: Stack(
@@ -75,8 +77,8 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
                         padding: const EdgeInsets.symmetric(vertical: 4.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const FaIcon(FontAwesomeIcons.search, color: CustomColors.white, size: 14.0,)
+                          children: const [
+                            FaIcon(FontAwesomeIcons.search, color: CustomColors.white, size: 14.0,)
                           ],
                         ),
                       ),
@@ -86,12 +88,10 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
                   ),
 
 
-
-
                 ],
               ),
             ),
-            hintText: "Search...",
+            hintText: AppLocalizations.of(context)!.search + "...",
           ),
         ),
       ),

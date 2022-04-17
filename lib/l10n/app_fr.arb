@@ -1,0 +1,74 @@
+{
+  "punctuationSpace": " ",
+
+  "loginWithFacebook": "Connexion avec Facebook",
+  "loginWithGoogle": "Connexion avec Google",
+  "loginWithKouiz": "Connexion avec Kouiz",
+  "notAMemberYet": "Pas encore membre ?",
+  "signUp": "Inscription",
+  "signUpWithFacebook": "Inscription avec Facebook",
+  "signUpWithGoogle": "Inscription avec Google",
+  "signUpWithKouiz": "Inscription avec Kouiz",
+  "alreadyMember": "Déjà membre ?",
+  "login": "Connexion",
+
+  "home": "Accueil",
+  "quiz": "Quiz",
+  "messages": "Messages",
+  "me": "Moi",
+
+  "suggestion": "Suggestion",
+  "suggestions": "Suggestions",
+  "popular": "Populaire",
+  "recent": "Récent",
+
+  "history": "Historique",
+  "friends": "Amis",
+  "myQuiz": "Mes quiz",
+
+  "xp": "xp",
+  "ranking": "Classement",
+
+  "search": "Rechercher",
+  "play": "Jouer",
+  "edit": "Modifier",
+  "buy": "Acheter",
+  "invite": "Inviter",
+  "share": "Partager",
+  "start": "Commencer",
+  "addFriend": "Ajouter ami",
+  "contact": "Contact",
+  "seeProfile": "Voir profil",
+  "createdBy": "Créé par",
+  "questions": "Questions",
+  "min": "Min.",
+  "playAgain": "Rejouer",
+  "playedBy": "Joué par",
+  "playedOn": "Joué le",
+  "people": "personnes",
+  "score": "Score",
+  "maximumReward": "Récompense maximale",
+  "filter": "Filtrer",
+  "sortBy": "Classer par",
+  "select": "Sélectionner",
+
+  "seeMore": "Voir plus",
+
+  "themes": "Thèmes",
+  "progression": "Progression",
+
+  "startAdventure": "Commence l'aventure",
+  "aSetOfQuizCreatedForYou": "Une collection de quiz créée pour toi",
+  "tryToCompleteAllTheseQuizAndEarnExperience": "Essaye de compléter tous ces quiz et gagne de l'expérience.",
+
+  "createYourQuiz": "Crée tes quiz",
+  "letsInteractWithPeople": "Intéragis avec les autres",
+  "ifYouArePremiumYouCanCreateYourOwnQuiz": "Si tu es premium, tu peux créer tes propres quir pour la communauté.",
+
+  "chooseACategory": "Choisis une catégorie",
+  "official": "Officiel",
+  "community": "Communauté",
+  "category": "Catégorie",
+  "categories": "Catégories",
+  "playWithFriends": "Joue avec des amis"
+}
