@@ -4,9 +4,10 @@ import 'package:kouizapp/constants/customcolors.dart';
 
 
 class BoltWidget extends StatelessWidget  {
-  const BoltWidget({Key? key, required this.text}) : super(key: key);
+  const BoltWidget({Key? key, required this.number, this.white=false}) : super(key: key);
 
-  final String text;
+  final int number;
+  final bool white;
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +16,11 @@ class BoltWidget extends StatelessWidget  {
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
           child: Text(
-            text,
-            style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.w700, color: CustomColors.mainPurple, decoration: TextDecoration.none, fontFamily: 'Roboto'),
+            number.toString(),
+            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w700, color: white ? CustomColors.white : CustomColors.mainPurple, decoration: TextDecoration.none, fontFamily: 'Roboto'),
           ),
         ),
-        const FaIcon(FontAwesomeIcons.bolt, color: CustomColors.bolt, size: 17.0,),
+        FaIcon(FontAwesomeIcons.bolt, color: white ? CustomColors.white : CustomColors.bolt, size: 17.0,),
       ]
     );
   }

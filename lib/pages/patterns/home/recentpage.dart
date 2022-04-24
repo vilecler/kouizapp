@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/widgets/presentation/quiz/quizpresentationprimarywidget.dart';
 import 'package:kouizapp/widgets/presentation/quiz/quizpresentationsecondarywidget.dart';
 import 'package:kouizapp/widgets/searchboxwidget.dart';
@@ -7,7 +6,7 @@ import 'package:kouizapp/widgets/searchboxwidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../constants/customcolors.dart';
-import '../../../widgets/boltwidget.dart';
+import '../../../widgets/hearders/backheaderwidget.dart';
 
 class RecentPage extends StatefulWidget {
   const RecentPage({Key? key}) : super(key: key);
@@ -24,32 +23,7 @@ class _RecentPageState extends State<RecentPage> {
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 15.0),
-                        child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: FaIcon(FontAwesomeIcons.angleLeft, color: CustomColors.mainPurple, size: 30.0,)
-                        ),
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.recent,
-                        style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 34.0, decoration: TextDecoration.none),
-                      ),
-                    ],
-                  ),
-                  BoltWidget(text: '100'),
-                ],
-              ),
-            ),
+            BackHeaderWidget(title: AppLocalizations.of(context)!.recent, bolt: 100),
             const SearchBoxWidget(),
 
             Padding(

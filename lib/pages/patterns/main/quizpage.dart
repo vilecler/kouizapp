@@ -64,7 +64,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                     ],
                     labelPadding: const EdgeInsets.only(right: 15.0)
                   ),
-                  BoltWidget(text: '100'),
+                  BoltWidget(number: 100),
                 ],
               ),
             ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/widgets/presentation/quiz/quizpresentationprimarywidget.dart';
 import 'package:kouizapp/widgets/presentation/quiz/quizpresentationsecondarywidget.dart';
 import 'package:kouizapp/widgets/searchboxwidget.dart';
@@ -7,10 +6,12 @@ import 'package:kouizapp/widgets/searchboxwidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../constants/customcolors.dart';
-import '../../../widgets/boltwidget.dart';
+import '../../../widgets/hearders/backheaderwidget.dart';
 
 class QuizListPage extends StatefulWidget {
-  const QuizListPage({Key? key}) : super(key: key);
+  const QuizListPage({Key? key, required this.onPush}) : super(key: key);
+
+  final Function onPush;
 
   @override
   State<QuizListPage> createState() => _QuizListPageState();
@@ -24,32 +25,7 @@ class _QuizListPageState extends State<QuizListPage> {
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 15.0),
-                        child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: FaIcon(FontAwesomeIcons.angleLeft, color: CustomColors.mainPurple, size: 30.0,)
-                        ),
-                      ),
-                      Text(
-                        'Flags of the World',
-                        style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 26.0, decoration: TextDecoration.none),
-                      ),
-                    ],
-                  ),
-                  BoltWidget(text: '100'),
-                ],
-              ),
-            ),
+            BackHeaderWidget(title: 'Flags of the World', bolt: 100, small: true),
             const SizedBox(height: 15.0,),
             const SearchBoxWidget(),
 
@@ -68,7 +44,12 @@ class _QuizListPageState extends State<QuizListPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                    GestureDetector(
+                      onTap: (){
+                        widget.onPush(context, '/quiz/start');
+                      },
+                      child: QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,)
+                    ),
                     QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
                     QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
                     QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),

@@ -65,7 +65,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  BoltWidget(text: '100'),
+                  BoltWidget(number: 100),
                   const FaIcon(FontAwesomeIcons.cog, color: CustomColors.mainPurple, size: 22.0,)
                 ],
               ),

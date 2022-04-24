@@ -9,11 +9,30 @@ class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<MainPage> createState() => MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class MainPageState extends State<MainPage> {
   var _currentTab = TabItem.home;
+  bool isBottomBarDisplayed = true;
+
+  void displayBottomBar(){
+    debugPrint("displayBottomBar()");
+    setState(() {
+      debugPrint("displayBottomBar() state changed");
+      isBottomBarDisplayed = true;
+    });
+  }
+
+  void hideBottomBar(){
+    debugPrint("hideBottomBar()");
+    setState(() {
+      debugPrint("hideBottomBar() state changed");
+      isBottomBarDisplayed = false;
+    });
+  }
+
+
   final _navigatorKeys = {
     TabItem.home: GlobalKey<NavigatorState>(),
     TabItem.quiz: GlobalKey<NavigatorState>(),
@@ -59,7 +78,7 @@ class _MainPageState extends State<MainPage> {
           _buildOffstageNavigator(TabItem.messages),
           _buildOffstageNavigator(TabItem.me),
         ]),
-        bottomNavigationBar: BottomNavigationWidget(currentTab: _currentTab, onSelectTab: _selectTab)
+        bottomNavigationBar: isBottomBarDisplayed ? BottomNavigationWidget(currentTab: _currentTab, onSelectTab: _selectTab) : null
       )
     );
   }
@@ -71,6 +90,8 @@ class _MainPageState extends State<MainPage> {
       child: TabNavigator(
         navigatorKey: _navigatorKeys[tabItem],
         tabItem: tabItem,
+        hideBottomBarCallback: hideBottomBar,
+        displayBottomBarCallback: displayBottomBar,
       ),
     );
   }

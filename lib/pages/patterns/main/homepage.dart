@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
 import 'package:kouizapp/widgets/boltwidget.dart';
 import 'package:kouizapp/widgets/dividerwidget.dart';
+import 'package:kouizapp/widgets/hearders/hearderwidget.dart';
 import 'package:kouizapp/widgets/presentation/quiz/quizpresentationsecondarywidget.dart';
 import 'package:kouizapp/widgets/buttons/seemore/seemorewidget.dart';
 
@@ -47,19 +48,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    AppLocalizations.of(context)!.home,
-                    style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: 34.0, decoration: TextDecoration.none),
-                  ),
-                  BoltWidget(text: '100'),
-                ],
-              ),
-            ),
+
+            HeaderWidget(title: AppLocalizations.of(context)!.home, bolt: 100),
 
             SizedBox(
               height: BoxPrimaryWidget.height + 40,
