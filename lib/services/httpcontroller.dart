@@ -18,7 +18,7 @@ class HttpController{
       NetworkException('Error POST status code is not 200.\nURL:$uri.\nStatusCode:${response.statusCode}');
     }
     return response.body;
-
   }
 
 }
+
