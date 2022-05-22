@@ -127,16 +127,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   //Suggestion
                   Column(
                     children: [
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
                       GestureDetector(
                         onTap: (){
                           widget.onPush(context, '/home/suggestion');
@@ -150,16 +150,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   //Popular
                   Column(
                     children: [
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
                       GestureDetector(
                           onTap: (){
                             widget.onPush(context, '/home/popular');
@@ -173,16 +173,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   //Recent
                   Column(
                     children: [
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationSecondaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                      QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
                       GestureDetector(
                           onTap: (){
                             widget.onPush(context, '/home/recent');

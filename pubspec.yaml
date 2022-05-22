@@ -42,6 +42,7 @@ dependencies:
   flutter_svg: ^1.0.3
   amazon_cognito_identity_dart_2: ^2.1.1
   email_validator: ^2.0.1
+  bottom_loader: ^0.2.2
 
 dev_dependencies:
   flutter_test:

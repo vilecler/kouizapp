@@ -27,7 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void signupWithKouiz(){
-    Navigator.pushReplacementNamed(context, '/signupWithKouiz');
+    Navigator.of(context).pushNamed('/signupWithKouiz');
   }
 
   @override

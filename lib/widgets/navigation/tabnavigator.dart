@@ -53,7 +53,7 @@ class TabNavigator extends StatefulWidget {
 }
 
 class _TabNavigatorState extends State<TabNavigator> {
-  void push(BuildContext context, String route) {
+  void push(BuildContext context, String route, Object? arguments) {
     var routeBuilders = _routeBuilders(context);
 
     Navigator.push(
@@ -61,7 +61,10 @@ class _TabNavigatorState extends State<TabNavigator> {
       MaterialPageRoute(
         builder: (context) =>
             routeBuilders[route]!(context),
-      ),
+        settings: RouteSettings(
+          arguments: arguments
+        )
+      )
     );
   }
 

@@ -12,10 +12,10 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
   static const width = 90.0;
   static const borderRadius = 20.0;
 
-  QuizPresentationPrimaryWidget({Key? key, required this.name, required this.number, required this.reward, required this.questionsCount, required this.bolt, required this.minutes}) : super(key: key);
+  QuizPresentationPrimaryWidget({Key? key, required this.name, required this.themePosition, required this.reward, required this.questionsCount, required this.bolt, required this.minutes}) : super(key: key);
 
   final String name;
-  final int number;
+  final String themePosition;
   final int reward;
   final int questionsCount;
   final int bolt;
@@ -79,7 +79,7 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
                                 CustomColors.mainPink,
                                 CustomColors.white.withOpacity(0.0),
                               ],
-                              stops: [0.0, 1.0]
+                              stops: const [0.0, 1.0]
                           ),
                         ),
                       ),
@@ -91,7 +91,7 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
                             const FaIcon(FontAwesomeIcons.crown, color: CustomColors.white, size: 35,),
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
-                              child: Text('N°' + number.toString(), style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
+                              child: Text(themePosition, style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
                             )
                           ],
                         ),
@@ -128,7 +128,7 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            FaIcon(FontAwesomeIcons.bolt, color: CustomColors.bolt, size: 18.0,),
+                            const FaIcon(FontAwesomeIcons.bolt, color: CustomColors.bolt, size: 18.0,),
                             Padding(
                               padding: const EdgeInsets.only(left: 5.0),
                               child: Text(bolt.toString(), style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),
@@ -138,7 +138,7 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
 
                         Row(
                           children: [
-                            FaIcon(FontAwesomeIcons.hourglassHalf, color: CustomColors.mainPurple, size: 16.0),
+                            const FaIcon(FontAwesomeIcons.hourglassHalf, color: CustomColors.mainPurple, size: 16.0),
                             Padding(
                               padding: const EdgeInsets.only(left: 5.0),
                               child: Text(minutes.toString() + ' ' + AppLocalizations.of(context)!.min.toLowerCase(), style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w600, fontSize: 16, decoration: TextDecoration.none),),

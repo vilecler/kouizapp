@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kouizapp/constants/customcolors.dart';
+import 'package:kouizapp/pages/patterns/auth/confirmsignupkouiz.dart';
 import 'package:kouizapp/pages/patterns/auth/loginpage.dart';
 import 'package:kouizapp/pages/patterns/auth/signupkouizpage.dart';
 import 'package:kouizapp/pages/patterns/auth/signuppage.dart';
@@ -73,6 +74,7 @@ class _MyAppState extends State<MyApp> {
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignUpPage(),
         '/signupWithKouiz': (context) => SignUpKouizPage(),
+        '/confirmSignupWithKouiz': (context) => ConfirmSignUpKouizPage(),
       }
     );
   }

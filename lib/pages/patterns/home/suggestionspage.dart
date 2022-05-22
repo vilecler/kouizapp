@@ -43,13 +43,13 @@ class _SuggestionPageState extends State<SuggestionPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                    QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                    QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                    QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                    QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                    QuizPresentationSecondaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
-                    QuizPresentationPrimaryWidget(name: 'The main flags of the world', number: 1, reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                    QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                    QuizPresentationSecondaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                    QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                    QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                    QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                    QuizPresentationSecondaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
+                    QuizPresentationPrimaryWidget(name: 'The main flags of the world', themePosition: 'N°1', reward: 20000, questionsCount: 45, bolt: 15, minutes: 5,),
                   ],
                 ),
               ),

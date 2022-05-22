@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:kouizapp/utils/hexcolor.dart';
+import 'package:kouizapp/utils/translation.dart';
 import 'package:kouizapp/widgets/presentation/friend/suggestion/friendplaysuggestionwidget.dart';
 import 'package:kouizapp/widgets/titles/mediumtitlewidget.dart';
 import 'package:kouizapp/widgets/searchboxwidget.dart';
@@ -7,7 +9,10 @@ import 'package:kouizapp/widgets/searchboxwidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../constants/customcolors.dart';
+import '../../../models/category.dart';
 import '../../../others/circletabindicator.dart';
+import '../../../services/category_controller.dart';
+import '../../../utils/icon.dart';
 import '../../../widgets/boltwidget.dart';
 import '../../../widgets/presentation/category/categorypresentationwidget.dart';
 import '../../../widgets/presentation/quiz/quizcommunitypresentationwidget.dart';
@@ -98,145 +103,23 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                     ),
 
                     Flexible(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            GestureDetector(
-                                onTap: (){
-                                  widget.onPush(context, '/quiz/theme');
-                                },
-                                child: CategoryPresentationWidget(
-                                  category: "Geography",
-                                  progression: 100,
-                                  themeCount: 56,
-                                  color: CustomColors.mainPurple,
-                                  icon: FontAwesomeIcons.globeAfrica,
-                                )
-                            )
-                            ,
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                            CategoryPresentationWidget(
-                              category: "Geography",
-                              progression: 100,
-                              themeCount: 56,
-                              color: CustomColors.mainPurple,
-                              icon: FontAwesomeIcons.globeAfrica,
-                            ),
-                          ]
-                        )
-                      )
-                    )
+                      child: FutureBuilder<List<Category>>(
+                        future: fetchCategories(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasError) {
+                            return const Center(
+                              child: Text('An error has occurred!'),
+                            );
+                          } else if (snapshot.hasData) {
+                            return CategoriesList(categories: snapshot.data!, onPush: widget.onPush,);
+                          } else {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                        },
+                      ),
+                    ),
 
 
 
@@ -319,6 +202,34 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
 
         ]
       ),
+    );
+  }
+}
+
+class CategoriesList extends StatelessWidget {
+  const CategoriesList({Key? key, required this.categories, required this.onPush}) : super(key: key);
+
+  final List<Category> categories;
+  final Function onPush;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: categories.length,
+      itemBuilder: (context, index) {
+        return GestureDetector(
+            onTap: (){
+              onPush(context, '/quiz/theme', {'category': categories[index].code, 'name': loadTranslation(categories[index].names)});
+            },
+            child: CategoryPresentationWidget(
+              category: loadTranslation(categories[index].names),
+              progression: 0,
+              themeCount: categories[index].themeCount,
+              color: HexColor(categories[index].color),
+              icon: stringToIcon(categories[index].icon),
+            )
+        );
+      },
     );
   }
 }

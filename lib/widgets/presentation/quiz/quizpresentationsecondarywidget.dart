@@ -12,10 +12,10 @@ class QuizPresentationSecondaryWidget extends StatelessWidget {
   static const width = 90.0;
   static const borderRadius = 20.0;
 
-  QuizPresentationSecondaryWidget({Key? key, required this.name, required this.number, required this.reward, required this.questionsCount, required this.bolt, required this.minutes}) : super(key: key);
+  QuizPresentationSecondaryWidget({Key? key, required this.name, required this.themePosition, required this.reward, required this.questionsCount, required this.bolt, required this.minutes}) : super(key: key);
 
   final String name;
-  final int number;
+  final String themePosition;
   final int reward;
   final int questionsCount;
   final int bolt;
@@ -91,7 +91,7 @@ class QuizPresentationSecondaryWidget extends StatelessWidget {
                             const FaIcon(FontAwesomeIcons.crown, color: CustomColors.white, size: 35,),
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
-                              child: Text('N°1', style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
+                              child: Text(themePosition, style: const TextStyle(color: CustomColors.white, fontSize: 20.0, fontFamily: 'Roboto', fontWeight: FontWeight.w600, decoration: TextDecoration.none),),
                             )
                           ],
                         ),

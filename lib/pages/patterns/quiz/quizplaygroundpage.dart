@@ -82,7 +82,7 @@ class _QuizPlaygroundPageState extends State<QuizPlaygroundPage> {
                 child: Center(
                   child: Text(
                     'Time remaining: 2s',
-                    style: TextStyle(color: CustomColors.white, fontWeight: FontWeight.w500, letterSpacing: 0.25, fontSize: 12.0),
+                    style: TextStyle(color: CustomColors.white, fontWeight: FontWeight.w500, letterSpacing: 0.25, fontSize: 10.0),
                   ),
                 ),
               ),
@@ -91,7 +91,7 @@ class _QuizPlaygroundPageState extends State<QuizPlaygroundPage> {
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 5.0),
                 child: Text(
                   'The main flags of the world (Level 5)',
-                  style: TextStyle(color: CustomColors.white, fontSize: 14.0, fontWeight: FontWeight.w400, letterSpacing: 0.5),
+                  style: TextStyle(color: CustomColors.white, fontSize: 12.0, fontWeight: FontWeight.w400, letterSpacing: 0.5),
                 ),
               ),
 
@@ -99,7 +99,7 @@ class _QuizPlaygroundPageState extends State<QuizPlaygroundPage> {
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0, bottom: 25.0),
                 child: Text(
                   'Question 1/5',
-                  style: TextStyle(color: CustomColors.white, fontSize: 20.0, fontWeight: FontWeight.w700, letterSpacing: 1.0),
+                  style: TextStyle(color: CustomColors.white, fontSize: 16.0, fontWeight: FontWeight.w600, letterSpacing: 1.0),
                 ),
               ),
 
@@ -108,7 +108,7 @@ class _QuizPlaygroundPageState extends State<QuizPlaygroundPage> {
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0, bottom: 0.0),
                 child: Text(
                   'To which country belongs this flag?',
-                  style: TextStyle(color: CustomColors.white, fontSize: 32.0, fontWeight: FontWeight.w700, letterSpacing: 1.0),
+                  style: TextStyle(color: CustomColors.white, fontSize: 30.0, fontWeight: FontWeight.w700, letterSpacing: 1.0),
                 ),
               ),
 
@@ -117,7 +117,7 @@ class _QuizPlaygroundPageState extends State<QuizPlaygroundPage> {
               Flexible(
                 flex: 1,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+                  padding: const EdgeInsets.only(top: 30.0, left: 20.0, right: 20.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -126,7 +126,7 @@ class _QuizPlaygroundPageState extends State<QuizPlaygroundPage> {
                       Center(
                         child: SvgPicture.asset("assets/images/flagofalbania.svg", matchTextDirection: false, alignment: Alignment.topCenter, height: 200.0),
                       ),
-                      SizedBox(height: 30.0,),
+                      SizedBox(height: 40.0,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -173,13 +173,13 @@ class _QuizPlaygroundPageState extends State<QuizPlaygroundPage> {
                   children: [
                     Text(
                       'Current score: 80%',
-                      style: TextStyle(color: CustomColors.white, fontSize: 16.0, fontWeight: FontWeight.w600, letterSpacing: 0.5),
+                      style: TextStyle(color: CustomColors.white, fontSize: 14.0, fontWeight: FontWeight.w600, letterSpacing: 0.5),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 5.0),
                       child: Text(
                         '| Please select an answer',
-                        style: TextStyle(color: CustomColors.fakeWhite, fontSize: 14.0, fontWeight: FontWeight.w400, letterSpacing: 0.5),
+                        style: TextStyle(color: CustomColors.fakeWhite, fontSize: 12.0, fontWeight: FontWeight.w400, letterSpacing: 0.5),
                       ),
                     )
                   ],

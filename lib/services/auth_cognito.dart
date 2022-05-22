@@ -8,26 +8,56 @@ class AuthCognito{
     Networking.clientId,
   );
 
-  Future<void> signUp(String username, String password, String email) async {
+  Future<String> signUp(String username, String password, String email) async {
 
     final userAttributes = [
       AttributeArg(name: 'custom:pseudo', value: username.trim()),
       AttributeArg(name: 'preferred_username', value: username.trim()),
+      AttributeArg(name: 'email', value: email.trim()),
     ];
 
 
     try {
-      var data = await userPool.signUp(
+      await userPool.signUp(
         email,
         password,
         userAttributes: userAttributes,
       );
-      print(data);
 
+      return 'success';
+    } on CognitoClientException catch(e) {
+      return e.code!;
     } catch (e) {
-      print(e);
+      rethrow;
     }
-
   }
 
+  Future<bool> confirmSignUp(String email, String code) async {
+    final cognitoUser = CognitoUser(email, userPool);
+
+    bool registrationConfirmed = false;
+    try {
+      registrationConfirmed = await cognitoUser.confirmRegistration(code);
+
+      //TODO: Save email in internal storage because object CognitoUser only requires email (not to reauth each time the app is relaunched).
+    }  on CognitoClientException catch(e) {
+      if (e.code == 'CodeMismatchException') {
+        registrationConfirmed = false;
+      }
+    } catch (e) {
+      rethrow;
+    }
+    return registrationConfirmed;
+  }
+
+  Future<dynamic> resendConfirmationCode(String email) async{
+    final cognitoUser = CognitoUser(email, userPool);
+
+    try {
+      return await cognitoUser.resendConfirmationCode();
+    } catch (e) {
+      rethrow;
+    }
+    return false;
+  }
 }

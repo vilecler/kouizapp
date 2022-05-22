@@ -1,10 +1,9 @@
+import 'package:bottom_loader/bottom_loader.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kouizapp/services/auth_cognito.dart';
-import 'package:kouizapp/widgets/buttons/socials/facebookbuttonwidget.dart';
-import 'package:kouizapp/widgets/buttons/socials/googlebuttonwidget.dart';
 import 'package:kouizapp/widgets/buttons/socials/kouizbuttonwidget.dart';
 import 'package:kouizapp/widgets/kouizlogowidget.dart';
 
@@ -29,14 +28,60 @@ class _SignUpKouizPageState extends State<SignUpKouizPage> {
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirmpassword = TextEditingController();
 
-  void processSignUp(){
-    if (_formKey.currentState!.validate()) {
-      authCognito.signUp(_username.text, _password.text, _email.text);
-    }
-  }
 
-  void signUp(){
-    Navigator.pushReplacementNamed(context, '/signup');
+
+  void processSignUp() async {
+    BottomLoader bl = BottomLoader(
+      context,
+      showLogs: true,
+      isDismissible: true,
+    );
+    bl.style(
+      message: 'Creating account...',
+    );
+
+    if (!_formKey.currentState!.validate()) { //If form is not valid do nothing
+      return;
+    }
+
+    await bl.display();
+    String result = await authCognito.signUp(_username.text, _password.text, _email.text);
+    bl.close();
+
+    if (result == 'success'){
+      //Load new page
+      Navigator.of(context).pushNamed('/confirmSignupWithKouiz', arguments: {'email': _email.text});
+      return;
+    }
+
+    String errorMessage = 'Unknown error';
+    switch(result){
+      case 'UsernameExistsException':
+        errorMessage = 'An user with this username already exists.';
+        break;
+      case 'InvalidPasswordException':
+        errorMessage = 'The password provided is not valid.';
+        break;
+    }
+
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: Text('Sign Up Error'),
+        content: Text(errorMessage),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'Cancel'),
+            child: const Text('Cancel'),
+          ),
+        ],
+      ),
+    );
+
+  }
+  
+  void back(){
+    Navigator.pop(context);
   }
 
   String? passwordValidator(String? password){
@@ -275,7 +320,7 @@ class _SignUpKouizPageState extends State<SignUpKouizPage> {
         ),
 
         GestureDetector(
-          onTap: signUp,
+          onTap: back,
           child: Padding(
             padding: const EdgeInsets.only(bottom: 40.0),
             child: Center(

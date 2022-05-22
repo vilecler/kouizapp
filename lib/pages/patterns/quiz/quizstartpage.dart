@@ -44,7 +44,7 @@ class _QuizStartPageState extends State<QuizStartPage> {
   }
 
   void quizPlayground(){
-    widget.onPush(context, '/quiz/playground');
+    widget.onPush(context, '/quiz/playground', {});
   }
 
   @override
@@ -90,29 +90,29 @@ class _QuizStartPageState extends State<QuizStartPage> {
               BackHeaderWidget(title: 'Geography', bolt: 100, white: true,),
 
               Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top:40.0, bottom: 25.0),
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top:50.0, bottom: 20.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
                       'Flags of the world',
-                      style: TextStyle(color: CustomColors.white, fontSize: 20.0, fontWeight: FontWeight.w600, letterSpacing: 0.5),
+                      style: TextStyle(color: CustomColors.white, fontSize: 16.0, fontWeight: FontWeight.w600, letterSpacing: 0.5),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 1.6, left: 3.0),
                       child: Text(
                         '/N°1',
-                        style: TextStyle(color: CustomColors.fakeWhite, fontSize: 13.0, fontWeight: FontWeight.w500),
+                        style: TextStyle(color: CustomColors.fakeWhite, fontSize: 10.0, fontWeight: FontWeight.w500),
                       ),
                     )
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0, bottom: 40.0),
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0, bottom: 50.0),
                 child: Text(
                   'The main flags of the world (Level 5)',
-                  style: TextStyle(color: CustomColors.white, fontSize: 30.0, fontWeight: FontWeight.w700, letterSpacing: 1.0),
+                  style: TextStyle(color: CustomColors.white, fontSize: 28.0, fontWeight: FontWeight.w700, letterSpacing: 1.0),
                 ),
               ),
               Padding(
@@ -132,7 +132,7 @@ class _QuizStartPageState extends State<QuizStartPage> {
               Flexible(
                 flex: 1,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 30.0, bottom: 100.0),
+                  padding: const EdgeInsets.only(top: 60.0, bottom: 70.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -170,13 +170,13 @@ class _QuizStartPageState extends State<QuizStartPage> {
                   children: [
                     Text(
                       'Best score: 80%',
-                      style: TextStyle(color: CustomColors.white, fontSize: 16.0, fontWeight: FontWeight.w600, letterSpacing: 0.5),
+                      style: const TextStyle(color: CustomColors.white, fontSize: 14.0, fontWeight: FontWeight.w600, letterSpacing: 0.5),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 5.0),
                       child: Text(
                         '| See all statistics',
-                        style: TextStyle(color: CustomColors.fakeWhite, fontSize: 14.0, fontWeight: FontWeight.w400, letterSpacing: 0.5),
+                        style: const TextStyle(color: CustomColors.fakeWhite, fontSize: 12.0, fontWeight: FontWeight.w400, letterSpacing: 0.5),
                       ),
                     )
                   ],

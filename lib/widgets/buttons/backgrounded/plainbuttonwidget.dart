@@ -33,13 +33,13 @@ class PlainButtonWidget extends StatelessWidget  {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(17.0),
+          padding: const EdgeInsets.all(10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 15.0),
-                child: Text(text, style: const TextStyle(decoration: TextDecoration.none, fontSize: 22.0, fontWeight: FontWeight.w600, fontFamily: 'Roboto', color: CustomColors.mainPurple, letterSpacing: 0.5),),
+                child: Text(text, style: const TextStyle(decoration: TextDecoration.none, fontSize: 16.0, fontWeight: FontWeight.w600, fontFamily: 'Roboto', color: CustomColors.mainPurple, letterSpacing: 0.5),),
               ),
               FaIcon(icon, color: CustomColors.mainPurple, size: 20.0,)
             ],
