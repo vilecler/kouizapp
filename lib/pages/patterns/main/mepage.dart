@@ -33,7 +33,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
   late AnimationController _progressController;
   late TabController _tabTabController;
 
-  late User currentUser;
+  User? currentUser;
 
   @override
   void initState() {
@@ -57,7 +57,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
       _progressController = AnimationController(
           vsync: this,
           duration: const Duration(seconds: 3),
-          value: currentUser.getExperiencePercentage()
+          value: currentUser!.getExperiencePercentage()
       )..addListener(() {
         setState(() {
         });
@@ -83,7 +83,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  BoltWidget(number: (currentUser != null) ? currentUser.energy : 0),
+                  BoltWidget(number: (currentUser != null) ? currentUser!.energy : 0),
                   GestureDetector(
                     child: const FaIcon(FontAwesomeIcons.cog, color: CustomColors.mainPurple, size: 22.0,),
                     onTap: (){
@@ -105,9 +105,9 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0, bottom: 0.0),
-                    child: Text((currentUser != null) ? currentUser.username : "", style: const TextStyle(color: CustomColors.mainPurple, fontSize: 22.0, fontWeight: FontWeight.w700, letterSpacing: 0.5, fontFamily: 'Roboto', decoration: TextDecoration.none),),
+                    child: Text((currentUser != null) ? currentUser!.username : "", style: const TextStyle(color: CustomColors.mainPurple, fontSize: 22.0, fontWeight: FontWeight.w700, letterSpacing: 0.5, fontFamily: 'Roboto', decoration: TextDecoration.none),),
                   ),
-                  Text('@' + ((currentUser != null) ? currentUser.pseudo : ""), style: const TextStyle(color: CustomColors.mainPurple, fontSize: 16.0, fontWeight: FontWeight.w500, fontFamily: 'Roboto', decoration: TextDecoration.none))
+                  Text('@' + ((currentUser != null) ? currentUser!.pseudo : ""), style: const TextStyle(color: CustomColors.mainPurple, fontSize: 16.0, fontWeight: FontWeight.w500, fontFamily: 'Roboto', decoration: TextDecoration.none))
                 ],
               ),
             ),
@@ -120,7 +120,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Text('lvl ' + ((currentUser != null) ? currentUser.getLevel().toString() : ""), style: const TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w400, fontFamily: 'Roboto', decoration: TextDecoration.none),),
+                      child: Text('lvl ' + ((currentUser != null) ? currentUser!.getLevel().toString() : ""), style: const TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w400, fontFamily: 'Roboto', decoration: TextDecoration.none),),
                     ),
                     Flexible(
                       child: ClipRRect(
@@ -135,7 +135,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Text('lvl ' + ((currentUser != null) ? (currentUser.getLevel()  + 1).toString() : "") , style: const TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w400, fontFamily: 'Roboto', decoration: TextDecoration.none)),
+                      child: Text('lvl ' + ((currentUser != null) ? (currentUser!.getLevel()  + 1).toString() : "") , style: const TextStyle(color: CustomColors.grey, fontSize: 14.0, fontWeight: FontWeight.w400, fontFamily: 'Roboto', decoration: TextDecoration.none)),
                     ),
                   ],
                 ),
@@ -158,7 +158,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
                   ),
                   Column(
                     children: <Widget>[
-                      Text(f.format((currentUser != null) ? currentUser.experience : 0), style: styleTableNumber),
+                      Text(f.format((currentUser != null) ? currentUser!.experience : 0), style: styleTableNumber),
                       Padding(
                         padding: const EdgeInsets.only(top: 5.0),
                         child: Text(AppLocalizations.of(context)!.xp, style: styleTableTitle),

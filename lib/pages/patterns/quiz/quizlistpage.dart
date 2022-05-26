@@ -6,7 +6,9 @@ import 'package:kouizapp/widgets/searchboxwidget.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../constants/apierrors.dart';
 import '../../../constants/customcolors.dart';
+import '../../../errors/networkexception.dart';
 import '../../../models/quiz.dart';
 import '../../../services/quiz_controller.dart';
 import '../../../widgets/hearders/backheaderwidget.dart';
@@ -30,10 +32,16 @@ class _QuizListPageState extends State<QuizListPage> {
 
   void loadQuizzes(String theme) async{
     _quizzesFuture = fetchQuizzes(theme);
-    List<Quiz> quizzes = await _quizzesFuture;
-    setState(() {
-      quizCount = quizzes.length;
-    });
+    try {
+      List<Quiz> quizzes = await _quizzesFuture;
+      setState(() {
+        quizCount = quizzes.length;
+      });
+    } on NetworkException catch(e){
+      setState(() {
+        quizCount = 0;
+      });
+    }
   }
 
   @override
@@ -67,8 +75,9 @@ class _QuizListPageState extends State<QuizListPage> {
                 future: _quizzesFuture,
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
-                    return const Center(
-                      child: Text('An error has occurred!'),
+                    NetworkException error = snapshot.error as NetworkException;
+                    return Center(
+                      child: Text(loadTranslation(APIErrors[error.error.message]!)),
                     );
                   } else if (snapshot.hasData) {
                     return QuizzesList(quizzes: snapshot.data!, onPush: widget.onPush,);

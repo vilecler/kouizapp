@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:kouizapp/errors/networkexception.dart';
 import 'package:kouizapp/utils/hexcolor.dart';
 import 'package:kouizapp/utils/translation.dart';
 import 'package:kouizapp/widgets/titles/mediumtitlewidget.dart';
@@ -7,6 +7,7 @@ import 'package:kouizapp/widgets/searchboxwidget.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../constants/apierrors.dart';
 import '../../../constants/customcolors.dart';
 import '../../../models/theme.dart' as model;
 import '../../../services/theme_controller.dart';
@@ -33,10 +34,16 @@ class _ThemePageState extends State<ThemePage> {
 
   void loadThemes(String category) async{
     _themesFuture = fetchThemes(category);
-    List<model.Theme> themes = await _themesFuture;
-    setState(() {
-      themesCount = themes.length;
-    });
+    try {
+      List<model.Theme> themes = await _themesFuture;
+      setState(() {
+        themesCount = themes.length;
+      });
+    } on NetworkException catch(e){
+      setState(() {
+        themesCount = 0;
+      });
+    }
   }
 
   @override
@@ -73,8 +80,9 @@ class _ThemePageState extends State<ThemePage> {
                 future: _themesFuture,
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
-                    return const Center(
-                      child: Text('An error has occurred!'),
+                    NetworkException error = snapshot.error as NetworkException;
+                    return Center(
+                      child: Text(loadTranslation(APIErrors[error.error.message]!)),
                     );
                   } else if (snapshot.hasData) {
                     return ThemesList(themes: snapshot.data!, onPush: widget.onPush,);
