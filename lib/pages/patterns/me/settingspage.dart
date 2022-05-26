@@ -7,6 +7,7 @@ import 'package:kouizapp/services/auth_cognito.dart' as auth;
 import 'package:kouizapp/utils/translation.dart';
 import 'package:settings_ui/settings_ui.dart';
 
+import '../../../models/user.dart';
 import '../../../widgets/hearders/backheaderwidget.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -21,6 +22,22 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
 
   final sectionTextStyle = const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700);
+
+  @override
+  void initState() {
+    super.initState();
+    loadUser();
+  }
+
+  User? currentUser;
+
+  void loadUser() async{
+    User user = await auth.getUser();
+    setState(() {
+      currentUser = user;
+    });
+  }
+
 
   SettingsThemeData themeData = const SettingsThemeData(
     settingsListBackground: CustomColors.lightWhite,
@@ -66,25 +83,25 @@ class _SettingsPageState extends State<SettingsPage> {
                     tiles: [
                       SettingsTile(
                         title: Text(AppLocalizations.of(context)!.username),
-                        description: Text('petitstring'),
+                        description: Text((currentUser != null) ? currentUser!.username : ''),
                         leading: const FaIcon(FontAwesomeIcons.userAlt),
                         onPressed: (BuildContext context) {},
                       ),
                       SettingsTile(
                         title: Text(AppLocalizations.of(context)!.pseudo),
-                        description: Text('@petitstring'),
+                        description: Text('@' + ((currentUser != null) ? currentUser!.pseudo : '')),
                         leading: const FaIcon(FontAwesomeIcons.userAlt),
                         onPressed: (BuildContext context) {},
                       ),
                       SettingsTile(
                         title: Text(AppLocalizations.of(context)!.email),
-                        description: Text('vivien.leclercq@gmail.com'),
+                        description: Text( (currentUser != null) ? currentUser!.email : '' ),
                         leading: const FaIcon(FontAwesomeIcons.solidEnvelope),
                         onPressed: (BuildContext context) {},
                       ),
                       SettingsTile(
                         title: Text(AppLocalizations.of(context)!.password),
-                        description: Text('***********'),
+                        description: const Text('***********'),
                         leading: const FaIcon(FontAwesomeIcons.lock),
                         onPressed: (BuildContext context) {},
                       ),

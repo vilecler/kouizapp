@@ -117,7 +117,7 @@
   "notAuthorizedException": "Le mot de passe fourni est faux.",
   "userNotFoundException": "Aucun utilisateur avec ce nom d'utilisateur n'a été trouvé.",
 
-  "settings": "Pramètres",
+  "settings": "Paramètres",
   "general": "Général",
   "user": "Utilisateur",
   "language": "Langue",

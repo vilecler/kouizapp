@@ -20,6 +20,8 @@ IconData stringToIcon(String icon){
       return FontAwesomeIcons.dna;
     case 'film':
       return FontAwesomeIcons.film;
+    case 'gamepad':
+      return FontAwesomeIcons.gamepad;
     case 'globe':
       return FontAwesomeIcons.globe;
     case 'globe-africa':
@@ -40,6 +42,8 @@ IconData stringToIcon(String icon){
       return FontAwesomeIcons.moneyBill;
     case 'mountain':
       return FontAwesomeIcons.mountain;
+    case 'music':
+      return FontAwesomeIcons.music;
     case 'theater-masks':
       return FontAwesomeIcons.theaterMasks;
     case 'utensils':

@@ -12,7 +12,15 @@ final userPool = CognitoUserPool(
   Networking.clientId,
 );
 
+User? currentUser;
+DateTime? lastUserRefresh;
+
 Future<User> getUser() async {
+  if(currentUser != null && lastUserRefresh != null && DateTime.now().difference(lastUserRefresh!).inSeconds < 5){
+    print("Cache user returned " + DateTime.now().difference(lastUserRefresh!).inSeconds.toString());
+    return currentUser!;
+  }
+
   String? email = await storage.read(key: 'email');
   String? password = await storage.read(key: 'password');
 
@@ -69,7 +77,9 @@ Future<User> getUser() async {
       throw Exception('One attribute is missing.');
     }
 
-    return User(sub: sub, username: username, pseudo: pseudo, email: email, energy: energy, experience: experience);
+    currentUser = User(sub: sub, username: username, pseudo: pseudo, email: email, energy: energy, experience: experience);
+    lastUserRefresh = DateTime.now();
+    return currentUser!;
   } on CognitoClientException catch (e) {
     // User find but credentials are not valid, need to ask user an other account
     if (e.code == 'UserNotFoundException' || e.code == 'NotAuthorizedException'){
