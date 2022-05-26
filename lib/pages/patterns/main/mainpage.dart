@@ -30,7 +30,7 @@ class MainPageState extends State<MainPage> {
 
   //Call when User disconnects
   void disconnect(){
-    Navigator.pushReplacementNamed(context,'/login');
+    Navigator.pushReplacementNamed(context, '/login');
   }
 
   final _navigatorKeys = {

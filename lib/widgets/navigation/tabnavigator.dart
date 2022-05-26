@@ -105,10 +105,14 @@ class _TabNavigatorState extends State<TabNavigator> {
   @override
   Widget build(BuildContext context) {
     final routeBuilders = _routeBuilders(context);
+
     return Navigator(
       key: widget.navigatorKey,
       initialRoute: TabNavigatorRoutes.home,
       onGenerateRoute: (routeSettings) {
+        if(routeSettings.name == '/'){  //Avoid duplicated primary pages
+          return null;
+        }
         return MaterialPageRoute(
           builder: (context) {
             return routeBuilders['/' + widget.tabItem.name]!(context);
