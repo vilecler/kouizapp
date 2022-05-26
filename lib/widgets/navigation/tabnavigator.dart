@@ -8,6 +8,7 @@ import 'package:kouizapp/pages/patterns/quiz/quizlistpage.dart';
 import 'package:kouizapp/pages/patterns/quiz/quizplaygroundpage.dart';
 import 'package:kouizapp/pages/patterns/quiz/quizstartpage.dart';
 import 'package:kouizapp/widgets/navigation/tabitem.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../../pages/patterns/home/recentpage.dart';
 import '../../pages/patterns/home/suggestionspage.dart';
@@ -57,7 +58,7 @@ class TabNavigator extends StatefulWidget {
 }
 
 class _TabNavigatorState extends State<TabNavigator> {
-  void push(BuildContext context, String route, [Object? arguments]) {
+  void push(BuildContext context, String route, [Object? arguments, String? orientation]) {
     var routeBuilders = _routeBuilders(context);
 
     //Special route to call if the user wants to disconnect
@@ -66,8 +67,29 @@ class _TabNavigatorState extends State<TabNavigator> {
       return;
     }
 
-    Navigator.push(
-      context,
+    if(orientation != null && orientation == 'back'){
+      Navigator.push(context,
+        PageTransition(
+            child: routeBuilders[route]!(context),
+            type: PageTransitionType.leftToRight,
+            settings: RouteSettings(
+                arguments: arguments
+            )
+        ),
+      );
+    } else {
+      Navigator.push(context,
+        PageTransition(
+          child: routeBuilders[route]!(context),
+          type: PageTransitionType.rightToLeft,
+          settings: RouteSettings(
+              arguments: arguments
+          )
+        ),
+      );
+    }
+    /*Navigator.push(
+      context,      
       MaterialPageRoute(
         builder: (context) =>
             routeBuilders[route]!(context),
@@ -75,7 +97,7 @@ class _TabNavigatorState extends State<TabNavigator> {
           arguments: arguments
         )
       )
-    );
+    );*/
   }
 
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context) {

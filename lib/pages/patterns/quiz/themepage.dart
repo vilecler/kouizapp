@@ -70,47 +70,50 @@ class _ThemePageState extends State<ThemePage> {
     loadUser();
 
     return SafeArea(
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            BackHeaderWidget(title: name!, bolt: (currentUser != null) ? currentUser!.energy : 0),
+      child: Container(
+        color: CustomColors.lightWhite,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BackHeaderWidget(title: name!, bolt: (currentUser != null) ? currentUser!.energy : 0),
 
-            const SizedBox(height: 15.0,),
-            MediumTitleWidget(text: AppLocalizations.of(context)!.chooseATheme),
-            const SearchBoxWidget(),
+              const SizedBox(height: 15.0,),
+              MediumTitleWidget(text: AppLocalizations.of(context)!.chooseATheme),
+              const SearchBoxWidget(),
 
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10.0, left: 40.0, right: 40.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(themesCount.toString() + ' ' + AppLocalizations.of(context)!.themes.toLowerCase() + '.', style: const TextStyle(color: CustomColors.grey, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),),
-                  Text(AppLocalizations.of(context)!.filter, style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),)
-                ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10.0, left: 40.0, right: 40.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(themesCount.toString() + ' ' + AppLocalizations.of(context)!.themes.toLowerCase() + '.', style: const TextStyle(color: CustomColors.grey, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),),
+                    Text(AppLocalizations.of(context)!.filter, style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),)
+                  ],
+                ),
               ),
-            ),
 
-            Flexible(
-              child: FutureBuilder<List<model.Theme>>(
-                future: _themesFuture,
-                builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    NetworkException error = snapshot.error as NetworkException;
-                    return Center(
-                      child: Text(loadTranslation(APIErrors[error.error.message]!)),
-                    );
-                  } else if (snapshot.hasData) {
-                    return ThemesList(themes: snapshot.data!, onPush: widget.onPush,);
-                  } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                },
+              Flexible(
+                child: FutureBuilder<List<model.Theme>>(
+                  future: _themesFuture,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      NetworkException error = snapshot.error as NetworkException;
+                      return Center(
+                        child: Text(loadTranslation(APIErrors[error.error.message]!)),
+                      );
+                    } else if (snapshot.hasData) {
+                      return ThemesList(themes: snapshot.data!, onPush: widget.onPush,);
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
               ),
-            ),
 
-          ]
+            ]
+        ),
       ),
     );
   }

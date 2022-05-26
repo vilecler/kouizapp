@@ -46,74 +46,77 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     loadUser();
     return SafeArea(
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            BackHeaderWidget(title: AppLocalizations.of(context)!.settings, bolt: (currentUser != null) ? currentUser!.energy : 0),
+      child: Container(
+        color: CustomColors.lightWhite,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BackHeaderWidget(title: AppLocalizations.of(context)!.settings, bolt: (currentUser != null) ? currentUser!.energy : 0),
 
-            Flexible(
-              child: SettingsList(
-                lightTheme: themeData,
-                sections: [
-                  SettingsSection(
-                    title: Text(AppLocalizations.of(context)!.general, style: sectionTextStyle),
-                    tiles: [
-                      SettingsTile(
-                        title: Text(AppLocalizations.of(context)!.language),
-                        description: Text(getLocaleValue(getSelectedLocale())),
-                        leading: const FaIcon(FontAwesomeIcons.language),
-                        onPressed: (BuildContext context) {},
-                      ),
-                      SettingsTile.switchTile(
-                          leading: const FaIcon(FontAwesomeIcons.solidBell),
-                          initialValue: true,
-                          onToggle: (value) { },
-                          title: Text(AppLocalizations.of(context)!.allowNotifications)
-                      )
-                    ],
-                  ),
+              Flexible(
+                child: SettingsList(
+                  lightTheme: themeData,
+                  sections: [
+                    SettingsSection(
+                      title: Text(AppLocalizations.of(context)!.general, style: sectionTextStyle),
+                      tiles: [
+                        SettingsTile(
+                          title: Text(AppLocalizations.of(context)!.language),
+                          description: Text(getLocaleValue(getSelectedLocale())),
+                          leading: const FaIcon(FontAwesomeIcons.language),
+                          onPressed: (BuildContext context) {},
+                        ),
+                        SettingsTile.switchTile(
+                            leading: const FaIcon(FontAwesomeIcons.solidBell),
+                            initialValue: true,
+                            onToggle: (value) { },
+                            title: Text(AppLocalizations.of(context)!.allowNotifications)
+                        )
+                      ],
+                    ),
 
-                  SettingsSection(
-                    title: Text(AppLocalizations.of(context)!.user, style: sectionTextStyle),
-                    tiles: [
-                      SettingsTile(
-                        title: Text(AppLocalizations.of(context)!.username),
-                        description: Text((currentUser != null) ? currentUser!.username : ''),
-                        leading: const FaIcon(FontAwesomeIcons.userAlt),
-                        onPressed: (BuildContext context) {},
-                      ),
-                      SettingsTile(
-                        title: Text(AppLocalizations.of(context)!.pseudo),
-                        description: Text('@' + ((currentUser != null) ? currentUser!.pseudo : '')),
-                        leading: const FaIcon(FontAwesomeIcons.userAlt),
-                        onPressed: (BuildContext context) {},
-                      ),
-                      SettingsTile(
-                        title: Text(AppLocalizations.of(context)!.email),
-                        description: Text( (currentUser != null) ? currentUser!.email : '' ),
-                        leading: const FaIcon(FontAwesomeIcons.solidEnvelope),
-                        onPressed: (BuildContext context) {},
-                      ),
-                      SettingsTile(
-                        title: Text(AppLocalizations.of(context)!.password),
-                        description: const Text('***********'),
-                        leading: const FaIcon(FontAwesomeIcons.lock),
-                        onPressed: (BuildContext context) {},
-                      ),
-                      SettingsTile(
-                        title: Text(AppLocalizations.of(context)!.disconnect),
-                        leading: const FaIcon(FontAwesomeIcons.userAltSlash),
-                        onPressed: (BuildContext context) async {
-                          await auth.disconnect();
-                          widget.onPush(context, '/disconnect');
-                        },
-                      )
-                    ],
-                  )
-                ],
-              ),
-            )
-          ]
+                    SettingsSection(
+                      title: Text(AppLocalizations.of(context)!.user, style: sectionTextStyle),
+                      tiles: [
+                        SettingsTile(
+                          title: Text(AppLocalizations.of(context)!.username),
+                          description: Text((currentUser != null) ? currentUser!.username : ''),
+                          leading: const FaIcon(FontAwesomeIcons.userAlt),
+                          onPressed: (BuildContext context) {},
+                        ),
+                        SettingsTile(
+                          title: Text(AppLocalizations.of(context)!.pseudo),
+                          description: Text('@' + ((currentUser != null) ? currentUser!.pseudo : '')),
+                          leading: const FaIcon(FontAwesomeIcons.userAlt),
+                          onPressed: (BuildContext context) {},
+                        ),
+                        SettingsTile(
+                          title: Text(AppLocalizations.of(context)!.email),
+                          description: Text( (currentUser != null) ? currentUser!.email : '' ),
+                          leading: const FaIcon(FontAwesomeIcons.solidEnvelope),
+                          onPressed: (BuildContext context) {},
+                        ),
+                        SettingsTile(
+                          title: Text(AppLocalizations.of(context)!.password),
+                          description: const Text('***********'),
+                          leading: const FaIcon(FontAwesomeIcons.lock),
+                          onPressed: (BuildContext context) {},
+                        ),
+                        SettingsTile(
+                          title: Text(AppLocalizations.of(context)!.disconnect),
+                          leading: const FaIcon(FontAwesomeIcons.userAltSlash),
+                          onPressed: (BuildContext context) async {
+                            await auth.disconnect();
+                            widget.onPush(context, '/disconnect');
+                          },
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              )
+            ]
+        ),
       ),
     );
   }

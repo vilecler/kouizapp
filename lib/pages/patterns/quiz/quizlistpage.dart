@@ -68,45 +68,48 @@ class _QuizListPageState extends State<QuizListPage> {
     loadUser();
 
     return SafeArea(
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            BackHeaderWidget(title: name!, bolt: (currentUser != null) ? currentUser!.energy : 0, small: true),
-            const SizedBox(height: 15.0,),
-            const SearchBoxWidget(),
+      child: Container(
+        color: CustomColors.lightWhite,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              BackHeaderWidget(title: name!, bolt: (currentUser != null) ? currentUser!.energy : 0, small: true),
+              const SizedBox(height: 15.0,),
+              const SearchBoxWidget(),
 
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10.0, left: 40.0, right: 40.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(quizCount.toString() + ' ' + AppLocalizations.of(context)!.quizzes.toLowerCase() + '.', style: const TextStyle(color: CustomColors.grey, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),),
-                  Text(AppLocalizations.of(context)!.filter, style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),)
-                ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10.0, left: 40.0, right: 40.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(quizCount.toString() + ' ' + AppLocalizations.of(context)!.quizzes.toLowerCase() + '.', style: const TextStyle(color: CustomColors.grey, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),),
+                    Text(AppLocalizations.of(context)!.filter, style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),)
+                  ],
+                ),
               ),
-            ),
 
-            Flexible(
-              child: FutureBuilder<List<Quiz>>(
-                future: _quizzesFuture,
-                builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    NetworkException error = snapshot.error as NetworkException;
-                    return Center(
-                      child: Text(loadTranslation(APIErrors[error.error.message]!)),
-                    );
-                  } else if (snapshot.hasData) {
-                    return QuizzesList(quizzes: snapshot.data!, onPush: widget.onPush,);
-                  } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                },
+              Flexible(
+                child: FutureBuilder<List<Quiz>>(
+                  future: _quizzesFuture,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      NetworkException error = snapshot.error as NetworkException;
+                      return Center(
+                        child: Text(loadTranslation(APIErrors[error.error.message]!)),
+                      );
+                    } else if (snapshot.hasData) {
+                      return QuizzesList(quizzes: snapshot.data!, onPush: widget.onPush,);
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
               ),
-            ),
 
-          ]
+            ]
+        ),
       ),
     );
   }
