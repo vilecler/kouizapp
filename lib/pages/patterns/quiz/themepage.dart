@@ -27,11 +27,25 @@ class _ThemePageState extends State<ThemePage> {
   String? category;
   String? name;
 
+  int themesCount = 0;
+
+  late Future<List<model.Theme>> _themesFuture;
+
+  void loadThemes(String category) async{
+    _themesFuture = fetchThemes(category);
+    List<model.Theme> themes = await _themesFuture;
+    setState(() {
+      themesCount = themes.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
     category = arguments['category'];
     name = arguments['name'];
+
+    loadThemes(category!);
 
     return SafeArea(
       child: Column(
@@ -48,7 +62,7 @@ class _ThemePageState extends State<ThemePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('85 ' + AppLocalizations.of(context)!.themes + '.', style: const TextStyle(color: CustomColors.grey, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),),
+                  Text(themesCount.toString() + ' ' + AppLocalizations.of(context)!.themes.toLowerCase() + '.', style: const TextStyle(color: CustomColors.grey, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),),
                   Text(AppLocalizations.of(context)!.filter, style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),)
                 ],
               ),
@@ -56,7 +70,7 @@ class _ThemePageState extends State<ThemePage> {
 
             Flexible(
               child: FutureBuilder<List<model.Theme>>(
-                future: fetchThemes(category!),
+                future: _themesFuture,
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return const Center(

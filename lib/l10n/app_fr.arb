@@ -14,6 +14,7 @@
 
   "home": "Accueil",
   "quiz": "Quiz",
+  "quizzes": "Quiz",
   "messages": "Messages",
   "me": "Moi",
 
@@ -52,6 +53,7 @@
   "sortBy": "Classer par",
   "select": "Sélectionner",
   "back": "Retour",
+  "close": "Fermer",
 
   "seeMore": "Voir plus",
 
@@ -73,5 +75,45 @@
   "community": "Communauté",
   "category": "Catégorie",
   "categories": "Catégories",
-  "playWithFriends": "Joue avec des amis"
+  "playWithFriends": "Joue avec des amis",
+
+
+  "username": "Nom d'utilisateur",
+  "pseudo": "Pseudo",
+  "email": "Email",
+  "password": "Mot de passe",
+  "confirmPassword": "Confirmation mot de passe",
+  "code": "Code",
+
+  "usernamePlaceholder": "Comment les gens vous appelle?",
+  "emailPlaceholder": "Quel est votre email?",
+  "passwordPlaceholder": "Entrez un mot de passer",
+  "confirmPasswordPlaceholder": "Réentrer un mot de passe",
+  "codePlaceholder": "Entrez le code à 6 chiffres reçu",
+
+  "signupError": "Erreur d'inscription",
+  "usernameExistsException": "Un utilisateur avec ce nom d'utilisateur existe déjà.",
+  "invalidPasswordException": "Le mot de passe fourni est invalide.",
+  "pleaseProvideAnUsername": "Merci de fournir un nom d'utilisateur.",
+  "pleaseProvideAPassword": "Merci de fournir un mot de passe.",
+  "pleaseConfirmYourPassword": "Merci de confirmer votre mot de passe.",
+  "passwordTooShort": "Mot de passe trop court (8 caractères minimum).",
+  "passwordsDoNotMatch": "Les mots de passe ne correspondent pas.",
+  "creatingAccount": "Création du compte",
+
+  "codeNotValid": "Merci de founir un code valide (6 chiffres).",
+  "confirmingVerificationCode": "Confirmation du code de validation",
+  "codeNotReceived": "Code pas reçu ?",
+  "resendCode": "Renvoyer le code",
+  "badCode": "Mauvais code",
+  "badCodeDescription": "Le code que vous avez fourni est un mauvais code.",
+  "newCodeSent": "Nouveau code envoyé",
+  "newCodeSentTo": "Un nouveau code de confirmation a été envoyé à",
+  "codeError": "Code erreur",
+  "codeUnknownError": "Erreur inconnu en essayant de renvoyer un code de confirmation.",
+
+  "processingLogin": "Connexion en cours",
+  "loginError": "Erreur de connexion",
+  "notAuthorizedException": "Le mot de passe fourni est faux.",
+  "userNotFoundException": "Aucun utilisateur avec ce nom d'utilisateur n'a été trouvé."
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/utils/hexcolor.dart';
 import 'package:kouizapp/utils/translation.dart';
 import 'package:kouizapp/widgets/presentation/friend/suggestion/friendplaysuggestionwidget.dart';
@@ -28,6 +27,17 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin {
+  int categoriesCount = 0;
+
+  late Future<List<Category>> _categoriesFuture;
+
+  void loadCategories() async{
+    _categoriesFuture = fetchCategories();
+    List<Category> categories = await _categoriesFuture;
+    setState(() {
+      categoriesCount = categories.length;
+    });
+  }
 
   late TabController _tabTabController;
 
@@ -45,6 +55,8 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    loadCategories();
+
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +108,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('85 ' + AppLocalizations.of(context)!.categories.toLowerCase() + '.', style: const TextStyle(color: CustomColors.grey, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),),
+                          Text(categoriesCount.toString() + ' ' + AppLocalizations.of(context)!.categories.toLowerCase() + '.', style: const TextStyle(color: CustomColors.grey, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),),
                           Text(AppLocalizations.of(context)!.sortBy, style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),)
                         ],
                       ),
@@ -104,7 +116,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
 
                     Flexible(
                       child: FutureBuilder<List<Category>>(
-                        future: fetchCategories(),
+                        future: _categoriesFuture,
                         builder: (context, snapshot) {
                           if (snapshot.hasError) {
                             return const Center(
@@ -120,8 +132,6 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                         },
                       ),
                     ),
-
-
 
                   ],
                 ),

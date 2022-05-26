@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kouizapp/constants/customcolors.dart';
+import 'package:kouizapp/errors/loginrequiredexception.dart';
 import 'package:kouizapp/pages/patterns/auth/confirmsignupkouiz.dart';
+import 'package:kouizapp/pages/patterns/auth/loginkouizpage.dart';
 import 'package:kouizapp/pages/patterns/auth/loginpage.dart';
 import 'package:kouizapp/pages/patterns/auth/signupkouizpage.dart';
 import 'package:kouizapp/pages/patterns/auth/signuppage.dart';
 import 'package:kouizapp/pages/splashscreenpage.dart';
+import 'package:kouizapp/services/auth_cognito.dart' as auth;
 import 'pages/patterns/main/mainpage.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.white,
@@ -34,11 +37,16 @@ class _MyAppState extends State<MyApp> {
   final ThemeData theme = ThemeData();
 
   Future<Widget> loadFromFuture() async {
-
-    // <fetch data from server. ex. login>
-
-    return Future.value(LoginPage());
-    //return Future.value(const MainPage());
+    try {
+      //Try to get User object
+      await auth.getUser();
+      return Future.value(const MainPage());
+    } on LoginRequiredException catch (e) {
+      //Unable to find User so login is required
+      return Future.value(LoginPage());
+    } catch(e) {
+      rethrow;
+    }
   }
 
   @override
@@ -58,6 +66,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: theme.copyWith(
         colorScheme: theme.colorScheme.copyWith(primary: CustomColors.mainPurple, secondary: CustomColors.mainPurple),
+        backgroundColor: CustomColors.fakeWhite,
       ),
       home: Scaffold(
         body: SafeArea(
@@ -72,6 +81,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/main': (context) => const MainPage(),
         '/login': (context) => LoginPage(),
+        '/loginWithKouiz': (context) => LoginKouizPage(),
         '/signup': (context) => SignUpPage(),
         '/signupWithKouiz': (context) => SignUpKouizPage(),
         '/confirmSignupWithKouiz': (context) => ConfirmSignUpKouizPage(),

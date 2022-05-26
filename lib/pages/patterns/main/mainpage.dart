@@ -17,17 +17,13 @@ class MainPageState extends State<MainPage> {
   bool isBottomBarDisplayed = true;
 
   void displayBottomBar(){
-    debugPrint("displayBottomBar()");
     setState(() {
-      debugPrint("displayBottomBar() state changed");
       isBottomBarDisplayed = true;
     });
   }
 
   void hideBottomBar(){
-    debugPrint("hideBottomBar()");
     setState(() {
-      debugPrint("hideBottomBar() state changed");
       isBottomBarDisplayed = false;
     });
   }
@@ -41,13 +37,11 @@ class MainPageState extends State<MainPage> {
   };
 
   void _selectTab(TabItem tabItem) {
-    debugPrint('_selectTab() 1');
     if (tabItem == _currentTab) {
       // pop to first route
       _navigatorKeys[tabItem]!.currentState!.popUntil((route) => route.isFirst);
     } else {
       setState((){
-        debugPrint('Tabbar state change: ' + tabItem.name);
         _currentTab = tabItem;
       });
     }
@@ -84,7 +78,6 @@ class MainPageState extends State<MainPage> {
   }
 
   Widget _buildOffstageNavigator(TabItem tabItem) {
-    debugPrint('_buildOffstageNavigator: ' + tabItem.name);
     return Offstage(
       offstage: _currentTab != tabItem,
       child: TabNavigator(

@@ -26,11 +26,22 @@ class _QuizListPageState extends State<QuizListPage> {
 
   int quizCount = 0;
 
+  late Future<List<Quiz>> _quizzesFuture;
+
+  void loadQuizzes(String theme) async{
+    _quizzesFuture = fetchQuizzes(theme);
+    List<Quiz> quizzes = await _quizzesFuture;
+    setState(() {
+      quizCount = quizzes.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
     theme = arguments['theme'];
     name = arguments['name'];
+    loadQuizzes(theme!);
 
     return SafeArea(
       child: Column(
@@ -45,7 +56,7 @@ class _QuizListPageState extends State<QuizListPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(quizCount.toString() + ' quiz found.', style: const TextStyle(color: CustomColors.grey, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),),
+                  Text(quizCount.toString() + ' ' + AppLocalizations.of(context)!.quizzes.toLowerCase() + '.', style: const TextStyle(color: CustomColors.grey, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),),
                   Text(AppLocalizations.of(context)!.filter, style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 12.0, fontWeight: FontWeight.w400, decoration: TextDecoration.none),)
                 ],
               ),
@@ -53,15 +64,13 @@ class _QuizListPageState extends State<QuizListPage> {
 
             Flexible(
               child: FutureBuilder<List<Quiz>>(
-                future: fetchQuizzes(theme!),
+                future: _quizzesFuture,
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return const Center(
                       child: Text('An error has occurred!'),
                     );
                   } else if (snapshot.hasData) {
-                    quizCount = snapshot.data!.length;
-                    print("Length: " + quizCount.toString());
                     return QuizzesList(quizzes: snapshot.data!, onPush: widget.onPush,);
                   } else {
                     return const Center(

@@ -3,7 +3,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:kouizapp/services/auth_cognito.dart';
+import 'package:kouizapp/services/auth_cognito.dart' as auth;
 import 'package:kouizapp/widgets/buttons/socials/kouizbuttonwidget.dart';
 import 'package:kouizapp/widgets/kouizlogowidget.dart';
 
@@ -19,7 +19,6 @@ class SignUpKouizPage extends StatefulWidget {
 }
 
 class _SignUpKouizPageState extends State<SignUpKouizPage> {
-  final AuthCognito authCognito = AuthCognito();
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _username = TextEditingController();
@@ -37,7 +36,7 @@ class _SignUpKouizPageState extends State<SignUpKouizPage> {
       isDismissible: true,
     );
     bl.style(
-      message: 'Creating account...',
+      message: AppLocalizations.of(context)!.creatingAccount + '...',
     );
 
     if (!_formKey.currentState!.validate()) { //If form is not valid do nothing
@@ -45,7 +44,7 @@ class _SignUpKouizPageState extends State<SignUpKouizPage> {
     }
 
     await bl.display();
-    String result = await authCognito.signUp(_username.text, _password.text, _email.text);
+    String result = await auth.signUp(_username.text, _password.text, _email.text);
     bl.close();
 
     if (result == 'success'){
@@ -57,22 +56,22 @@ class _SignUpKouizPageState extends State<SignUpKouizPage> {
     String errorMessage = 'Unknown error';
     switch(result){
       case 'UsernameExistsException':
-        errorMessage = 'An user with this username already exists.';
+        errorMessage = AppLocalizations.of(context)!.usernameExistsException;
         break;
       case 'InvalidPasswordException':
-        errorMessage = 'The password provided is not valid.';
+        errorMessage = AppLocalizations.of(context)!.invalidPasswordException;
         break;
     }
 
     return showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text('Sign Up Error'),
+        title: Text(AppLocalizations.of(context)!.signupError),
         content: Text(errorMessage),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.pop(context, 'Cancel'),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context)!.close),
           ),
         ],
       ),
@@ -86,20 +85,20 @@ class _SignUpKouizPageState extends State<SignUpKouizPage> {
 
   String? passwordValidator(String? password){
     if(password == null || password.isEmpty){
-      return 'Please provide a password.';
+      return AppLocalizations.of(context)!.pleaseProvideAPassword;
     }
     if(password.length < 8){
-      return 'Password is too short (8 caracters minimum).';
+      return AppLocalizations.of(context)!.passwordTooShort;
     }
     return null;
   }
 
   String? confirmPasswordValidator(String? confirmPassword){
     if(confirmPassword == null || confirmPassword.isEmpty){
-      return 'Please confirm your password.';
+      return AppLocalizations.of(context)!.pleaseConfirmYourPassword;
     }
     if(_confirmpassword.text != _password.text){
-      return 'Passwords are not equal.';
+      return AppLocalizations.of(context)!.passwordsDoNotMatch;
     }
     return null;
   }
@@ -163,9 +162,9 @@ class _SignUpKouizPageState extends State<SignUpKouizPage> {
                           maxLengthEnforcement: MaxLengthEnforcement.truncateAfterCompositionEnds,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           decoration: InputDecoration(
-                              labelText: "Username",
+                              labelText: AppLocalizations.of(context)!.username,
                               floatingLabelBehavior: FloatingLabelBehavior.never,
-                              hintText: 'How do other people call you?',
+                              hintText: AppLocalizations.of(context)!.usernamePlaceholder,
                               counterText: "",
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12.0),
@@ -188,7 +187,7 @@ class _SignUpKouizPageState extends State<SignUpKouizPage> {
                               contentPadding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0)
                           ),
                           controller: _username,
-                          validator: (username) { if(username!.isEmpty){ return 'Please provide an username.'; } else { return null; } },
+                          validator: (username) { if(username!.isEmpty){ return AppLocalizations.of(context)!.pleaseProvideAnUsername; } else { return null; } },
                         ),
                       ),
 
@@ -201,9 +200,9 @@ class _SignUpKouizPageState extends State<SignUpKouizPage> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
-                              labelText: "Email",
+                              labelText: AppLocalizations.of(context)!.email,
                               floatingLabelBehavior: FloatingLabelBehavior.never,
-                              hintText: 'What is your email?',
+                              hintText: AppLocalizations.of(context)!.emailPlaceholder,
                               counterText: "",
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12.0),
@@ -240,9 +239,9 @@ class _SignUpKouizPageState extends State<SignUpKouizPage> {
                           keyboardType: TextInputType.emailAddress,
                           obscureText: true,
                           decoration: InputDecoration(
-                              labelText: "Password",
+                              labelText: AppLocalizations.of(context)!.password,
                               floatingLabelBehavior: FloatingLabelBehavior.never,
-                              hintText: 'Please enter a password',
+                              hintText: AppLocalizations.of(context)!.passwordPlaceholder,
                               counterText: "",
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12.0),
@@ -278,9 +277,9 @@ class _SignUpKouizPageState extends State<SignUpKouizPage> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           obscureText: true,
                           decoration: InputDecoration(
-                              labelText: "Confirm password",
+                              labelText: AppLocalizations.of(context)!.confirmPassword,
                               floatingLabelBehavior: FloatingLabelBehavior.never,
-                              hintText: 'Please reenter your password',
+                              hintText: AppLocalizations.of(context)!.confirmPasswordPlaceholder,
                               counterText: "",
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12.0),

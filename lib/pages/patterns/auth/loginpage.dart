@@ -26,6 +26,10 @@ class _LoginPageState extends State<LoginPage> {
     Navigator.pushReplacementNamed(context, '/signup');
   }
 
+  void loginWithKouiz(){
+    Navigator.of(context).pushNamed('/loginWithKouiz');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -73,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
 
             FacebookButtonWidget(text: AppLocalizations.of(context)!.loginWithFacebook, onTap: loginCompleted),
             GoogleButtonWidget(text: AppLocalizations.of(context)!.loginWithGoogle, onTap: loginCompleted),
-            KouizButtonWidget(text: AppLocalizations.of(context)!.loginWithKouiz, onTap: loginCompleted),
+            KouizButtonWidget(text: AppLocalizations.of(context)!.loginWithKouiz, onTap: loginWithKouiz),
 
           ],
         ),

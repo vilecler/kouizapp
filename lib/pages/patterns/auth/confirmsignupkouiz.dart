@@ -1,18 +1,14 @@
 import 'package:bottom_loader/bottom_loader.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:kouizapp/services/auth_cognito.dart';
+import 'package:kouizapp/services/auth_cognito.dart' as auth;
 import 'package:kouizapp/widgets/buttons/socials/kouizbuttonwidget.dart';
 import 'package:kouizapp/widgets/kouizlogowidget.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../constants/customcolors.dart';
-import '../../../widgets/buttons/backgrounded/emptybuttonwidget.dart';
-import '../../../widgets/buttons/backgrounded/plainbuttonwidget.dart';
 
 class ConfirmSignUpKouizPage extends StatefulWidget {
   const ConfirmSignUpKouizPage({Key? key}) : super(key: key);
@@ -22,7 +18,6 @@ class ConfirmSignUpKouizPage extends StatefulWidget {
 }
 
 class _ConfirmSignUpKouizPageState extends State<ConfirmSignUpKouizPage> {
-  final AuthCognito authCognito = AuthCognito();
   final _formKey = GlobalKey<FormState>();
 
   String? email;
@@ -36,7 +31,7 @@ class _ConfirmSignUpKouizPageState extends State<ConfirmSignUpKouizPage> {
       isDismissible: true,
     );
     bl.style(
-      message: 'Confirming verification code...',
+      message: AppLocalizations.of(context)!.confirmingVerificationCode + '...',
     );
 
     if (!_formKey.currentState!.validate()) { //If form is not valid do nothing
@@ -49,7 +44,7 @@ class _ConfirmSignUpKouizPageState extends State<ConfirmSignUpKouizPage> {
     }
 
     await bl.display();
-    bool result = await authCognito.confirmSignUp(email!, _verificationCode.text);
+    bool result = await auth.confirmSignUp(email!, _verificationCode.text);
     bl.close();
 
     if (result){
@@ -60,12 +55,12 @@ class _ConfirmSignUpKouizPageState extends State<ConfirmSignUpKouizPage> {
    return showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text('Bad code'),
-        content: Text('The code you provided is a bad code.'),
+        title: Text(AppLocalizations.of(context)!.badCode),
+        content: Text(AppLocalizations.of(context)!.badCodeDescription),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.pop(context, 'Cancel'),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context)!.close),
           ),
         ],
       ),
@@ -79,7 +74,7 @@ class _ConfirmSignUpKouizPageState extends State<ConfirmSignUpKouizPage> {
       isDismissible: true,
     );
     bl.style(
-      message: 'Sending new verification code...',
+      message: AppLocalizations.of(context)!.confirmingVerificationCode + '...',
     );
 
     if (email == null){
@@ -88,19 +83,19 @@ class _ConfirmSignUpKouizPageState extends State<ConfirmSignUpKouizPage> {
     }
 
     await bl.display();
-    var result = await authCognito.resendConfirmationCode(email!);
+    var result = await auth.resendConfirmationCode(email!);
     bl.close();
 
     if(result != false){
       return showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-          title: Text('New code sent'),
-          content: Text('A new confirmation code has been sent to ' + email! + '.'),
+          title: Text(AppLocalizations.of(context)!.newCodeSent),
+          content: Text(AppLocalizations.of(context)!.newCodeSentTo + ' ' + email! + '.'),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: const Text('Cancel'),
+              child: Text(AppLocalizations.of(context)!.close),
             ),
           ],
         ),
@@ -110,12 +105,12 @@ class _ConfirmSignUpKouizPageState extends State<ConfirmSignUpKouizPage> {
     return showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text('Error'),
-        content: Text('Unknwon error while trying to resend a confirmation code.'),
+        title: Text(AppLocalizations.of(context)!.codeError),
+        content: Text(AppLocalizations.of(context)!.codeUnknownError),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.pop(context, 'Cancel'),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context)!.close),
           ),
         ],
       ),
@@ -188,9 +183,9 @@ class _ConfirmSignUpKouizPageState extends State<ConfirmSignUpKouizPage> {
                             maxLengthEnforcement: MaxLengthEnforcement.truncateAfterCompositionEnds,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             decoration: InputDecoration(
-                                labelText: "Code",
+                                labelText: AppLocalizations.of(context)!.code,
                                 floatingLabelBehavior: FloatingLabelBehavior.never,
-                                hintText: 'Enter the 6 digits code you received',
+                                hintText: AppLocalizations.of(context)!.codePlaceholder,
                                 counterText: "",
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12.0),
@@ -213,7 +208,7 @@ class _ConfirmSignUpKouizPageState extends State<ConfirmSignUpKouizPage> {
                                 contentPadding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0)
                             ),
                             controller: _verificationCode,
-                            validator: (code) { if(code!.isEmpty || code.length < 6){ return 'Please provide valid code (6 digits).'; } else { return null; } },
+                            validator: (code) { if(code!.isEmpty || code.length < 6){ return AppLocalizations.of(context)!.codeNotValid; } else { return null; } },
                           ),
                         ),
                       ],
@@ -237,10 +232,10 @@ class _ConfirmSignUpKouizPageState extends State<ConfirmSignUpKouizPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text('Code not received?', style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w400, fontSize: 17.0, decoration: TextDecoration.none),),
+                  Text(AppLocalizations.of(context)!.codeNotReceived, style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w400, fontSize: 17.0, decoration: TextDecoration.none),),
                   Padding(
                     padding: const EdgeInsets.only(top: 5.0),
-                    child: Text('Resend code', style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w700, fontSize: 16.0, decoration: TextDecoration.none),),
+                    child: Text(AppLocalizations.of(context)!.resendCode, style: const TextStyle(color: CustomColors.white, fontFamily: 'Roboto', fontWeight: FontWeight.w700, fontSize: 16.0, decoration: TextDecoration.none),),
                   ),
                 ],
               ),

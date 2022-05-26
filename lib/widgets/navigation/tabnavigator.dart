@@ -3,6 +3,7 @@ import 'package:kouizapp/pages/patterns/home/popularpage.dart';
 import 'package:kouizapp/pages/patterns/main/homepage.dart';
 import 'package:kouizapp/pages/patterns/main/messagespage.dart';
 import 'package:kouizapp/pages/patterns/main/quizpage.dart';
+import 'package:kouizapp/pages/patterns/me/settingspage.dart';
 import 'package:kouizapp/pages/patterns/quiz/quizlistpage.dart';
 import 'package:kouizapp/pages/patterns/quiz/quizplaygroundpage.dart';
 import 'package:kouizapp/pages/patterns/quiz/quizstartpage.dart';
@@ -38,6 +39,8 @@ class TabNavigatorRoutes {
   static const String quizLobbyInvite = '/quiz/lobby/invite';
   static const String quizInvite = '/quiz/invite';
 
+  //Me subroutes
+  static const String meSettings = '/me/settings';
 }
 
 class TabNavigator extends StatefulWidget {
@@ -53,7 +56,7 @@ class TabNavigator extends StatefulWidget {
 }
 
 class _TabNavigatorState extends State<TabNavigator> {
-  void push(BuildContext context, String route, Object? arguments) {
+  void push(BuildContext context, String route, [Object? arguments]) {
     var routeBuilders = _routeBuilders(context);
 
     Navigator.push(
@@ -73,7 +76,7 @@ class _TabNavigatorState extends State<TabNavigator> {
       TabNavigatorRoutes.home: (context) => HomePage(onPush: push),
       TabNavigatorRoutes.quiz: (context) => QuizPage(onPush: push),
       TabNavigatorRoutes.messages: (context) => MessagesPage(),
-      TabNavigatorRoutes.me: (context) => MePage(),
+      TabNavigatorRoutes.me: (context) => MePage(onPush: push),
 
       //Home subroutes
       TabNavigatorRoutes.homeSuggestion: (context) => SuggestionPage(),
@@ -87,6 +90,8 @@ class _TabNavigatorState extends State<TabNavigator> {
       TabNavigatorRoutes.quizStart: (context) => QuizStartPage(onPush: push, hideBottomBarCallback: widget.hideBottomBarCallback, displayBottomBarCallback: widget.displayBottomBarCallback,),
       TabNavigatorRoutes.quizPlayground: (context) => QuizPlaygroundPage(onPush: push, hideBottomBarCallback: widget.hideBottomBarCallback, displayBottomBarCallback: widget.displayBottomBarCallback,),
 
+      //Me subroutes
+      TabNavigatorRoutes.meSettings: (context) => SettingsPage(onPush: push),
     };
   }
 

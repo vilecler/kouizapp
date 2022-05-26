@@ -14,6 +14,7 @@
 
   "home": "Home",
   "quiz": "Quiz",
+  "quizzes": "Quizzes",
   "messages": "Messages",
   "me": "Me",
 
@@ -52,6 +53,7 @@
   "sortBy": "Sort by",
   "select": "Select",
   "back": "Back",
+  "close": "Close",
 
   "seeMore": "See more",
 
@@ -73,5 +75,45 @@
   "community": "Community",
   "category": "Category",
   "categories": "Categories",
-  "playWithFriends": "Play with friends"
+  "playWithFriends": "Play with friends",
+
+  "username": "Username",
+  "pseudo": "Pseudo",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm password",
+  "code": "Code",
+
+  "usernamePlaceholder": "How do other people call you?",
+  "emailPlaceholder": "What is your email?",
+  "passwordPlaceholder": "Please enter a password",
+  "confirmPasswordPlaceholder": "Please reenter a password",
+  "codePlaceholder": "Enter the 6 digits code you received",
+
+  "signupError": "Sign Up Error",
+  "usernameExistsException": "An user with this username already exists.",
+  "invalidPasswordException": "The password provided is not valid.",
+  "pleaseProvideAnUsername": "Please provide an username.",
+  "pleaseProvideAPassword": "Please provide a password.",
+  "pleaseConfirmYourPassword": "Please confirm your password.",
+  "passwordTooShort": "Password is too short (8 characters minimum).",
+  "passwordsDoNotMatch": "Passwords do not match.",
+  "creatingAccount": "Creating account",
+
+  "codeNotValid": "Please provide valid code (6 digits).",
+  "confirmingVerificationCode": "Confirming verification code",
+  "codeNotReceived": "Code not received?",
+  "resendCode": "Resend code",
+  "badCode": "Bad code",
+  "badCodeDescription": "The code you provided is a bad code.",
+  "newCodeSent": "New code sent",
+  "newCodeSentTo": "A new confirmation code has been sent to",
+  "codeError": "Code error",
+  "codeUnknownError": "Unknown error while trying to resend a confirmation code.",
+
+  "processingLogin": "Processing login",
+  "loginError": "Login error",
+  "notAuthorizedException": "The password provided is wrong.",
+  "userNotFoundException": "No user with this email was found."
+
 }
