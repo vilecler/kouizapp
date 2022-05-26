@@ -115,5 +115,12 @@
   "processingLogin": "Connexion en cours",
   "loginError": "Erreur de connexion",
   "notAuthorizedException": "Le mot de passe fourni est faux.",
-  "userNotFoundException": "Aucun utilisateur avec ce nom d'utilisateur n'a été trouvé."
+  "userNotFoundException": "Aucun utilisateur avec ce nom d'utilisateur n'a été trouvé.",
+
+  "settings": "Pramètres",
+  "general": "Général",
+  "user": "Utilisateur",
+  "language": "Langue",
+  "allowNotifications": "Autoriser les notifications",
+  "disconnect": "Déconnexion"
 }

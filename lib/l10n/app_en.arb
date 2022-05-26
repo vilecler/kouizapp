@@ -114,6 +114,13 @@
   "processingLogin": "Processing login",
   "loginError": "Login error",
   "notAuthorizedException": "The password provided is wrong.",
-  "userNotFoundException": "No user with this email was found."
+  "userNotFoundException": "No user with this email was found.",
+
+  "settings": "Settings",
+  "general": "General",
+  "user": "User",
+  "language": "Language",
+  "allowNotifications": "Allow notifications",
+  "disconnect": "Disconnect"
 
 }
