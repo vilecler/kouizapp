@@ -28,6 +28,10 @@ class MainPageState extends State<MainPage> {
     });
   }
 
+  //Call when User disconnects
+  void disconnect(){
+    Navigator.pushReplacementNamed(context,'/login');
+  }
 
   final _navigatorKeys = {
     TabItem.home: GlobalKey<NavigatorState>(),
@@ -51,8 +55,7 @@ class MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        final isFirstRouteInCurrentTab =
-        !await _navigatorKeys[_currentTab]!.currentState!.maybePop();
+        final isFirstRouteInCurrentTab = !await _navigatorKeys[_currentTab]!.currentState!.maybePop();
         if (isFirstRouteInCurrentTab) {
           // if not on the 'main' tab
           if (_currentTab != TabItem.home) {
@@ -85,6 +88,7 @@ class MainPageState extends State<MainPage> {
         tabItem: tabItem,
         hideBottomBarCallback: hideBottomBar,
         displayBottomBarCallback: displayBottomBar,
+        disconnect: disconnect,
       ),
     );
   }

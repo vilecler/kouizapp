@@ -15,19 +15,32 @@ final userPool = CognitoUserPool(
 User? currentUser;
 DateTime? lastUserRefresh;
 
-Future<User> getUser() async {
-  if(currentUser != null && lastUserRefresh != null && DateTime.now().difference(lastUserRefresh!).inSeconds < 5){
-    print("Cache user returned " + DateTime.now().difference(lastUserRefresh!).inSeconds.toString());
-    return currentUser!;
+Future<User> getUser() async{
+  //Creating user and wait for it
+  if(currentUser == null){
+    lastUserRefresh = DateTime.now();
+    return await _refreshUser();
   }
 
+  //Chack if refresh is required, if it is the case, returns the previous user and ask for a refresh
+  if(lastUserRefresh != null && DateTime
+      .now()
+      .difference(lastUserRefresh!)
+      .inSeconds > 5) {
+    lastUserRefresh = DateTime.now();
+    _refreshUser();
+  }
+
+  return currentUser!;
+}
+
+Future<User> _refreshUser() async{
   String? email = await storage.read(key: 'email');
   String? password = await storage.read(key: 'password');
 
   if(email == null || password == null){
     throw LoginRequiredException('Credentials not found.');
   }
-  print('Email read from cache "' + email + '" and password "' + password + '"');
 
   final cognitoUser = CognitoUser(email, userPool);
   final authDetails = AuthenticationDetails(
@@ -78,7 +91,6 @@ Future<User> getUser() async {
     }
 
     currentUser = User(sub: sub, username: username, pseudo: pseudo, email: email, energy: energy, experience: experience);
-    lastUserRefresh = DateTime.now();
     return currentUser!;
   } on CognitoClientException catch (e) {
     // User find but credentials are not valid, need to ask user an other account
@@ -166,7 +178,6 @@ Future<dynamic> resendConfirmationCode(String email) async{
   } catch (e) {
     rethrow;
   }
-  return false;
 }
 
 Future<void> saveEmail(String email) async{

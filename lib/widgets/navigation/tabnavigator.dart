@@ -44,12 +44,13 @@ class TabNavigatorRoutes {
 }
 
 class TabNavigator extends StatefulWidget {
-  TabNavigator({required this.navigatorKey, required this.tabItem, required this.hideBottomBarCallback, required this.displayBottomBarCallback});
+  const TabNavigator({Key? key, required this.navigatorKey, required this.tabItem, required this.hideBottomBarCallback, required this.displayBottomBarCallback, required this.disconnect}) : super(key: key);
   final GlobalKey<NavigatorState>? navigatorKey;
   final TabItem tabItem;
 
   final Function hideBottomBarCallback;
   final Function displayBottomBarCallback;
+  final Function disconnect;
 
   @override
   State<TabNavigator> createState() => _TabNavigatorState();
@@ -58,6 +59,12 @@ class TabNavigator extends StatefulWidget {
 class _TabNavigatorState extends State<TabNavigator> {
   void push(BuildContext context, String route, [Object? arguments]) {
     var routeBuilders = _routeBuilders(context);
+
+    //Special route to call if the user wants to disconnect
+    if(route == '/disconnect'){
+      widget.disconnect();  //Call parent page function
+      return;
+    }
 
     Navigator.push(
       context,
@@ -98,7 +105,6 @@ class _TabNavigatorState extends State<TabNavigator> {
   @override
   Widget build(BuildContext context) {
     final routeBuilders = _routeBuilders(context);
-
     return Navigator(
       key: widget.navigatorKey,
       initialRoute: TabNavigatorRoutes.home,

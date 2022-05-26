@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kouizapp/constants/customcolors.dart';
-import 'package:kouizapp/widgets/boltwidget.dart';
+import 'package:kouizapp/services/auth_cognito.dart' as auth;
 import 'package:kouizapp/widgets/dividerwidget.dart';
 import 'package:kouizapp/widgets/hearders/hearderwidget.dart';
 import 'package:kouizapp/widgets/presentation/quiz/quizpresentationsecondarywidget.dart';
@@ -9,6 +9,7 @@ import 'package:kouizapp/widgets/buttons/seemore/seemorewidget.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../models/user.dart';
 import '../../../others/circletabindicator.dart';
 import '../../../widgets/boxed/boxprimarywidget.dart';
 import '../../../widgets/boxed/boxsecondarywidget.dart';
@@ -28,6 +29,15 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   late TabController _tabTabController;
 
+  User? currentUser;
+
+  void loadUser() async{
+    User user = await auth.getUser();
+    setState(() {
+      currentUser = user;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -43,13 +53,14 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    loadUser();
     return SingleChildScrollView(
       child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            HeaderWidget(title: AppLocalizations.of(context)!.home, bolt: 100),
+            HeaderWidget(title: AppLocalizations.of(context)!.home, bolt: (currentUser != null) ? currentUser!.energy : 0),
 
             SizedBox(
               height: BoxPrimaryWidget.height + 40,

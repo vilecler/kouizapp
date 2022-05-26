@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kouizapp/services/auth_cognito.dart' as auth;
 import 'package:kouizapp/utils/hexcolor.dart';
 import 'package:kouizapp/utils/translation.dart';
 import 'package:kouizapp/widgets/presentation/friend/suggestion/friendplaysuggestionwidget.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../constants/customcolors.dart';
 import '../../../models/category.dart';
+import '../../../models/user.dart';
 import '../../../others/circletabindicator.dart';
 import '../../../services/category_controller.dart';
 import '../../../utils/icon.dart';
@@ -40,11 +42,13 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
   }
 
   late TabController _tabTabController;
+  User? currentUser;
 
   @override
   void initState() {
-    super.initState();
     _tabTabController = TabController(vsync: this, length: 2);
+    loadCategories();
+    super.initState();
   }
 
   @override
@@ -53,10 +57,18 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
+
+  void loadUser() async{
+    User user = await auth.getUser();
+    setState(() {
+      currentUser = user;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    loadCategories();
-
+    loadUser();
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +93,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                     ],
                     labelPadding: const EdgeInsets.only(right: 15.0)
                   ),
-                  BoltWidget(number: 100),
+                  BoltWidget(number: (currentUser != null) ? currentUser!.energy : 0),
                 ],
               ),
             ),

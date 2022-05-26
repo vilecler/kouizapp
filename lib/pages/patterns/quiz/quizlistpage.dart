@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kouizapp/services/auth_cognito.dart' as auth;
 import 'package:kouizapp/utils/translation.dart';
 import 'package:kouizapp/widgets/presentation/quiz/quizpresentationprimarywidget.dart';
 import 'package:kouizapp/widgets/presentation/quiz/quizpresentationsecondarywidget.dart';
@@ -10,6 +11,7 @@ import '../../../constants/apierrors.dart';
 import '../../../constants/customcolors.dart';
 import '../../../errors/networkexception.dart';
 import '../../../models/quiz.dart';
+import '../../../models/user.dart';
 import '../../../services/quiz_controller.dart';
 import '../../../widgets/hearders/backheaderwidget.dart';
 
@@ -25,6 +27,7 @@ class QuizListPage extends StatefulWidget {
 class _QuizListPageState extends State<QuizListPage> {
   String? theme;
   String? name;
+  User? currentUser;
 
   int quizCount = 0;
 
@@ -44,18 +47,26 @@ class _QuizListPageState extends State<QuizListPage> {
     }
   }
 
+  void loadUser() async{
+    User user = await auth.getUser();
+    setState(() {
+      currentUser = user;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
     theme = arguments['theme'];
     name = arguments['name'];
     loadQuizzes(theme!);
+    loadUser();
 
     return SafeArea(
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BackHeaderWidget(title: name!, bolt: 100, small: true),
+            BackHeaderWidget(title: name!, bolt: (currentUser != null) ? currentUser!.energy : 0, small: true),
             const SizedBox(height: 15.0,),
             const SearchBoxWidget(),
 

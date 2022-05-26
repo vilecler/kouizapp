@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:kouizapp/services/auth_cognito.dart' as auth;
 import 'package:kouizapp/widgets/searchboxwidget.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../constants/customcolors.dart';
+import '../../../models/user.dart';
 import '../../../widgets/boltwidget.dart';
 import '../../../widgets/hearders/hearderwidget.dart';
 import '../../../widgets/presentation/message/messagepresentationwidget.dart';
@@ -18,13 +20,24 @@ class MessagesPage extends StatefulWidget {
 
 class _MessagesPageState extends State<MessagesPage> {
 
+  User? currentUser;
+
+  void loadUser() async{
+    User user = await auth.getUser();
+    setState(() {
+      currentUser = user;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    loadUser();
+
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderWidget(title: AppLocalizations.of(context)!.messages, bolt: 100),
+          HeaderWidget(title: AppLocalizations.of(context)!.messages, bolt: (currentUser != null) ? currentUser!.energy : 0),
 
           Material(
             child: Row(
@@ -62,7 +75,6 @@ class _MessagesPageState extends State<MessagesPage> {
               ),
             ),
           ),
-
         ]
       ),
     );;

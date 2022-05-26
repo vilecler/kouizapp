@@ -23,12 +23,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
   final sectionTextStyle = const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700);
 
-  @override
-  void initState() {
-    super.initState();
-    loadUser();
-  }
-
   User? currentUser;
 
   void loadUser() async{
@@ -50,11 +44,12 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
+    loadUser();
     return SafeArea(
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BackHeaderWidget(title: AppLocalizations.of(context)!.settings, bolt: 100),
+            BackHeaderWidget(title: AppLocalizations.of(context)!.settings, bolt: (currentUser != null) ? currentUser!.energy : 0),
 
             Flexible(
               child: SettingsList(
@@ -110,7 +105,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         leading: const FaIcon(FontAwesomeIcons.userAltSlash),
                         onPressed: (BuildContext context) async {
                           await auth.disconnect();
-                          Navigator.pushReplacementNamed(context, '/login');
+                          widget.onPush(context, '/disconnect');
                         },
                       )
                     ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kouizapp/errors/networkexception.dart';
+import 'package:kouizapp/services/auth_cognito.dart' as auth;
 import 'package:kouizapp/utils/hexcolor.dart';
 import 'package:kouizapp/utils/translation.dart';
 import 'package:kouizapp/widgets/titles/mediumtitlewidget.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../constants/apierrors.dart';
 import '../../../constants/customcolors.dart';
 import '../../../models/theme.dart' as model;
+import '../../../models/user.dart';
 import '../../../services/theme_controller.dart';
 import '../../../utils/icon.dart';
 import '../../../widgets/hearders/backheaderwidget.dart';
@@ -27,6 +29,7 @@ class ThemePage extends StatefulWidget {
 class _ThemePageState extends State<ThemePage> {
   String? category;
   String? name;
+  User? currentUser;
 
   int themesCount = 0;
 
@@ -46,6 +49,13 @@ class _ThemePageState extends State<ThemePage> {
     }
   }
 
+  void loadUser() async{
+    User user = await auth.getUser();
+    setState(() {
+      currentUser = user;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
@@ -53,12 +63,13 @@ class _ThemePageState extends State<ThemePage> {
     name = arguments['name'];
 
     loadThemes(category!);
+    loadUser();
 
     return SafeArea(
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BackHeaderWidget(title: name!, bolt: 100),
+            BackHeaderWidget(title: name!, bolt: (currentUser != null) ? currentUser!.energy : 0),
 
             const SizedBox(height: 15.0,),
             MediumTitleWidget(text: AppLocalizations.of(context)!.chooseATheme),
@@ -106,7 +117,6 @@ class ThemesList extends StatelessWidget {
 
   final List<model.Theme> themes;
   final Function onPush;
-
 
   @override
   Widget build(BuildContext context) {

@@ -182,6 +182,7 @@ class _ConfirmSignUpKouizPageState extends State<ConfirmSignUpKouizPage> {
                             maxLength: 6,
                             maxLengthEnforcement: MaxLengthEnforcement.truncateAfterCompositionEnds,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
+                            keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                                 labelText: AppLocalizations.of(context)!.code,
                                 floatingLabelBehavior: FloatingLabelBehavior.never,

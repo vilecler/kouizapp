@@ -38,9 +38,15 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
   @override
   void initState() {
     _tabTabController = TabController(vsync: this, length: 3);
+    _progressController = AnimationController(
+        vsync: this,
+        duration: const Duration(seconds: 3),
+        value: 0
+    )..addListener(() {
+      setState(() {
+      });
+    });
     super.initState();
-
-    loadUser();
   }
 
   @override
@@ -54,14 +60,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
     User user = await auth.getUser();
     setState(() {
       currentUser = user;
-      _progressController = AnimationController(
-          vsync: this,
-          duration: const Duration(seconds: 3),
-          value: currentUser!.getExperiencePercentage()
-      )..addListener(() {
-        setState(() {
-        });
-      });
+      _progressController.value = currentUser!.getExperiencePercentage();
     });
   }
 
@@ -72,7 +71,7 @@ class _MePageState extends State<MePage> with TickerProviderStateMixin{
 
   @override
   Widget build(BuildContext context) {
-
+    loadUser();
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
