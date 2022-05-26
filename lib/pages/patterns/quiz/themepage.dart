@@ -34,8 +34,13 @@ class _ThemePageState extends State<ThemePage> {
   int themesCount = 0;
 
   late Future<List<model.Theme>> _themesFuture;
+  bool _themeFetchStarted = false;
 
   void loadThemes(String category) async{
+    if(_themeFetchStarted){
+      return;
+    }
+    _themeFetchStarted = true;
     _themesFuture = fetchThemes(category);
     try {
       List<model.Theme> themes = await _themesFuture;
@@ -61,7 +66,6 @@ class _ThemePageState extends State<ThemePage> {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
     category = arguments['category'];
     name = arguments['name'];
-
     loadThemes(category!);
     loadUser();
 

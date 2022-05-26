@@ -32,8 +32,13 @@ class _QuizListPageState extends State<QuizListPage> {
   int quizCount = 0;
 
   late Future<List<Quiz>> _quizzesFuture;
+  bool _quizFetchStarted = false;
 
   void loadQuizzes(String theme) async{
+    if(_quizFetchStarted){
+      return;
+    }
+    _quizFetchStarted = true;
     _quizzesFuture = fetchQuizzes(theme);
     try {
       List<Quiz> quizzes = await _quizzesFuture;
