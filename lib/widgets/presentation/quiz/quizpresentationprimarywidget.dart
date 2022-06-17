@@ -118,7 +118,7 @@ class QuizPresentationPrimaryWidget extends StatelessWidget {
                   Text(AppLocalizations.of(context)!.maximumReward + AppLocalizations.of(context)!.punctuationSpace + ': ' + f.format(reward) + AppLocalizations.of(context)!.xp, style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0),
-                    child: Text(questionsCount.toString() + ' ' + AppLocalizations.of(context)!.questions.toLowerCase()  + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
+                    child: Text(questionsCount.toString() + ' ' + ( (questionsCount == 0) ? AppLocalizations.of(context)!.question.toLowerCase() : AppLocalizations.of(context)!.questions.toLowerCase() )  + '.', style: const TextStyle(color: CustomColors.purpleGrey, fontWeight: FontWeight.w500, fontFamily: 'Roboto', fontSize: 14.0, decoration: TextDecoration.none),),
                   ),
 
                   Padding(

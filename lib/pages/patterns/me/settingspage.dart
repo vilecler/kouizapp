@@ -68,7 +68,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                         SettingsTile.switchTile(
                             leading: const FaIcon(FontAwesomeIcons.solidBell),
-                            initialValue: true,
+                            initialValue: (currentUser != null) ? currentUser!.notifications : true,
                             onToggle: (value) { },
                             title: Text(AppLocalizations.of(context)!.allowNotifications)
                         )

@@ -41,6 +41,7 @@
   "contact": "Contact",
   "seeProfile": "See profile",
   "createdBy": "Created by",
+  "question": "Question",
   "questions": "Questions",
   "min": "Min.",
   "playAgain": "Play again",
@@ -121,6 +122,12 @@
   "user": "User",
   "language": "Language",
   "allowNotifications": "Allow notifications",
-  "disconnect": "Disconnect"
+  "disconnect": "Disconnect",
+
+  "playNow": "Play now",
+  "playWithPeople": "Play with people",
+  "backToSelection": "Back to selection",
+  "bestScore": "Best score",
+  "seeAllStatistics": "See all statistics"
 
 }

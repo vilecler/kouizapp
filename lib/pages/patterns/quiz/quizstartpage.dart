@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:kouizapp/services/auth_cognito.dart' as auth;
+import 'package:kouizapp/utils/translation.dart';
 import 'package:kouizapp/widgets/boltwidget.dart';
 import 'package:kouizapp/widgets/buttons/backgrounded/plainbuttonwidget.dart';
 import 'package:kouizapp/widgets/hearders/backheaderwidget.dart';
@@ -8,10 +10,12 @@ import 'package:kouizapp/widgets/hearders/backheaderwidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../constants/customcolors.dart';
+import '../../../models/quiz.dart';
+import '../../../models/user.dart';
 import '../../../widgets/buttons/backgrounded/emptybuttonwidget.dart';
 
 class QuizStartPage extends StatefulWidget {
-  QuizStartPage({Key? key, required this.onPush, required this.hideBottomBarCallback, required this.displayBottomBarCallback}) : super(key: key);
+  const QuizStartPage({Key? key, required this.onPush, required this.hideBottomBarCallback, required this.displayBottomBarCallback}) : super(key: key);
 
   final Function onPush;
   final Function hideBottomBarCallback;
@@ -22,6 +26,10 @@ class QuizStartPage extends StatefulWidget {
 }
 
 class _QuizStartPageState extends State<QuizStartPage> {
+  User? currentUser;
+  Quiz? quiz;
+  String? categoryName;
+  String? themeName;
 
   void quizLobby(){
 
@@ -47,8 +55,21 @@ class _QuizStartPageState extends State<QuizStartPage> {
     widget.onPush(context, '/quiz/playground', {});
   }
 
+  void loadUser() async{
+    User user = await auth.getUser();
+    setState(() {
+      currentUser = user;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
+    quiz = arguments['quiz'];
+    themeName = arguments['themeName'];
+    categoryName = arguments['categoryName'];
+    loadUser();
+
     return SafeArea(
       child: Stack(
         children: [
@@ -87,32 +108,32 @@ class _QuizStartPageState extends State<QuizStartPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10.0,),
-              BackHeaderWidget(title: 'Geography', bolt: 100, white: true,),
+              BackHeaderWidget(title: categoryName!, bolt: (currentUser != null) ? currentUser!.energy : 0, white: true,),
 
               Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top:50.0, bottom: 20.0),
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top:35.0, bottom: 20.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      'Flags of the world',
-                      style: TextStyle(color: CustomColors.white, fontSize: 16.0, fontWeight: FontWeight.w600, letterSpacing: 0.5),
+                      themeName!,
+                      style: const TextStyle(color: CustomColors.white, fontSize: 16.0, fontWeight: FontWeight.w600, letterSpacing: 0.5),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 1.6, left: 3.0),
                       child: Text(
-                        '/N°1',
-                        style: TextStyle(color: CustomColors.fakeWhite, fontSize: 10.0, fontWeight: FontWeight.w500),
+                        (quiz!.themePosition != null) ? '/' + quiz!.themePosition! : '',
+                        style: const TextStyle(color: CustomColors.fakeWhite, fontSize: 10.0, fontWeight: FontWeight.w500),
                       ),
                     )
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0, bottom: 50.0),
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0, bottom: 70.0),
                 child: Text(
-                  'The main flags of the world (Level 5)',
-                  style: TextStyle(color: CustomColors.white, fontSize: 28.0, fontWeight: FontWeight.w700, letterSpacing: 1.0),
+                  loadTranslation(quiz!.name),
+                  style: const TextStyle(color: CustomColors.white, fontSize: 28.0, fontWeight: FontWeight.w700, letterSpacing: 1.0),
                 ),
               ),
               Padding(
@@ -121,10 +142,10 @@ class _QuizStartPageState extends State<QuizStartPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      '5 questions',
-                      style: TextStyle(color: CustomColors.white, fontSize: 18.0, fontWeight: FontWeight.w700),
+                      quiz!.questionsCount.toString() + ' ' + ( (quiz!.questionsCount == 0 ) ? AppLocalizations.of(context)!.question.toLowerCase() : AppLocalizations.of(context)!.questions.toLowerCase()),
+                      style: const TextStyle(color: CustomColors.white, fontSize: 18.0, fontWeight: FontWeight.w700),
                     ),
-                    BoltWidget(number: 15, white: true,)
+                    BoltWidget(number: quiz!.energyWinnable, white: true,)
                   ],
                 ),
               ),
@@ -132,13 +153,17 @@ class _QuizStartPageState extends State<QuizStartPage> {
               Flexible(
                 flex: 1,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 60.0, bottom: 70.0),
+                  padding: const EdgeInsets.only(top: 100.0, bottom: 70.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      PlainButtonWidget(icon: FontAwesomeIcons.play, text: 'Play now', onTap: quizPlayground),
-                      EmptyButtonWidget(icon: FontAwesomeIcons.userFriends, text: 'Play with people'),
-                      EmptyButtonWidget(icon: FontAwesomeIcons.arrowLeft, text: 'Back to selection'),
+                      PlainButtonWidget(icon: FontAwesomeIcons.play, text: AppLocalizations.of(context)!.playNow, onTap: quizPlayground),
+                      EmptyButtonWidget(icon: FontAwesomeIcons.userFriends, text: AppLocalizations.of(context)!.playWithPeople),
+                      GestureDetector(onTap: (){
+                          Navigator.pop(context);
+                        },
+                        child: EmptyButtonWidget(icon: FontAwesomeIcons.arrowLeft, text: AppLocalizations.of(context)!.backToSelection)
+                      ),
                     ],
                   ),
                 ),
@@ -169,13 +194,13 @@ class _QuizStartPageState extends State<QuizStartPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Best score: 80%',
+                      AppLocalizations.of(context)!.bestScore + AppLocalizations.of(context)!.punctuationSpace + ': 80%',
                       style: const TextStyle(color: CustomColors.white, fontSize: 14.0, fontWeight: FontWeight.w600, letterSpacing: 0.5),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 5.0),
                       child: Text(
-                        '| See all statistics',
+                        '| ' + AppLocalizations.of(context)!.seeAllStatistics,
                         style: const TextStyle(color: CustomColors.fakeWhite, fontSize: 12.0, fontWeight: FontWeight.w400, letterSpacing: 0.5),
                       ),
                     )

@@ -42,11 +42,11 @@ class _MessagesPageState extends State<MessagesPage> {
           Material(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const <Widget>[
+              children: <Widget>[
                 Flexible(
                   child: SearchBoxWidget(),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(right: 20.0, bottom: 7.0),
                   child: FaIcon(FontAwesomeIcons.edit, color: CustomColors.alternativePurple, size: 26.0,),
                 ),

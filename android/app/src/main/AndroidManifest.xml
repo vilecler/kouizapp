@@ -2,7 +2,7 @@
     package="com.example.kouizapp">
    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
    <application
-        android:label="kouizapp"
+        android:label="Kouiz"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">

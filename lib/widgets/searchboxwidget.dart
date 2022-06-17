@@ -5,7 +5,8 @@ import '../constants/customcolors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchBoxWidget extends StatefulWidget {
-  const SearchBoxWidget({Key? key}) : super(key: key);
+  const SearchBoxWidget({Key? key, this.onTextChanged}) : super(key: key);
+  final Function(String newText)? onTextChanged;
 
   @override
   State<SearchBoxWidget> createState() => _SearchBoxWidgetState();
@@ -22,6 +23,7 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
         child: TextField(
           textAlign: TextAlign.start,
           keyboardType: TextInputType.text,
+          onChanged: widget.onTextChanged,
           style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 16.0, fontWeight: FontWeight.w500, decoration: TextDecoration.none),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(left: 20.0),

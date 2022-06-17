@@ -25,8 +25,9 @@ class QuizListPage extends StatefulWidget {
 }
 
 class _QuizListPageState extends State<QuizListPage> {
-  String? theme;
-  String? name;
+  String? themeCode;
+  String? themeName;
+  String? categoryName;
   User? currentUser;
 
   int quizCount = 0;
@@ -40,16 +41,6 @@ class _QuizListPageState extends State<QuizListPage> {
     }
     _quizFetchStarted = true;
     _quizzesFuture = fetchQuizzes(theme);
-    try {
-      List<Quiz> quizzes = await _quizzesFuture;
-      setState(() {
-        quizCount = quizzes.length;
-      });
-    } on NetworkException catch(e){
-      setState(() {
-        quizCount = 0;
-      });
-    }
   }
 
   void loadUser() async{
@@ -59,12 +50,20 @@ class _QuizListPageState extends State<QuizListPage> {
     });
   }
 
+  String searchText = "";
+  void searchBoxTextChanged(String newText){
+    setState(() {
+      searchText = newText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
-    theme = arguments['theme'];
-    name = arguments['name'];
-    loadQuizzes(theme!);
+    themeCode = arguments['themeCode'];
+    themeName = arguments['themeName'];
+    categoryName = arguments['categoryName'];
+    loadQuizzes(themeCode!);
     loadUser();
 
     return SafeArea(
@@ -73,9 +72,9 @@ class _QuizListPageState extends State<QuizListPage> {
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BackHeaderWidget(title: name!, bolt: (currentUser != null) ? currentUser!.energy : 0, small: true),
+              BackHeaderWidget(title: themeName!, bolt: (currentUser != null) ? currentUser!.energy : 0, small: true),
               const SizedBox(height: 15.0,),
-              const SearchBoxWidget(),
+              SearchBoxWidget(onTextChanged: searchBoxTextChanged),
 
               Padding(
                 padding: const EdgeInsets.only(bottom: 10.0, left: 40.0, right: 40.0),
@@ -98,7 +97,16 @@ class _QuizListPageState extends State<QuizListPage> {
                         child: Text(loadTranslation(APIErrors[error.error.message]!)),
                       );
                     } else if (snapshot.hasData) {
-                      return QuizzesList(quizzes: snapshot.data!, onPush: widget.onPush,);
+                      List<Quiz> quizzes = snapshot.data!;
+                      List<Quiz> restrictedQuizzes = (searchText != "") ? quizzes.where((element) => loadTranslation(element.name).toLowerCase().contains(searchText.toLowerCase())).toList() : quizzes;
+                      restrictedQuizzes.sort( (a, b) => loadTranslation(a.name).compareTo(loadTranslation(b.name)) );
+                      quizCount = restrictedQuizzes.length;
+                      if(quizCount == 0){
+                        return Center(
+                          child: Text(loadTranslation(APIErrors['No quiz found.']!)),
+                        );
+                      }
+                      return QuizzesList(quizzes: restrictedQuizzes, onPush: widget.onPush, themeName: themeName!, categoryName: categoryName!,);
                     } else {
                       return const Center(
                         child: CircularProgressIndicator(),
@@ -116,11 +124,12 @@ class _QuizListPageState extends State<QuizListPage> {
 }
 
 class QuizzesList extends StatelessWidget {
-  const QuizzesList({Key? key, required this.quizzes, required this.onPush}) : super(key: key);
+  const QuizzesList({Key? key, required this.quizzes, required this.onPush, required this.themeName, required this.categoryName}) : super(key: key);
 
   final List<Quiz> quizzes;
   final Function onPush;
-
+  final String themeName;
+  final String categoryName;
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +138,7 @@ class QuizzesList extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
             onTap: (){
-              onPush(context, '/quiz/start', {'code': '', 'name': loadTranslation(quizzes[index].name)});
+              onPush(context, '/quiz/start', {'quiz': quizzes[index], 'themeName': themeName, 'categoryName': categoryName});
             },
             child: ( quizzes[index].isPremium
               ? QuizPresentationSecondaryWidget(name: loadTranslation(quizzes[index].name), themePosition: quizzes[index].themePosition!, reward: quizzes[index].experienceWinnable, questionsCount: quizzes[index].questionsCount, bolt: quizzes[index].energyRequired, minutes: getQuizDurationInMinutes(quizzes[index].durationBetweenQuestions, quizzes[index].questionsCount),)

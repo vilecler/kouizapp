@@ -28,7 +28,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BackHeaderWidget(title: AppLocalizations.of(context)!.suggestion, bolt: 100),
-              const SearchBoxWidget(),
+              SearchBoxWidget(),
 
               Padding(
                 padding: const EdgeInsets.only(bottom: 10.0, left: 40.0, right: 40.0),

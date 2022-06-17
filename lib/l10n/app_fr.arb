@@ -41,6 +41,7 @@
   "contact": "Contact",
   "seeProfile": "Voir profil",
   "createdBy": "Créé par",
+  "question": "Question",
   "questions": "Questions",
   "min": "Min.",
   "playAgain": "Rejouer",
@@ -122,5 +123,11 @@
   "user": "Utilisateur",
   "language": "Langue",
   "allowNotifications": "Autoriser les notifications",
-  "disconnect": "Déconnexion"
+  "disconnect": "Déconnexion",
+
+  "playNow": "Jouer maintenant",
+  "playWithPeople": "Jouer en groupe",
+  "backToSelection": "Retour à la séléction",
+  "bestScore": "Meilleur score",
+  "seeAllStatistics": "Voir les statistiques"
 }

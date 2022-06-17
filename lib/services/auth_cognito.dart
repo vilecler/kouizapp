@@ -5,7 +5,7 @@ import 'package:kouizapp/errors/loginrequiredexception.dart';
 
 import '../models/user.dart';
 
-final storage = FlutterSecureStorage();
+const storage = FlutterSecureStorage();
 
 final userPool = CognitoUserPool(
   Networking.userPoolId,
@@ -16,13 +16,15 @@ User? currentUser;
 DateTime? lastUserRefresh;
 
 Future<User> getUser() async{
+  ///TODO: Add try catch and handle redirection to login page automatically
+
   //Creating user and wait for it
   if(currentUser == null){
     lastUserRefresh = DateTime.now();
     return await _refreshUser();
   }
 
-  //Chack if refresh is required, if it is the case, returns the previous user and ask for a refresh
+  //Check if refresh is required, if it is the case, returns the previous user and ask for a refresh
   if(lastUserRefresh != null && DateTime
       .now()
       .difference(lastUserRefresh!)
@@ -62,6 +64,7 @@ Future<User> _refreshUser() async{
     String? email;
     int? energy;
     int? experience;
+    bool? notifications;
 
     for (CognitoUserAttribute attribute in attributes) {
       switch(attribute.getName()){
@@ -83,14 +86,17 @@ Future<User> _refreshUser() async{
         case 'custom:experience':
           experience = int.parse(attribute.getValue() ?? '0');
           break;
+        case 'custom:notifications':
+          notifications = (attribute.getValue() ?? 'true') == "true";
+          break;
       }
     }
 
-    if(sub == null || username == null || pseudo == null || email == null || energy == null || experience == null){
+    if(sub == null || username == null || pseudo == null || email == null || energy == null || experience == null || notifications == null){
       throw Exception('One attribute is missing.');
     }
 
-    currentUser = User(sub: sub, username: username, pseudo: pseudo, email: email, energy: energy, experience: experience);
+    currentUser = User(sub: sub, username: username, pseudo: pseudo, email: email, energy: energy, experience: experience, notifications: notifications);
     return currentUser!;
   } on CognitoClientException catch (e) {
     // User find but credentials are not valid, need to ask user an other account
@@ -132,6 +138,7 @@ Future<String> signUp(String username, String password, String email) async {
     AttributeArg(name: 'email', value: email.trim()),
     const AttributeArg(name: 'custom:energy', value: '100'),
     const AttributeArg(name: 'custom:experience', value: '0'),
+    const AttributeArg(name: 'custom:notifications', value: "true")
   ];
 
   try {

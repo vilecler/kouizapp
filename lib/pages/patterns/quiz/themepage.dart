@@ -27,8 +27,8 @@ class ThemePage extends StatefulWidget {
 }
 
 class _ThemePageState extends State<ThemePage> {
-  String? category;
-  String? name;
+  String? categoryCode;
+  String? categoryName;
   User? currentUser;
 
   int themesCount = 0;
@@ -42,16 +42,6 @@ class _ThemePageState extends State<ThemePage> {
     }
     _themeFetchStarted = true;
     _themesFuture = fetchThemes(category);
-    try {
-      List<model.Theme> themes = await _themesFuture;
-      setState(() {
-        themesCount = themes.length;
-      });
-    } on NetworkException catch(e){
-      setState(() {
-        themesCount = 0;
-      });
-    }
   }
 
   void loadUser() async{
@@ -61,12 +51,19 @@ class _ThemePageState extends State<ThemePage> {
     });
   }
 
+  String searchText = "";
+  void searchBoxTextChanged(String newText){
+    setState(() {
+      searchText = newText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
-    category = arguments['category'];
-    name = arguments['name'];
-    loadThemes(category!);
+    categoryCode = arguments['categoryCode'];
+    categoryName = arguments['categoryName'];
+    loadThemes(categoryCode!);
     loadUser();
 
     return SafeArea(
@@ -75,11 +72,11 @@ class _ThemePageState extends State<ThemePage> {
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BackHeaderWidget(title: name!, bolt: (currentUser != null) ? currentUser!.energy : 0),
+              BackHeaderWidget(title: categoryName!, bolt: (currentUser != null) ? currentUser!.energy : 0),
 
               const SizedBox(height: 15.0,),
               MediumTitleWidget(text: AppLocalizations.of(context)!.chooseATheme),
-              const SearchBoxWidget(),
+              SearchBoxWidget(onTextChanged: searchBoxTextChanged),
 
               Padding(
                 padding: const EdgeInsets.only(bottom: 10.0, left: 40.0, right: 40.0),
@@ -102,7 +99,16 @@ class _ThemePageState extends State<ThemePage> {
                         child: Text(loadTranslation(APIErrors[error.error.message]!)),
                       );
                     } else if (snapshot.hasData) {
-                      return ThemesList(themes: snapshot.data!, onPush: widget.onPush,);
+                      List<model.Theme> themes = snapshot.data!;
+                      List<model.Theme> restrictedThemes = (searchText != "") ? themes.where((element) => loadTranslation(element.names).toLowerCase().contains(searchText.toLowerCase())).toList() : themes;
+                      restrictedThemes.sort( (a, b) => loadTranslation(a.names).compareTo(loadTranslation(b.names)) );
+                      themesCount = restrictedThemes.length;
+                      if(themesCount == 0){
+                        return Center(
+                          child: Text(loadTranslation(APIErrors['No theme found.']!)),
+                        );
+                      }
+                      return ThemesList(themes: restrictedThemes, onPush: widget.onPush, categoryName: categoryName!,);
                     } else {
                       return const Center(
                         child: CircularProgressIndicator(),
@@ -120,19 +126,21 @@ class _ThemePageState extends State<ThemePage> {
 }
 
 class ThemesList extends StatelessWidget {
-  const ThemesList({Key? key, required this.themes, required this.onPush}) : super(key: key);
+  const ThemesList({Key? key, required this.themes, required this.onPush, required this.categoryName}) : super(key: key);
 
   final List<model.Theme> themes;
   final Function onPush;
+  final String categoryName;
 
   @override
   Widget build(BuildContext context) {
+
     return ListView.builder(
       itemCount: themes.length,
       itemBuilder: (context, index) {
         return GestureDetector(
             onTap: (){
-              onPush(context, '/quiz/theme/quiz-list', {'theme': themes[index].code, 'name': loadTranslation(themes[index].names)});
+              onPush(context, '/quiz/theme/quiz-list', {'themeCode': themes[index].code, 'themeName': loadTranslation(themes[index].names), 'categoryName': categoryName});
             },
             child: ThemePresentationWidget(
               theme: loadTranslation(themes[index].names),

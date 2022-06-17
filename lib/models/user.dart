@@ -7,6 +7,7 @@ class User{
   final String email;
   final int energy;
   final int experience;
+  final bool notifications;
 
   const User({
     required this.sub,
@@ -14,7 +15,8 @@ class User{
     required this.pseudo,
     required this.email,
     required this.energy,
-    required this.experience
+    required this.experience,
+    required this.notifications
   });
 
   int getLevel(){

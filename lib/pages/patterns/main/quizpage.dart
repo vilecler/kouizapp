@@ -8,6 +8,7 @@ import 'package:kouizapp/widgets/searchboxwidget.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../constants/apierrors.dart';
 import '../../../constants/customcolors.dart';
 import '../../../models/category.dart';
 import '../../../models/user.dart';
@@ -32,13 +33,14 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
   int categoriesCount = 0;
 
   late Future<List<Category>> _categoriesFuture;
+  bool _loadCategoriesStarted = false;
 
   void loadCategories() async{
+    if(_loadCategoriesStarted){
+      return;
+    }
+    _loadCategoriesStarted = true;
     _categoriesFuture = fetchCategories();
-    List<Category> categories = await _categoriesFuture;
-    setState(() {
-      categoriesCount = categories.length;
-    });
   }
 
   late TabController _tabTabController;
@@ -65,6 +67,12 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
     });
   }
 
+  String officialSearchText = "";
+  void officialSearchBoxTextChanged(String newText){
+    setState(() {
+      officialSearchText = newText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +121,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                 Column(
                   children: [
                     MediumTitleWidget(text: AppLocalizations.of(context)!.chooseACategory),
-                    const SearchBoxWidget(),
+                    SearchBoxWidget(onTextChanged: officialSearchBoxTextChanged,),
 
                     Padding(
                       padding: const EdgeInsets.only(top: 0, bottom: 15.0, left: 40.0, right: 40.0),
@@ -135,7 +143,16 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                               child: Text('An error has occurred!'),
                             );
                           } else if (snapshot.hasData) {
-                            return CategoriesList(categories: snapshot.data!, onPush: widget.onPush,);
+                            List<Category> categories = snapshot.data!;
+                            List<Category> restrictedCategories = (officialSearchText != "") ? categories.where((element) => loadTranslation(element.names).toLowerCase().contains(officialSearchText.toLowerCase())).toList() : categories;
+                            restrictedCategories.sort( (a, b) => loadTranslation(a.names).compareTo(loadTranslation(b.names)) );
+                            categoriesCount = restrictedCategories.length;
+                            if(categoriesCount == 0){
+                              return Center(
+                                child: Text(loadTranslation(APIErrors['No category found.']!)),
+                              );
+                            }
+                            return CategoriesList(categories: restrictedCategories, onPush: widget.onPush,);
                           } else {
                             return const Center(
                               child: CircularProgressIndicator(),
@@ -154,7 +171,7 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Flexible(
+                        Flexible(
                           child: SearchBoxWidget(),
                         ),
                         Padding(
@@ -241,7 +258,7 @@ class CategoriesList extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
             onTap: (){
-              onPush(context, '/quiz/theme', {'category': categories[index].code, 'name': loadTranslation(categories[index].names)});
+              onPush(context, '/quiz/theme', {'categoryCode': categories[index].code, 'categoryName': loadTranslation(categories[index].names)});
             },
             child: CategoryPresentationWidget(
               category: loadTranslation(categories[index].names),
