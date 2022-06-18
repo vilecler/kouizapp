@@ -5,8 +5,9 @@ import '../constants/customcolors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchBoxWidget extends StatefulWidget {
-  const SearchBoxWidget({Key? key, this.onTextChanged}) : super(key: key);
+  const SearchBoxWidget({Key? key, this.onTextChanged, this.white = false}) : super(key: key);
   final Function(String newText)? onTextChanged;
+  final bool white;
 
   @override
   State<SearchBoxWidget> createState() => _SearchBoxWidgetState();
@@ -24,21 +25,21 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
           textAlign: TextAlign.start,
           keyboardType: TextInputType.text,
           onChanged: widget.onTextChanged,
-          style: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 16.0, fontWeight: FontWeight.w500, decoration: TextDecoration.none),
+          style: TextStyle(color: widget.white ? CustomColors.white :CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 16.0, fontWeight: FontWeight.w500, decoration: TextDecoration.none),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(left: 20.0),
             focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: CustomColors.mainPurple, width: 1.75),
+                borderSide: BorderSide(color: widget.white ? CustomColors.white :CustomColors.mainPurple, width: 1.75),
                 borderRadius: BorderRadius.circular(12.0)
             ),
             enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: CustomColors.mainPurple, width: 1.75),
+                borderSide:  BorderSide(color: widget.white ? CustomColors.white : CustomColors.mainPurple, width: 1.75),
                 borderRadius: BorderRadius.circular(12.0),
             ),
-            hintStyle: const TextStyle(color: CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 14.0, fontWeight: FontWeight.w500, decoration: TextDecoration.none),
-            focusColor: CustomColors.mainPurple,
-            hoverColor: CustomColors.mainPurple,
-            iconColor: CustomColors.mediumGrey,
+            hintStyle: TextStyle(color: widget.white ? CustomColors.white : CustomColors.mainPurple, fontFamily: 'Roboto', fontSize: 14.0, fontWeight: FontWeight.w500, decoration: TextDecoration.none),
+            focusColor: widget.white ? CustomColors.white : CustomColors.mainPurple,
+            hoverColor: widget.white ? CustomColors.white : CustomColors.mainPurple,
+            iconColor: widget.white ? CustomColors.white : CustomColors.mediumGrey,
             suffixIcon: SizedBox(
               height: 40.0,
               width: 70.0,
@@ -46,9 +47,9 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
                 alignment: Alignment.centerLeft,
                 children: <Widget>[
                   Container(
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(12.0), topRight: Radius.circular(12.0)),
-                        color: CustomColors.mainPurple,
+                    decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(bottomRight: Radius.circular(12.0), topRight: Radius.circular(12.0)),
+                        color: widget.white ? CustomColors.white : CustomColors.mainPurple,
                     ),
                     height: 40.0,
                   ),
@@ -62,8 +63,8 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
                           end: FractionalOffset.topLeft,
                           begin: FractionalOffset.bottomRight,
                           colors: [
-                            CustomColors.mainPink,
-                            CustomColors.white.withOpacity(0.0),
+                            widget.white ? CustomColors.white : CustomColors.mainPink,
+                            widget.white ? CustomColors.white :CustomColors.white.withOpacity(0.0),
                           ],
                           stops: const [0.0, 1.0]
                       ),
@@ -79,8 +80,8 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
                         padding: const EdgeInsets.symmetric(vertical: 4.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            FaIcon(FontAwesomeIcons.search, color: CustomColors.white, size: 14.0,)
+                          children: [
+                            FaIcon(FontAwesomeIcons.search, color: widget.white ? CustomColors.mainPurple : CustomColors.white, size: 14.0,)
                           ],
                         ),
                       ),

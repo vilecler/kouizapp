@@ -3,9 +3,10 @@ import 'package:kouizapp/constants/customcolors.dart';
 
 
 class MediumTitleWidget extends StatelessWidget  {
-  const MediumTitleWidget({Key? key, required this.text}) : super(key: key);
+  const MediumTitleWidget({Key? key, required this.text, this.white = false}) : super(key: key);
 
   final String text;
+  final bool white;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class MediumTitleWidget extends StatelessWidget  {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(text, style: const TextStyle(color: CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 20.0, decoration: TextDecoration.none)),
+          Text(text, style: TextStyle(color: white ? CustomColors.white : CustomColors.mainPurple, fontWeight: FontWeight.w700, fontFamily: 'Roboto', fontSize: 20.0, decoration: TextDecoration.none)),
         ],
       ),
     );

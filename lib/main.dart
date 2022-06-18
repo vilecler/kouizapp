@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: MyApp.appName,
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate, // Add this line
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -81,10 +81,10 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/main': (context) => const MainPage(),
         '/login': (context) => LoginPage(),
-        '/loginWithKouiz': (context) => LoginKouizPage(),
-        '/signup': (context) => SignUpPage(),
-        '/signupWithKouiz': (context) => SignUpKouizPage(),
-        '/confirmSignupWithKouiz': (context) => ConfirmSignUpKouizPage(),
+        '/loginWithKouiz': (context) => const LoginKouizPage(),
+        '/signup': (context) => const SignUpPage(),
+        '/signupWithKouiz': (context) => const SignUpKouizPage(),
+        '/confirmSignupWithKouiz': (context) => const ConfirmSignUpKouizPage(),
       }
     );
   }

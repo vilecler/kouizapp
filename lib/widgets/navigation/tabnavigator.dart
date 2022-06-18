@@ -13,6 +13,11 @@ import 'package:page_transition/page_transition.dart';
 import '../../pages/patterns/home/recentpage.dart';
 import '../../pages/patterns/home/suggestionspage.dart';
 import '../../pages/patterns/main/mepage.dart';
+import '../../pages/patterns/quiz/quizendpage.dart';
+import '../../pages/patterns/quiz/quizendrecappage.dart';
+import '../../pages/patterns/quiz/quizlobbyinvitepage.dart';
+import '../../pages/patterns/quiz/quizlobbypage.dart';
+import '../../pages/patterns/quiz/quizstartstatistics.dart';
 import '../../pages/patterns/quiz/themepage.dart';
 
 class TabNavigatorRoutes {
@@ -33,11 +38,11 @@ class TabNavigatorRoutes {
   static const String quizStart = '/quiz/start';
   static const String quizStartStats = '/quiz/start/stats';
   static const String quizLobby = '/quiz/lobby';
+  static const String quizLobbyInvite = '/quiz/lobby/invite';
   static const String quizPlayground = '/quiz/playground';
   static const String quizEnd = '/quiz/end';
   static const String quizEndRecap = '/quiz/end/recap';
 
-  static const String quizLobbyInvite = '/quiz/lobby/invite';
   static const String quizInvite = '/quiz/invite';
 
   //Me subroutes
@@ -117,7 +122,13 @@ class _TabNavigatorState extends State<TabNavigator> {
       TabNavigatorRoutes.quizQuizList: (context) => QuizListPage(onPush: push),
 
       TabNavigatorRoutes.quizStart: (context) => QuizStartPage(onPush: push, hideBottomBarCallback: widget.hideBottomBarCallback, displayBottomBarCallback: widget.displayBottomBarCallback,),
+      TabNavigatorRoutes.quizStartStats: (context) => QuizStartStatisticsPage(onPush: push, hideBottomBarCallback: widget.hideBottomBarCallback, displayBottomBarCallback: widget.displayBottomBarCallback,),
+      TabNavigatorRoutes.quizLobby: (context) => QuizLobbyPage(onPush: push, hideBottomBarCallback: widget.hideBottomBarCallback, displayBottomBarCallback: widget.displayBottomBarCallback,),
+      TabNavigatorRoutes.quizLobbyInvite: (context) => QuizLobbyInvitePage(onPush: push, hideBottomBarCallback: widget.hideBottomBarCallback, displayBottomBarCallback: widget.displayBottomBarCallback,),
       TabNavigatorRoutes.quizPlayground: (context) => QuizPlaygroundPage(onPush: push, hideBottomBarCallback: widget.hideBottomBarCallback, displayBottomBarCallback: widget.displayBottomBarCallback,),
+      TabNavigatorRoutes.quizEnd: (context) => QuizEndPage(onPush: push, hideBottomBarCallback: widget.hideBottomBarCallback, displayBottomBarCallback: widget.displayBottomBarCallback,),
+      TabNavigatorRoutes.quizEndRecap: (context) => QuizEndRecapPage(onPush: push, hideBottomBarCallback: widget.hideBottomBarCallback, displayBottomBarCallback: widget.displayBottomBarCallback,),
+
 
       //Me subroutes
       TabNavigatorRoutes.meSettings: (context) => SettingsPage(onPush: push),

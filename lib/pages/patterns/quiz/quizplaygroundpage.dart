@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kouizapp/widgets/quiz/answerwidget.dart';
 
 import '../../../constants/customcolors.dart';
+import '../../../models/quiz.dart';
 
 class QuizPlaygroundPage extends StatefulWidget {
   QuizPlaygroundPage({Key? key, required this.onPush, required this.hideBottomBarCallback, required this.displayBottomBarCallback}) : super(key: key);
@@ -19,9 +20,16 @@ class QuizPlaygroundPage extends StatefulWidget {
 }
 
 class _QuizPlaygroundPageState extends State<QuizPlaygroundPage> {
+  Quiz? quiz;
+  String? categoryName;
+  String? themeName;
 
   void quizLobby(){
 
+  }
+
+  void quizEnd(){
+    widget.onPush(context, '/quiz/end', {'quiz': quiz, 'themeName': themeName, 'categoryName': categoryName});
   }
 
   @override
@@ -34,6 +42,11 @@ class _QuizPlaygroundPageState extends State<QuizPlaygroundPage> {
 
   @override
   Widget build(BuildContext context) {
+    final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
+    quiz = arguments['quiz'];
+    themeName = arguments['themeName'];
+    categoryName = arguments['categoryName'];
+
     return SafeArea(
       child: Stack(
         children: [
@@ -130,7 +143,10 @@ class _QuizPlaygroundPageState extends State<QuizPlaygroundPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          AnswerWidget(answer: 'Albania'),
+                          GestureDetector(
+                            onTap: quizEnd,
+                            child: AnswerWidget(answer: 'Albania')
+                          ),
                           AnswerWidget(answer: 'Albania'),
                         ],
                       ),

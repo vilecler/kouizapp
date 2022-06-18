@@ -31,9 +31,6 @@ class _QuizStartPageState extends State<QuizStartPage> {
   String? categoryName;
   String? themeName;
 
-  void quizLobby(){
-
-  }
 
   @override
   void initState() {
@@ -52,7 +49,15 @@ class _QuizStartPageState extends State<QuizStartPage> {
   }
 
   void quizPlayground(){
-    widget.onPush(context, '/quiz/playground', {});
+    widget.onPush(context, '/quiz/playground', {'quiz': quiz, 'themeName': themeName, 'categoryName': categoryName});
+  }
+
+  void quizLobby(){
+    widget.onPush(context, '/quiz/lobby', {'quiz': quiz, 'themeName': themeName, 'categoryName': categoryName});
+  }
+
+  void quizStartStatistics(){
+    widget.onPush(context, '/quiz/start/stats', {'quiz': quiz, 'themeName': themeName, 'categoryName': categoryName});
   }
 
   void loadUser() async{
@@ -111,7 +116,7 @@ class _QuizStartPageState extends State<QuizStartPage> {
               BackHeaderWidget(title: categoryName!, bolt: (currentUser != null) ? currentUser!.energy : 0, white: true,),
 
               Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top:35.0, bottom: 20.0),
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 25.0, bottom: 15.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -130,40 +135,53 @@ class _QuizStartPageState extends State<QuizStartPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0, bottom: 70.0),
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0, bottom: 45.0),
                 child: Text(
                   loadTranslation(quiz!.name),
                   style: const TextStyle(color: CustomColors.white, fontSize: 28.0, fontWeight: FontWeight.w700, letterSpacing: 1.0),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      quiz!.questionsCount.toString() + ' ' + ( (quiz!.questionsCount == 0 ) ? AppLocalizations.of(context)!.question.toLowerCase() : AppLocalizations.of(context)!.questions.toLowerCase()),
-                      style: const TextStyle(color: CustomColors.white, fontSize: 18.0, fontWeight: FontWeight.w700),
-                    ),
-                    BoltWidget(number: quiz!.energyWinnable, white: true,)
-                  ],
-                ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    children: [
+                      const FaIcon(FontAwesomeIcons.clock, color: CustomColors.white, size: 70),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text(
+                          (quiz!.questionsCount * quiz!.durationBetweenQuestions).round().toString() + "s",
+                          style: const TextStyle(color: CustomColors.white, fontSize: 24.0, fontWeight: FontWeight.w700),
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      const FaIcon(FontAwesomeIcons.bolt, color: CustomColors.white, size: 70),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text(
+                          (quiz!.energyRequired).round().toString(),
+                          style: const TextStyle(color: CustomColors.white, fontSize: 24.0, fontWeight: FontWeight.w700),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
               ),
 
               Flexible(
                 flex: 1,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 100.0, bottom: 70.0),
+                  padding: const EdgeInsets.only(top: 50.0, bottom: 70.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       PlainButtonWidget(icon: FontAwesomeIcons.play, text: AppLocalizations.of(context)!.playNow, onTap: quizPlayground),
-                      EmptyButtonWidget(icon: FontAwesomeIcons.userFriends, text: AppLocalizations.of(context)!.playWithPeople),
-                      GestureDetector(onTap: (){
-                          Navigator.pop(context);
-                        },
-                        child: EmptyButtonWidget(icon: FontAwesomeIcons.arrowLeft, text: AppLocalizations.of(context)!.backToSelection)
-                      ),
+                      EmptyButtonWidget(icon: FontAwesomeIcons.userFriends, text: AppLocalizations.of(context)!.playWithPeople, onTap: quizLobby,),
+                      EmptyButtonWidget(icon: FontAwesomeIcons.arrowLeft, text: AppLocalizations.of(context)!.backToSelection, onTap: (){ Navigator.pop(context); }),
                     ],
                   ),
                 ),
@@ -177,34 +195,37 @@ class _QuizStartPageState extends State<QuizStartPage> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      end: FractionalOffset.topRight,
-                      begin: FractionalOffset.bottomLeft,
-                      colors: [
-                        CustomColors.mainPurple.withOpacity(0.6),
-                        CustomColors.mainPink.withOpacity(0.6),
-                      ],
-                      stops: const [0.0, 1.0]
-                  ),
-                ),
-                height: 60.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      AppLocalizations.of(context)!.bestScore + AppLocalizations.of(context)!.punctuationSpace + ': 80%',
-                      style: const TextStyle(color: CustomColors.white, fontSize: 14.0, fontWeight: FontWeight.w600, letterSpacing: 0.5),
+              GestureDetector(
+                onTap: quizStartStatistics,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        end: FractionalOffset.topRight,
+                        begin: FractionalOffset.bottomLeft,
+                        colors: [
+                          CustomColors.mainPurple.withOpacity(0.6),
+                          CustomColors.mainPink.withOpacity(0.6),
+                        ],
+                        stops: const [0.0, 1.0]
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: Text(
-                        '| ' + AppLocalizations.of(context)!.seeAllStatistics,
-                        style: const TextStyle(color: CustomColors.fakeWhite, fontSize: 12.0, fontWeight: FontWeight.w400, letterSpacing: 0.5),
+                  ),
+                  height: 60.0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.bestScore + AppLocalizations.of(context)!.punctuationSpace + ': 80%',
+                        style: const TextStyle(color: CustomColors.white, fontSize: 14.0, fontWeight: FontWeight.w600, letterSpacing: 0.5),
                       ),
-                    )
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Text(
+                          '| ' + AppLocalizations.of(context)!.seeAllStatistics,
+                          style: const TextStyle(color: CustomColors.fakeWhite, fontSize: 12.0, fontWeight: FontWeight.w400, letterSpacing: 0.5),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               )
 
