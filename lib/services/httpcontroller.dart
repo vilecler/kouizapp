@@ -16,10 +16,10 @@ Future<String> get(String path) async{
   http.Response response = await http.get(uri, headers: getHeaders(),);
 
   if (response.statusCode != 200){
-    HttpError error = HttpError(code: response.statusCode, message: jsonDecode(response.body)['message']);
+    HttpError error = HttpError(code: response.statusCode, message: jsonDecode(utf8.decode(response.bodyBytes))['message']);
     throw NetworkException('Error GET status code is not 200.\nURL:$uri.\nStatusCode:${response.statusCode}', error);
   }
-  return response.body;
+  return utf8.decode(response.bodyBytes);
 }
 
 Future<String> post(String path, String params) async{
@@ -27,8 +27,8 @@ Future<String> post(String path, String params) async{
   http.Response response = await http.post(uri, headers: getHeaders(), body: params);
 
   if (response.statusCode != 200){
-    HttpError error = HttpError(code: response.statusCode, message: jsonDecode(response.body)['message']);
+    HttpError error = HttpError(code: response.statusCode, message: jsonDecode(utf8.decode(response.bodyBytes))['message']);
     throw NetworkException('Error POST status code is not 200.\nURL:$uri.\nStatusCode:${response.statusCode}', error);
   }
-  return response.body;
+  return utf8.decode(response.bodyBytes);
 }

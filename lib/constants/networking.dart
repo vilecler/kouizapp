@@ -1,6 +1,6 @@
 class Networking{
-  static const String apiDomainName = 'api.kouiz.it';
+  static const String apiDomainName = 'z6svykjvz5o3vjsud5ry7pwoq40bdioz.lambda-url.eu-west-3.on.aws';
 
-  static const String userPoolId = 'eu-west-3_YrU1vNNk1';
-  static const String clientId = '53t5eb8l5ik3216gol0h93jobc';
+  static const String userPoolId = 'eu-west-3_ZMm3o6tSs';
+  static const String clientId = '1id909n9tf0p6k33o4v8tku1lp';
 }
