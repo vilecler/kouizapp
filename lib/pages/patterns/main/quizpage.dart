@@ -144,8 +144,8 @@ class _QuizPageState extends State<QuizPage> with SingleTickerProviderStateMixin
                             );
                           } else if (snapshot.hasData) {
                             List<Category> categories = snapshot.data!;
-                            List<Category> restrictedCategories = (officialSearchText != "") ? categories.where((element) => loadTranslation(element.names).toLowerCase().contains(officialSearchText.toLowerCase())).toList() : categories;
-                            restrictedCategories.sort( (a, b) => loadTranslation(a.names).compareTo(loadTranslation(b.names)) );
+                            List<Category> restrictedCategories = (officialSearchText != "") ? categories.where((element) => loadTranslation(element.name).toLowerCase().contains(officialSearchText.toLowerCase())).toList() : categories;
+                            restrictedCategories.sort( (a, b) => loadTranslation(a.name).compareTo(loadTranslation(b.name)) );
                             categoriesCount = restrictedCategories.length;
                             if(categoriesCount == 0){
                               return Center(
@@ -258,12 +258,12 @@ class CategoriesList extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
             onTap: (){
-              onPush(context, '/quiz/theme', {'categoryCode': categories[index].code, 'categoryName': loadTranslation(categories[index].names)});
+              onPush(context, '/quiz/theme', {'categoryCode': categories[index].code, 'categoryName': loadTranslation(categories[index].name)});
             },
             child: CategoryPresentationWidget(
-              category: loadTranslation(categories[index].names),
+              category: loadTranslation(categories[index].name),
               progression: 0,
-              themeCount: categories[index].themeCount,
+              themeCount: categories[index].themesCount,
               color: HexColor(categories[index].color),
               icon: stringToIcon(categories[index].icon),
             )

@@ -6,10 +6,10 @@ class Theme{
   final String color;
   final String icon;
   final List<dynamic> categories;
-  final dynamic names;
-  final dynamic shortNames;
+  final dynamic name;
+  final dynamic shortName;
   final DateTime? createdAt;
-  final int quizCount;
+  final int quizzesCount;
   final bool isHidden;
   final DateTime? deletedAt;
 
@@ -19,10 +19,10 @@ class Theme{
     required this.color,
     required this.icon,
     required this.categories,
-    required this.names,
-    required this.shortNames,
+    required this.name,
+    required this.shortName,
     required this.createdAt,
-    required this.quizCount,
+    required this.quizzesCount,
     required this.isHidden,
     required this.deletedAt
   });
@@ -34,10 +34,10 @@ class Theme{
         color: json['color'],
         icon: json['icon'],
         categories: json['categories'],
-        names: json['names'],
-        shortNames: json['shortNames'],
+        name: json['name'],
+        shortName: json['shortName'],
         createdAt: isoDateToDateTime(json['createdAt'].toString()),
-        quizCount: json['quizCount'],
+        quizzesCount: json['quizzesCount'],
         isHidden: json['isHidden'],
         deletedAt: isoDateToDateTime(json['deletedAt'].toString())
     );

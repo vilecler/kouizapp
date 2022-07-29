@@ -18,7 +18,7 @@ class Quiz{
   final int questionsCount;
   final String? theme;
   final String? themePosition;
-  final dynamic creator;
+  final dynamic? creator;
   final DateTime? deletedAt;
 
   const Quiz({

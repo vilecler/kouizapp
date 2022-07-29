@@ -5,9 +5,9 @@ class Category{
   final String code;
   final String color;
   final String icon;
-  final dynamic names;
+  final dynamic name;
   final DateTime? createdAt;
-  final int themeCount;
+  final int themesCount;
   final bool isHidden;
   final DateTime? deletedAt;
 
@@ -16,9 +16,9 @@ class Category{
     required this.code,
     required this.color,
     required this.icon,
-    required this.names,
+    required this.name,
     required this.createdAt,
-    required this.themeCount,
+    required this.themesCount,
     required this.isHidden,
     required this.deletedAt
   });
@@ -29,9 +29,9 @@ class Category{
         code: json['code'],
         color: json['color'],
         icon: json['icon'],
-        names: json['names'],
+        name: json['name'],
         createdAt: isoDateToDateTime(json['createdAt'].toString()),
-        themeCount: json['themeCount'],
+        themesCount: json['themesCount'],
         isHidden: json['isHidden'],
         deletedAt: isoDateToDateTime(json['deletedAt'].toString())
     );

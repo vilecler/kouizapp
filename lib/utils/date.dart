@@ -7,7 +7,7 @@ DateTime? isoDateToDateTime(String? isoDate){
     return null;
   }
 
-  String date = isoDate.substring(0, isoDate.length - 5);
+  String date = isoDate.substring(0, isoDate.length - 13);
   date = date + 'Z';
   return DateTime.parse(date);
 }

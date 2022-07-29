@@ -100,8 +100,8 @@ class _ThemePageState extends State<ThemePage> {
                       );
                     } else if (snapshot.hasData) {
                       List<model.Theme> themes = snapshot.data!;
-                      List<model.Theme> restrictedThemes = (searchText != "") ? themes.where((element) => loadTranslation(element.names).toLowerCase().contains(searchText.toLowerCase())).toList() : themes;
-                      restrictedThemes.sort( (a, b) => loadTranslation(a.names).compareTo(loadTranslation(b.names)) );
+                      List<model.Theme> restrictedThemes = (searchText != "") ? themes.where((element) => loadTranslation(element.name).toLowerCase().contains(searchText.toLowerCase())).toList() : themes;
+                      restrictedThemes.sort( (a, b) => loadTranslation(a.name).compareTo(loadTranslation(b.name)) );
                       themesCount = restrictedThemes.length;
                       if(themesCount == 0){
                         return Center(
@@ -140,12 +140,12 @@ class ThemesList extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
             onTap: (){
-              onPush(context, '/quiz/theme/quiz-list', {'themeCode': themes[index].code, 'themeName': loadTranslation(themes[index].names), 'categoryName': categoryName});
+              onPush(context, '/quiz/theme/quiz-list', {'themeCode': themes[index].code, 'themeName': loadTranslation(themes[index].name), 'categoryName': categoryName});
             },
             child: ThemePresentationWidget(
-              theme: loadTranslation(themes[index].names),
+              theme: loadTranslation(themes[index].name),
               progression: 0,
-              quizCount: themes[index].quizCount,
+              quizCount: themes[index].quizzesCount,
               color: HexColor(themes[index].color),
               icon: stringToIcon(themes[index].icon),
             )
