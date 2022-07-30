@@ -147,7 +147,7 @@ class _QuizStartPageState extends State<QuizStartPage> {
                 children: [
                   Column(
                     children: [
-                      const FaIcon(FontAwesomeIcons.clock, color: CustomColors.white, size: 70),
+                      const FaIcon(FontAwesomeIcons.clock, color: CustomColors.white, size: 50),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
@@ -159,7 +159,7 @@ class _QuizStartPageState extends State<QuizStartPage> {
                   ),
                   Column(
                     children: [
-                      const FaIcon(FontAwesomeIcons.bolt, color: CustomColors.white, size: 70),
+                      const FaIcon(FontAwesomeIcons.bolt, color: CustomColors.white, size: 50),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
@@ -175,7 +175,7 @@ class _QuizStartPageState extends State<QuizStartPage> {
               Flexible(
                 flex: 1,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 50.0, bottom: 70.0),
+                  padding: const EdgeInsets.only(top: 70.0, bottom: 70.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

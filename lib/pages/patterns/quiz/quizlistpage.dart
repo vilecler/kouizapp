@@ -99,7 +99,7 @@ class _QuizListPageState extends State<QuizListPage> {
                     } else if (snapshot.hasData) {
                       List<Quiz> quizzes = snapshot.data!;
                       List<Quiz> restrictedQuizzes = (searchText != "") ? quizzes.where((element) => loadTranslation(element.name).toLowerCase().contains(searchText.toLowerCase())).toList() : quizzes;
-                      restrictedQuizzes.sort( (a, b) => loadTranslation(a.name).compareTo(loadTranslation(b.name)) );
+                      restrictedQuizzes.sort( (a, b) => a.themeIndex! - b.themeIndex! );
                       quizCount = restrictedQuizzes.length;
                       if(quizCount == 0){
                         return Center(

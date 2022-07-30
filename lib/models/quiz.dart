@@ -18,6 +18,7 @@ class Quiz{
   final int questionsCount;
   final String? theme;
   final String? themePosition;
+  final int? themeIndex;
   final dynamic? creator;
   final DateTime? deletedAt;
 
@@ -39,6 +40,7 @@ class Quiz{
     required this.questionsCount,
     required this.theme,
     required this.themePosition,
+    required this.themeIndex,
     required this.creator,
     required this.deletedAt
   });
@@ -62,6 +64,7 @@ class Quiz{
         questionsCount: json['questionsCount'],
         theme: json['theme'],
         themePosition: json['themePosition'],
+        themeIndex: json['themeIndex'],
         creator: json['creator'],
         deletedAt: isoDateToDateTime(json['deletedAt'].toString())
     );

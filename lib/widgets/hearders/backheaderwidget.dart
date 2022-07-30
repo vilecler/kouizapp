@@ -33,7 +33,7 @@ class BackHeaderWidget extends StatelessWidget {
               ),
               Text(
                 title,
-                style: TextStyle(color: white ? CustomColors.white : CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: small ? 26.0 : 34.0, decoration: TextDecoration.none),
+                style: TextStyle(color: white ? CustomColors.white : CustomColors.mainPurple, fontFamily: 'Roboto', fontWeight: FontWeight.w800, fontSize: small ? 22.0 : 34.0, decoration: TextDecoration.none),
               ),
             ],
           ),
